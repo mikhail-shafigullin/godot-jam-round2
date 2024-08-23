@@ -4,3 +4,29 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ikcf1")
+
+[node name="SquareUI" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 223.0
+offset_top = 120.0
+offset_right = 881.0
+offset_bottom = 490.0
+metadata/_edit_group_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SquareUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]ноунейм хуйс"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
