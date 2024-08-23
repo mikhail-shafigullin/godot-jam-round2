@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd26namkdpkov"]
+
+[ext_resource type="PackedScene" uid="uid://cx1j0blx6xnhk" path="res://entites/playerRallyCar.tscn" id="1_4br57"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6mxe"]
+size = Vector3(5, 0.5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v3lki"]
+size = Vector3(5, 0.5, 5)
+
+[node name="ExperimentLevel" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0409241, 0, -0.0674744)
+shape = SubResource("BoxShape3D_k6mxe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_v3lki")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.849479, 0.527623, 0, -0.527623, 0.849479, 0, 1.67549, 2.0435)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.955495, 0.295008, 0, -0.295008, 0.955495, 0, 1.94593, 1.11252)
+
+[node name="PlayerRallyCar" parent="." instance=ExtResource("1_4br57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256129, 0)

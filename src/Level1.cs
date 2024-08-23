@@ -23,5 +23,4 @@ public partial class Level1 : Node2D
 			if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
 				nonameHuisBlock.Visible = !nonameHuisBlock.Visible;
 	}
-	
 }

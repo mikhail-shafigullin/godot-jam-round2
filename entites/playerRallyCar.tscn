@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx1j0blx6xnhk"]
+
+[ext_resource type="PackedScene" uid="uid://dprm0bbuesrpw" path="res://assets/models/carModel/source/model.gltf" id="1_f65o8"]
+[ext_resource type="Script" path="res://entites/PlayerRallyCar.cs" id="1_nbx5n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofqu7"]
+size = Vector3(0.212891, 0.169613, 0.470276)
+
+[node name="PlayerRallyCar" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.259686, 0)
+script = ExtResource("1_nbx5n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0794457, 0)
+shape = SubResource("BoxShape3D_ofqu7")
+
+[node name="blockbench_export" parent="CollisionShape3D" instance=ExtResource("1_f65o8")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.0858873, 0)
