@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf1o1wqxcqhia"]
+[gd_scene load_steps=6 format=3 uid="uid://bf1o1wqxcqhia"]
 
 [ext_resource type="Script" path="res://entites/player/Player.cs" id="1_cv84l"]
 [ext_resource type="PackedScene" uid="uid://ddhl0dhq8pw83" path="res://entites/ui/baseUI.tscn" id="2_hravq"]
+[ext_resource type="PackedScene" uid="uid://d23vn5jtb04to" path="res://entites/ui/ComputerUI.tscn" id="3_rw7ts"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwpsc"]
 
@@ -22,3 +23,7 @@ mesh = SubResource("CapsuleMesh_o4pnn")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BaseUi" parent="CanvasLayer" instance=ExtResource("2_hravq")]
+
+[node name="ComputerUi" parent="CanvasLayer" instance=ExtResource("3_rw7ts")]
+unique_name_in_owner = true
+visible = false

@@ -1,0 +1,170 @@
+[gd_scene load_steps=3 format=3 uid="uid://ja1nfpsmgx4w"]
+
+[ext_resource type="Script" path="res://entites/ui/MechaCard.cs" id="1_l576s"]
+[ext_resource type="PackedScene" uid="uid://c3penbusi8bat" path="res://entites/ui/ComputerHpBar.tscn" id="1_up1os"]
+
+[node name="MechaCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l576s")
+
+[node name="NotLoadedCard" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotLoadedCard"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 15.0
+offset_right = 123.0
+offset_bottom = 38.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center]Not Loaded"
+
+[node name="CardWithMecha" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MechaImage" type="Control" parent="CardWithMecha"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 245.0
+offset_bottom = -11.0
+grow_vertical = 2
+
+[node name="LeftArmHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
+layout_mode = 1
+offset_left = -102.0
+offset_top = -71.0
+offset_right = -26.0
+offset_bottom = -16.0
+
+[node name="RightArmHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
+layout_mode = 1
+offset_left = 33.0
+offset_top = -71.0
+offset_right = 109.0
+offset_bottom = -16.0
+_mechaPart = 0
+
+[node name="LeftLegHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
+layout_mode = 1
+offset_left = -102.0
+offset_top = 56.0
+offset_right = -26.0
+offset_bottom = 111.0
+_mechaPart = 3
+
+[node name="RightLegHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
+layout_mode = 1
+offset_left = 33.0
+offset_top = 56.0
+offset_right = 109.0
+offset_bottom = 111.0
+_mechaPart = 2
+
+[node name="HeadHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
+layout_mode = 1
+offset_top = -119.0
+offset_bottom = -64.0
+_mechaPart = 5
+
+[node name="TorsoHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
+layout_mode = 1
+offset_top = -12.0
+offset_bottom = 43.0
+_mechaPart = 4
+
+[node name="MechaInfo" type="Control" parent="CardWithMecha"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = 8.0
+offset_right = -17.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardWithMecha/MechaInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerBlock" type="Control" parent="CardWithMecha/MechaInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CardWithMecha/MechaInfo/VBoxContainer/TimerBlock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CardWithMecha/MechaInfo/VBoxContainer/TimerBlock/Panel"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 243.0
+offset_bottom = 37.0
+text = "Mecha Launch:"
+
+[node name="Time" type="RichTextLabel" parent="CardWithMecha/MechaInfo/VBoxContainer/TimerBlock/Panel"]
+layout_mode = 2
+offset_left = 55.0
+offset_top = 41.0
+offset_right = 270.0
+offset_bottom = 66.0
+text = "20.00000 sec"
+
+[node name="ButtonBlock" type="Control" parent="CardWithMecha/MechaInfo"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="CardWithMecha/MechaInfo/ButtonBlock"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Launch"

@@ -12,3 +12,12 @@
 
 [node name="RepairTrigger" parent="." instance=ExtResource("3_62nws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2736, 1.99931)
+
+[node name="RepairTrigger2" parent="." instance=ExtResource("3_62nws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02954, 3.24976, -0.0133974)
+
+[node name="RepairTrigger3" parent="." instance=ExtResource("3_62nws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223959, 4.02123, -1.97575)
+
+[node name="RepairTrigger4" parent="." instance=ExtResource("3_62nws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03581, 3.65812, 0.146292)
