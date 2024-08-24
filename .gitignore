@@ -3,6 +3,7 @@
 /android/
 .godot/
 *.tmp
+.DS_Store
 
 # our ignore
 local
