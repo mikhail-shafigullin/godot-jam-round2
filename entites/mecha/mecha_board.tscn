@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccu3m3i01a4ji"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_me64w"]
+size = Vector3(2, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_02ps6"]
+size = Vector3(2, 0.3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nengd"]
+size = Vector3(1, 0.3, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_koere"]
+size = Vector3(1, 0.3, 2)
+
+[node name="MechaBoard" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977412, 2.5447)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_me64w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.190381, 0)
+mesh = SubResource("BoxMesh_02ps6")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38646, 1.82712, -0.14129)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_nengd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.190381, 0)
+mesh = SubResource("BoxMesh_koere")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55476, -2.43266)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("BoxShape3D_me64w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.190381, 0)
+mesh = SubResource("BoxMesh_02ps6")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40808, 1.82712, -0.14129)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+shape = SubResource("BoxShape3D_nengd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.190381, 0)
+mesh = SubResource("BoxMesh_koere")

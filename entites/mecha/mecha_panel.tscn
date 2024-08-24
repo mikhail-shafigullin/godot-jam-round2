@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://0uxib36bs6nb"]
+
+[ext_resource type="PackedScene" uid="uid://iij05tdaoxmf" path="res://entites/mecha/mecha.tscn" id="1_888gf"]
+[ext_resource type="PackedScene" uid="uid://ccu3m3i01a4ji" path="res://entites/mecha/mecha_board.tscn" id="2_whb8b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_73xjj"]
+radius = 0.0964065
+
+[sub_resource type="BoxMesh" id="BoxMesh_hawf6"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iictf"]
+albedo_color = Color(0.337255, 1, 0.337255, 1)
+albedo_texture_force_srgb = true
+
+[node name="MechaPanel" type="Node3D"]
+
+[node name="Mecha" parent="." instance=ExtResource("1_888gf")]
+
+[node name="MechaBoard" parent="." instance=ExtResource("2_whb8b")]
+
+[node name="RepairTrigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51249, 1.99931)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RepairTrigger"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairTrigger/StaticBody3D"]
+shape = SubResource("SphereShape3D_73xjj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RepairTrigger/StaticBody3D"]
+mesh = SubResource("BoxMesh_hawf6")
+surface_material_override/0 = SubResource("StandardMaterial3D_iictf")

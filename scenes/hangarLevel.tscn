@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b22fcfe5l3p5s"]
+
+[ext_resource type="PackedScene" uid="uid://bf1o1wqxcqhia" path="res://entites/player/player.tscn" id="1_dikmg"]
+[ext_resource type="PackedScene" uid="uid://0uxib36bs6nb" path="res://entites/mecha/mecha_panel.tscn" id="2_32s7e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvrpv"]
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iwjou"]
+size = Vector3(20, 0.5, 20)
+
+[node name="HangarLevel" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0409241, 0, -0.0674744)
+shape = SubResource("BoxShape3D_tvrpv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.253026, 0)
+mesh = SubResource("BoxMesh_iwjou")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.955495, 0.295008, 0, -0.295008, 0.955495, 0, 1.6929, 1.11252)
+
+[node name="Player" parent="." instance=ExtResource("1_dikmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59479, 1.00288, 0)
+
+[node name="MechaPanel" parent="." instance=ExtResource("2_32s7e")]
