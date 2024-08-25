@@ -21,15 +21,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02581, 8.07819, -0.18248)
 
 [node name="RightArmRepairTrigger" parent="RepairTriggers" instance=ExtResource("3_62nws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02954, 8.32191, -0.0133974)
+_mechaPartType = 0
 
 [node name="LeftLegRepairTrigger" parent="RepairTriggers" instance=ExtResource("3_62nws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04965, 4.00019, -0.0471056)
+_mechaPartType = 3
 
 [node name="RightLegRepairTrigger" parent="RepairTriggers" instance=ExtResource("3_62nws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03581, 4.09253, 0.146292)
+_mechaPartType = 2
 
 [node name="TorsoRepairTrigger" parent="RepairTriggers" instance=ExtResource("3_62nws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0447146, 6.19102, -2.05467)
+_mechaPartType = 4
 
 [node name="HeadRepairTrigger" parent="RepairTriggers" instance=ExtResource("3_62nws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0447146, 10.388, 2.04599)
+_mechaPartType = 5

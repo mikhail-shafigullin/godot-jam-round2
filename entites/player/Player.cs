@@ -49,14 +49,12 @@ public partial class Player : CharacterBody3D
 		{
 			if (ComputerUi.Visible)
 			{
-				GD.Print("PUP");
 				ComputerUi.Visible = false;
 				Input.MouseMode = Input.MouseModeEnum.Captured;
 				_computerOpened = false;
 			}
 			else
 			{
-				GD.Print("PIP");
 				ComputerUi.Visible = true;
 				Input.MouseMode = Input.MouseModeEnum.Visible;
 				_computerOpened = true;
