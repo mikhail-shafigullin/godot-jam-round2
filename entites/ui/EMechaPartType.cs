@@ -1,6 +1,6 @@
 namespace GodotJamRound2.entites.ui;
 
-public enum MechaPart
+public enum EMechaPartType
 {
     RIGHT_ARM,
     LEFT_ARM,

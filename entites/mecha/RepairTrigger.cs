@@ -6,6 +6,7 @@ public partial class RepairTrigger : Node3D, ITriggerable
 {
 	private Globals _globals = null;
 	private bool _isRepairing = false;
+	private bool _isDisabled = false;
 	
 	[Export]
 	private float _repairProgress = 0.0f;
@@ -30,17 +31,33 @@ public partial class RepairTrigger : Node3D, ITriggerable
 
 	public void Trigger()
 	{
-		BasePlayerUI ui = _globals.GetPlayerUI();
-		ui.ShowActionProgress(true);
-		
-		GD.Print("Repairing...");
-		_isRepairing = true;
+		if (!_isDisabled)
+		{
+			BasePlayerUI ui = _globals.GetPlayerUI();
+			ui.ShowActionProgress(true);
+
+			GD.Print("Repairing...");
+			_isRepairing = true;
+		}
 	}
 	
 	public void RemoveTrigger()
 	{
-		BasePlayerUI ui = _globals.GetPlayerUI();
-		ui.ShowActionProgress(false);
-		_isRepairing = false;
+		if (!_isDisabled)
+		{
+			BasePlayerUI ui = _globals.GetPlayerUI();
+			ui.ShowActionProgress(false);
+			_isRepairing = false;
+		}
+	}
+	
+	public void SetDisabled(bool disabled)
+	{
+		if(disabled)
+		{
+			RemoveTrigger();
+		}
+		_isDisabled = disabled;
+		
 	}
 }

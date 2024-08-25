@@ -65,7 +65,7 @@ offset_left = 33.0
 offset_top = -71.0
 offset_right = 109.0
 offset_bottom = -16.0
-_mechaPart = 0
+_eMechaPartType = 0
 
 [node name="LeftLegHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
 layout_mode = 1
@@ -73,7 +73,7 @@ offset_left = -102.0
 offset_top = 56.0
 offset_right = -26.0
 offset_bottom = 111.0
-_mechaPart = 3
+_eMechaPartType = 3
 
 [node name="RightLegHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
 layout_mode = 1
@@ -81,19 +81,19 @@ offset_left = 33.0
 offset_top = 56.0
 offset_right = 109.0
 offset_bottom = 111.0
-_mechaPart = 2
+_eMechaPartType = 2
 
 [node name="HeadHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
 layout_mode = 1
 offset_top = -119.0
 offset_bottom = -64.0
-_mechaPart = 5
+_eMechaPartType = 5
 
 [node name="TorsoHPBar" parent="CardWithMecha/MechaImage" instance=ExtResource("1_up1os")]
 layout_mode = 1
 offset_top = -12.0
 offset_bottom = 43.0
-_mechaPart = 4
+_eMechaPartType = 4
 
 [node name="MechaInfo" type="Control" parent="CardWithMecha"]
 layout_mode = 1

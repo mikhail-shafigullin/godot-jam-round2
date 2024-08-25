@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b22fcfe5l3p5s"]
+[gd_scene load_steps=7 format=3 uid="uid://b22fcfe5l3p5s"]
 
 [ext_resource type="PackedScene" uid="uid://bf1o1wqxcqhia" path="res://entites/player/player.tscn" id="1_dikmg"]
 [ext_resource type="PackedScene" uid="uid://0uxib36bs6nb" path="res://entites/mecha/mecha_panel.tscn" id="2_32s7e"]
+[ext_resource type="Script" path="res://src/gameplay/GameController.cs" id="3_f5gea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvrpv"]
-size = Vector3(20, 0.5, 20)
+size = Vector3(20, 0.5, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kfw8"]
+albedo_color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_iwjou"]
-size = Vector3(20, 0.5, 20)
+material = SubResource("StandardMaterial3D_3kfw8")
+size = Vector3(20, 0.5, 40)
 
 [node name="HangarLevel" type="Node3D"]
 
@@ -21,10 +26,34 @@ shape = SubResource("BoxShape3D_tvrpv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.253026, 0)
 mesh = SubResource("BoxMesh_iwjou")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.955495, 0.295008, 0, -0.295008, 0.955495, 0, 1.6929, 1.11252)
-
 [node name="Player" parent="." instance=ExtResource("1_dikmg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59479, 1.00288, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.69429, 1.00288, 0)
 
-[node name="MechaPanel" parent="." instance=ExtResource("2_32s7e")]
+[node name="MechaPanel1" parent="." instance=ExtResource("2_32s7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.95397, 0, 7.25061)
+
+[node name="MechaPanel2" parent="." instance=ExtResource("2_32s7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.95397, 0, 0)
+
+[node name="MechaPanel3" parent="." instance=ExtResource("2_32s7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.95397, 0, -6.34234)
+
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_mechaPanels")]
+script = ExtResource("3_f5gea")
+_mechaPanels = [NodePath("../MechaPanel1"), NodePath("../MechaPanel2"), NodePath("../MechaPanel3")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.00149889, -0.841577, 0.540136, 0.0023354, 0.540138, 0.841573, -0.999996, 7.56702e-09, 0.00277503, 2.48316, 18.2136, 0)
+light_energy = 3.633
+spot_range = 27.4344
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -9.9957, 9.45909, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0409241, 0, -0.0674744)
+shape = SubResource("BoxShape3D_tvrpv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, -0.274232, -0.0418015)
+mesh = SubResource("BoxMesh_iwjou")

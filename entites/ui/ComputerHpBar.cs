@@ -6,7 +6,7 @@ using GodotJamRound2.entites.ui;
 public partial class ComputerHpBar : Control
 {
 	[Export]
-	private MechaPart _mechaPart = MechaPart.LEFT_ARM;
+	private EMechaPartType _eMechaPartType = EMechaPartType.LEFT_ARM;
 	
 	private float _repairProgress = 0.0f;
 	private RichTextLabel _label = null;
@@ -27,24 +27,24 @@ public partial class ComputerHpBar : Control
 	
 	public void ChangeLabelTextFromPart()
 	{
-		switch (_mechaPart)
+		switch (_eMechaPartType)
 		{
-			case MechaPart.LEFT_ARM:
+			case EMechaPartType.LEFT_ARM:
 				_label.Text = "Left Arm";
 				break;
-			case MechaPart.RIGHT_ARM:
+			case EMechaPartType.RIGHT_ARM:
 				_label.Text = "Right Arm";
 				break;
-			case MechaPart.LEFT_LEG:
+			case EMechaPartType.LEFT_LEG:
 				_label.Text = "Left Leg";
 				break;
-			case MechaPart.RIGHT_LEG:
+			case EMechaPartType.RIGHT_LEG:
 				_label.Text = "Right Leg";
 				break;
-			case MechaPart.TORSO:
+			case EMechaPartType.TORSO:
 				_label.Text = "Torso";
 				break;
-			case MechaPart.HEAD:
+			case EMechaPartType.HEAD:
 				_label.Text = "Head";
 				break;
 		}

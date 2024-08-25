@@ -5,7 +5,7 @@ using GodotJamRound2.entites.mecha;
 public partial class Player : CharacterBody3D
 {
 	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
+	public const float JumpVelocity = 8.5f;
 	public const float MouseSensitivity = 0.1f;
 	
 	public Camera3D Camera = null;
