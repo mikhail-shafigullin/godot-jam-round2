@@ -45,7 +45,6 @@ public partial class MechaPanel : Node3D
 
 	public void ShowMecha()
 	{
-		GD.Print("Check check");
 		_IsMechaAvailable = true;
 		MechaMesh.Visible = true;
 		RepairTriggers.Visible = true;

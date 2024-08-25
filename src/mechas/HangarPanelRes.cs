@@ -40,4 +40,9 @@ public partial class HangarPanelRes: Resource
     {
         return "Hangar Panel #" + _index;
     }
+    
+    public void CreateMecha()
+    {
+        EmitSignal(createMechaSignal.Name);
+    }
 }

@@ -8,6 +8,8 @@ public partial class MechaPartRes: Resource
     private EMechaPartType _type = EMechaPartType.RIGHT_ARM;
     private float hp = 0.0f;
     private float maxHp = 100.0f;
+
+    private bool _isRepaired = true;
     
     public void RepairWithEquipmentWithDelta(PlayerEquipmentRes equipmentRes, float delta)
     {

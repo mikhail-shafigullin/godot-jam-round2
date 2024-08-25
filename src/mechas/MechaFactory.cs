@@ -3,9 +3,9 @@ using GodotJamRound2.entites.ui;
 
 namespace GodotJamRound2.mechas;
 
-public partial class MechaFactory: Resource
+public class MechaFactory
 {
-    public MechaRes createMecha()
+    public static MechaRes createMecha()
     {
         MechaRes mechaRes = new MechaRes();
         mechaRes.AddMechaPart(new MechaPartRes(), EMechaPartType.RIGHT_ARM);

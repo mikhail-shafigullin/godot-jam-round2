@@ -99,7 +99,7 @@ public partial class Player : CharacterBody3D
 		
 		// Cast a ray from the camera center
 		Vector3 from = Camera.GlobalTransform.Origin;
-		Vector3 to = from - Camera.GlobalTransform.Basis.Z * 100; // Adjust the length as needed
+		Vector3 to = from - Camera.GlobalTransform.Basis.Z * 1; // Adjust the length as needed
 
 		PhysicsDirectSpaceState3D spaceState = GetWorld3D().DirectSpaceState;
 		PhysicsRayQueryParameters3D rayParams = new PhysicsRayQueryParameters3D();
