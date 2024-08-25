@@ -4,7 +4,7 @@ using GodotJamRound2.mechas;
 
 public partial class MechaPanel : Node3D
 {
-	private HangarRes _hangarRes;
+	private HangarPanelRes _hangarPanelRes;
 
 	private Node3D MechaMesh;
 	private Node3D RepairTriggers;
@@ -22,13 +22,16 @@ public partial class MechaPanel : Node3D
 	{
 	}
 	
-	public void SetHangarRes(HangarRes hangarRes)
+	public void SetHangarRes(HangarPanelRes hangarPanelRes)
 	{
-		this._hangarRes = hangarRes;
+		this._hangarPanelRes = hangarPanelRes;
+		this._hangarPanelRes.OnCreateMecha += ShowMecha;
+		this._hangarPanelRes.OnLaunchMecha += HideMecha;
 	}
 
 	public void ShowMecha()
 	{
+		GD.Print("Check check");
 		MechaMesh.Visible = true;
 		RepairTriggers.Visible = true;
 		EnableRepairTriggers();

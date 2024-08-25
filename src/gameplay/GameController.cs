@@ -11,7 +11,8 @@ public partial class GameController : Node
 	private Array<MechaPanel> _mechaPanels = new Array<MechaPanel>();
 	
 	private Globals _globals = null;
-	private Array<HangarRes> _hangars = new Array<HangarRes>();
+	
+	private HangarRes _hangarRes;
 	
 	private Array<GameSituationScript> _gameSituationScripts = new Array<GameSituationScript>();
 	
@@ -23,21 +24,24 @@ public partial class GameController : Node
 	{
 		_globals = GetNode<Globals>("/root/Globals");
 		_globals.SetGameController(this);
-		
-		_hangars.Add(new HangarRes());
-		_hangars.Add(new HangarRes());
-		_hangars.Add(new HangarRes());
+
+		_hangarRes = new HangarRes();
 		
 		if(_mechaPanels.Count != 3){
 			GD.PrintErr("There should be 3 mecha panels");
 		}
 		
-		_mechaPanels[0].SetHangarRes(_hangars[0]);
+		_mechaPanels[0].SetHangarRes(_hangarRes.GetPanel(0));
+		_mechaPanels[1].SetHangarRes(_hangarRes.GetPanel(1));
+		_mechaPanels[2].SetHangarRes(_hangarRes.GetPanel(2));
 		
 		_timer = new Timer();
+		_timer.OneShot = true;
 		AddChild(_timer);
 
 		CreateScripts();
+		
+		RunGameSituationScripts(_gameSituationScripts[0]);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,8 +54,9 @@ public partial class GameController : Node
 		_gameSituationScripts = new Array<GameSituationScript>();
 		var firstScript = new GameSituationScript();
 		_gameSituationScripts.Add(firstScript);
-		firstScript.AddGameSituation(new GameSituation(_hangars[0].createMechaSignal, 20));
-		firstScript.AddGameSituation(new GameSituation(_hangars[1].createMechaSignal, 30));
+		firstScript.AddGameSituation(new GameSituation(_hangarRes.GetPanel(0).createMechaSignal, 2));
+		firstScript.AddGameSituation(new GameSituation(_hangarRes.GetPanel(1).createMechaSignal, 3));
+		firstScript.AddGameSituation(new GameSituation(_hangarRes.GetPanel(2).createMechaSignal, 3));
 		
 		var secondScript = new GameSituationScript();
 		_gameSituationScripts.Add(secondScript);
@@ -60,9 +65,9 @@ public partial class GameController : Node
 		_gameSituationScripts.Add(thirdScript);
 	}
 
-	private void RunGameSituationScripts()
+	private void RunGameSituationScripts(GameSituationScript gameSituationScript)
 	{
-		
+		gameSituationScript.Run(_timer);
 	}
 	
 	

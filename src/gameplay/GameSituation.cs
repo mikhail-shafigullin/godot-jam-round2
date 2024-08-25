@@ -13,4 +13,15 @@ public partial class GameSituation: Resource
         this.signal = signal;
         this.time = time;
     }
+    
+    public void Run(Timer timer)
+    {
+        timer.Start(time);
+        RunSignal();
+    }
+
+    public void RunSignal()
+    {
+        signal.Owner.EmitSignal(signal.Name);
+    }
 }
