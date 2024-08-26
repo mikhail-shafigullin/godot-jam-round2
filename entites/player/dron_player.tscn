@@ -11,7 +11,7 @@ bottom_radius = 0.3
 height = 0.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_dyayg"]
-size = Vector3(0.1, 0.1, 0.1)
+size = Vector3(0.1, 0.1, 1)
 
 [node name="DronPlayer" type="RigidBody3D"]
 script = ExtResource("1_cd7vm")
@@ -19,49 +19,47 @@ script = ExtResource("1_cd7vm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
 shape = SubResource("BoxShape3D_gtvnv")
-disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
 mesh = SubResource("CylinderMesh_ohwei")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28942, -0.183807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478037, -0.519989)
 mesh = SubResource("BoxMesh_dyayg")
 
 [node name="Raycasts" type="Node3D" parent="."]
 
 [node name="RayCast3D" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
-rotation_edit_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0.25)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D2" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, -0.25)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D3" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+transform = Transform3D(0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0, 1, 0.25, 0, 0)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D4" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+transform = Transform3D(0.984807, -0.173648, 0, 0.173648, 0.984807, 0, 0, 0, 1, -0.25, 0, 0)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D5" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.1771, 0, 0.176452)
+transform = Transform3D(0.709787, 0.000234514, -0.704416, -0.0868241, 0.992404, -0.0871558, 0.699045, 0.123022, 0.704416, -0.1771, 0, 0.176452)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D6" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.1771, 0, -0.176452)
+transform = Transform3D(0.709787, -0.000234514, -0.704416, 0.0868241, 0.992404, 0.0871558, 0.699045, -0.123022, 0.704416, 0.1771, 0, -0.176452)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D7" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.176, 0, 0.177)
+transform = Transform3D(0.709787, 0.000234514, -0.704416, -0.0868241, 0.992404, -0.0871558, 0.699045, 0.123022, 0.704416, 0.176, 0, 0.177)
 target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D8" type="RayCast3D" parent="Raycasts"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.176452, 0, -0.1771)
+transform = Transform3D(0.709787, -0.000234514, -0.704416, 0.0868241, 0.992404, 0.0871558, 0.699045, -0.123022, 0.704416, -0.176452, 0, -0.1771)
 target_position = Vector3(0, -5, 0)
 
 [node name="MiddleRayCast" type="RayCast3D" parent="."]
@@ -70,5 +68,5 @@ target_position = Vector3(0, -5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.744696, 0.667404, 0, -0.667404, 0.744696, 0, 1.14954, 1.29159)
+transform = Transform3D(1, 0, 0, 0, 0.936727, 0.35006, 0, -0.35006, 0.936727, 0, 1.14954, 1.29159)
 current = true

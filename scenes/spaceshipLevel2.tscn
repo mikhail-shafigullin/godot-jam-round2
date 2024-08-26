@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://chpytom2trnrj"]
+[gd_scene load_steps=6 format=3 uid="uid://b12p5bchxuxqw"]
 
-[ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="1_fykhm"]
-[ext_resource type="Script" path="res://scenes/SpaceshipLevel.cs" id="1_m2cwq"]
-[ext_resource type="PackedScene" uid="uid://lw6qqidr53qg" path="res://assets/models/spaceShip.glb" id="3_xwfcs"]
+[ext_resource type="Script" path="res://scenes/SpaceshipLevel.cs" id="1_gw6r2"]
+[ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="2_x14j2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uu8j4"]
 height = 4.0
@@ -16,11 +15,8 @@ height = 4.0
 [sub_resource type="BoxMesh" id="BoxMesh_6a03l"]
 size = Vector3(0.345, 0.27, 0.425)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_su6tn"]
-points = PackedVector3Array(0, 2, 3, 0, 0, 0, 6, 0, 5)
-
 [node name="SpaceshipLevel" type="Node3D"]
-script = ExtResource("1_m2cwq")
+script = ExtResource("1_gw6r2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57977, 0, 0)
@@ -31,8 +27,8 @@ shape = SubResource("CylinderShape3D_uu8j4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
 mesh = SubResource("CylinderMesh_2hldc")
 
-[node name="DronPlayer" parent="." instance=ExtResource("1_fykhm")]
-transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 7.04145, 51.4208, 56.7775)
+[node name="DronPlayer" parent="." instance=ExtResource("2_x14j2")]
+transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 7.57488, 1.78913, 0)
 freeze = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -44,10 +40,3 @@ transform = Transform3D(0.915782, -0.0703991, 0.395459, -4.44089e-16, 0.984522, 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42543, 0.519645, 0)
 mesh = SubResource("BoxMesh_6a03l")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-
-[node name="spaceShip" parent="StaticBody3D2" instance=ExtResource("3_xwfcs")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("ConvexPolygonShape3D_su6tn")

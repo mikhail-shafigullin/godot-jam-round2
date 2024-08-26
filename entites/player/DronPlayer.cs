@@ -1,7 +1,11 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Numerics;
 using Godot.Collections;
+using Quaternion = Godot.Quaternion;
+using Vector2 = Godot.Vector2;
+using Vector3 = Godot.Vector3;
 
 public partial class DronPlayer : RigidBody3D
 {
@@ -9,12 +13,14 @@ public partial class DronPlayer : RigidBody3D
 	RayCast3D MiddleRayCast;
 	private Camera3D Camera3D;
 	private const float RotationSpeed = 1.0f;
-	private const float MoveSpeed = 5.0f;
+	private const float MoveSpeed = 15.0f;
 	private const float MouseSensitivity = 0.5f;
 	
 	private Vector3[] _bottomPoints = new Vector3[8];
 	private Vector3[] _bottomNormals = new Vector3[8];
-	
+
+	private Vector3 inputDirection;
+	private Vector3 strongInputDirection;
 	private Vector3 middleCollisionPoint;
 	private Vector3 middleCollisionNormal;
 	private Vector3 middleCollisionNormalComputed;
@@ -29,39 +35,35 @@ public partial class DronPlayer : RigidBody3D
 		{
 			if (child is RayCast3D)
 			{
-				GD.Print("Ray cast added", child.ToString());
 				raycasts.Add((RayCast3D)child);
 			}
 		}
 		
 		Camera3D = GetNode<Camera3D>("%Camera3D");
 		MiddleRayCast = GetNode<RayCast3D>("%MiddleRayCast");
-		
-		foreach (var raycast in raycasts)
-		{
-			Vector3 directionToMiddle = (MiddleRayCast.GlobalTransform.Origin - raycast.GlobalTransform.Origin).Normalized();
-			Vector3 newDirection = raycast.GlobalTransform.Basis.Z.Lerp(directionToMiddle, 0.1f).Normalized();
-			raycast.GlobalTransform = new Transform3D(new Basis(newDirection, raycast.GlobalTransform.Basis.Y, raycast.GlobalTransform.Basis.X), raycast.GlobalTransform.Origin);
-		}
+
+		strongInputDirection = GlobalBasis * Vector3.Forward;
 	}
 
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion mouseEvent)
 		{
+			GD.Print(mouseEvent.Relative);
 			Vector2 RotationDelta = new Vector2();
-			RotationDelta.Y = Mathf.DegToRad(-mouseEvent.Relative.Y * MouseSensitivity);
 			RotationDelta.X = Mathf.DegToRad(-mouseEvent.Relative.X * MouseSensitivity);
 			RotationDelta.X = Mathf.Clamp(RotationDelta.X, -70, 70);
-			RotateX(RotationDelta.Y);
-			// RotateY(RotationDelta.X);
+			if (middleCollisionNormalComputed != Vector3.Zero)
+			{
+				Rotate(middleCollisionNormalComputed, RotationDelta.X);	
+			}
 		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Vector3 offsetVector = middleCollisionNormalComputed * 0.2f;
+		Vector3 offsetVector = middleCollisionNormal * 0.2f;
 		GlobalTransform = new Transform3D(GlobalTransform.Basis, middleCollisionPoint + offsetVector);
 		
 		if (Input.IsActionPressed("player_forward"))
@@ -81,39 +83,41 @@ public partial class DronPlayer : RigidBody3D
 			Translate(Vector3.Right * MoveSpeed * (float)delta);
 		}
 		
+		
+		Translate(inputDirection * MoveSpeed * (float)delta);
+		
+		
 		int index = 0;
 		foreach (var raycast in raycasts)
 		{
-			
 			if (raycast.IsColliding())
 			{
 				_bottomPoints[index] = raycast.GetCollisionPoint();
 				_bottomNormals[index] = raycast.GetCollisionNormal();
 			}
 			index++;
-			
 		}
-		DebugDraw3D.DrawPoints(_bottomPoints);
-		for(int i = 0; i < _bottomPoints.Length; i++)
-		{
-			DebugDraw3D.DrawLine(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
-		}
+		// DebugDraw3D.DrawPoints(_bottomPoints);
+		// for(int i = 0; i < _bottomPoints.Length; i++)
+		// {
+		// 	DebugDraw3D.DrawLine(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
+		// }
 
 
 		if (MiddleRayCast.IsColliding())
 		{
 			middleCollisionPoint = MiddleRayCast.GetCollisionPoint();
-			middleCollisionNormal = MiddleRayCast.GetCollisionNormal();
+			middleCollisionNormal = MiddleRayCast.GetCollisionNormal().Normalized();
 		}
 		
-		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormal);
+		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormal);
 
-		middleCollisionNormalComputed = GetDotNormalForCollision();
+		middleCollisionNormalComputed = GetDotNormalForCollision().Normalized();
 
-		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormalComputed,
-			Colors.Green);
-
-		RotatePlayerPerpendicularToNormal();
+		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormalComputed,
+		// 	Colors.Green);
+		
+		AlignWithFloor();
 	}
 
 	private Vector3 GetDotNormalForCollision()
@@ -125,22 +129,14 @@ public partial class DronPlayer : RigidBody3D
 		}
 		return sum / _bottomNormals.Length;
 	}
-	
-	private void RotatePlayerPerpendicularToNormal()
+
+	private void AlignWithFloor()
 	{
-		// Compute the average normal vector
-		Vector3 averageNormal = middleCollisionNormalComputed;
-
-		// Calculate the target rotation quaternion from the normal vector
-		Quaternion targetRotation = new Quaternion(Vector3.Up, averageNormal);
-		
-		// Convert the quaternion to a basis (rotation matrix)
-		Basis targetBasis = new Basis(targetRotation);
-		
-		Basis currentBasis = GlobalTransform.Basis;
-		Basis interpolatedBasis = currentBasis.Slerp(targetBasis, 0.1f);
-
-		// Apply the rotation to the player
-		GlobalTransform = new Transform3D(interpolatedBasis, GlobalTransform.Origin);
+		Vector3 newX = GlobalTransform.Basis.Z.Cross(middleCollisionNormalComputed);
+		Vector3 newY = middleCollisionNormalComputed;
+		Vector3 newZ = GlobalTransform.Basis.Z;
+		Basis basis = new Basis(newX, newY, newZ).Orthonormalized();
+		Transform3D trans = new Transform3D(basis, GlobalTransform.Origin);
+		GlobalTransform = GlobalTransform.InterpolateWith(trans, 0.1f);
 	}
 }
