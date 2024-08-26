@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://chpytom2trnrj"]
+
+[ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="1_fykhm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uu8j4"]
+height = 4.0
+radius = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2hldc"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
+
+[node name="SpaceshipLevel" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_uu8j4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_2hldc")
+
+[node name="DronPlayer" parent="." instance=ExtResource("1_fykhm")]
+transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 1.46168, 0.48621, 0.065886)
+freeze = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.966649, 0.256104, 0, -0.256104, 0.966649, 0, 1.69907, 4.39082)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.915782, -0.0703992, 0.395459, -4.44089e-16, 0.984522, 0.175264, -0.401676, -0.160503, 0.901607, 2.27408, 1.30729, 1.8138)

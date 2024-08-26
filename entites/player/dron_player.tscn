@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0d7n0xgmrro5"]
+
+[ext_resource type="Script" path="res://entites/player/DronPlayer.cs" id="1_cd7vm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtvnv"]
+size = Vector3(0.3, 0.6, 0.3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ohwei"]
+top_radius = 0.1
+bottom_radius = 0.3
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_dyayg"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="DronPlayer" type="RigidBody3D"]
+script = ExtResource("1_cd7vm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
+shape = SubResource("BoxShape3D_gtvnv")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
+mesh = SubResource("CylinderMesh_ohwei")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28942, -0.183807)
+mesh = SubResource("BoxMesh_dyayg")
+
+[node name="Raycasts" type="Node3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+rotation_edit_mode = 1
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D5" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.1771, 0, 0.176452)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D6" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.1771, 0, -0.176452)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D7" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.176, 0, 0.177)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D8" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.176452, 0, -0.1771)
+target_position = Vector3(0, -5, 0)
+
+[node name="MiddleRayCast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+target_position = Vector3(0, -5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.744696, 0.667404, 0, -0.667404, 0.744696, 0, 1.14954, 1.29159)
+current = true
