@@ -11,10 +11,15 @@ public partial class DronPlayer : RigidBody3D
 {
 	Array<RayCast3D> raycasts = new Array<RayCast3D>();
 	RayCast3D MiddleRayCast;
-	private Camera3D Camera3D;
+	public Camera3D Camera3D;
+	private SpringArm3D SpringArm3D;
+	private float minArm = 1.5f;
+	private float maxArm = 5.0f;
+	
+	private Node3D Visual;
 	private const float RotationSpeed = 1.0f;
-	private const float MoveSpeed = 15.0f;
-	private const float MouseSensitivity = 0.5f;
+	private const float MoveSpeed = 5.0f;
+	private const float MouseSensitivity = 0.4f;
 	
 	private Vector3[] _bottomPoints = new Vector3[8];
 	private Vector3[] _bottomNormals = new Vector3[8];
@@ -24,6 +29,9 @@ public partial class DronPlayer : RigidBody3D
 	private Vector3 middleCollisionPoint;
 	private Vector3 middleCollisionNormal;
 	private Vector3 middleCollisionNormalComputed;
+
+	private bool isMoving = false;
+	private bool isFirstMove = true;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -41,6 +49,8 @@ public partial class DronPlayer : RigidBody3D
 		
 		Camera3D = GetNode<Camera3D>("%Camera3D");
 		MiddleRayCast = GetNode<RayCast3D>("%MiddleRayCast");
+		SpringArm3D = GetNode<SpringArm3D>("%SpringArm");
+		Visual = GetNode<Node3D>("%Visual");
 
 		strongInputDirection = GlobalBasis * Vector3.Forward;
 	}
@@ -49,13 +59,16 @@ public partial class DronPlayer : RigidBody3D
 	{
 		if (@event is InputEventMouseMotion mouseEvent)
 		{
-			GD.Print(mouseEvent.Relative);
 			Vector2 RotationDelta = new Vector2();
 			RotationDelta.X = Mathf.DegToRad(-mouseEvent.Relative.X * MouseSensitivity);
-			RotationDelta.X = Mathf.Clamp(RotationDelta.X, -70, 70);
+			RotationDelta.Y = Mathf.DegToRad(-mouseEvent.Relative.Y * MouseSensitivity);
 			if (middleCollisionNormalComputed != Vector3.Zero)
 			{
-				Rotate(middleCollisionNormalComputed, RotationDelta.X);	
+				SpringArm3D.RotateY(RotationDelta.X);
+				SpringArm3D.RotateX(RotationDelta.Y);
+				SpringArm3D.Rotation = new Vector3((float)Mathf.Clamp(SpringArm3D.Rotation.X, -Math.PI/6, Math.PI/6), SpringArm3D.Rotation.Y, 0);
+				// Rotate(middleCollisionNormalComputed, RotationDelta.X);	
+
 			}
 		}
 	}
@@ -63,28 +76,50 @@ public partial class DronPlayer : RigidBody3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		isMoving = false;
 		Vector3 offsetVector = middleCollisionNormal * 0.2f;
 		GlobalTransform = new Transform3D(GlobalTransform.Basis, middleCollisionPoint + offsetVector);
 		
+		
+		Vector3 cameraBackward = Camera3D.GlobalTransform.Basis.Z.Normalized();
+		Vector3 cameraBackwardProject = cameraBackward - cameraBackward.Project(middleCollisionNormal);
+		Vector3 cameraRight = cameraBackward.Cross(middleCollisionNormal);
+		Vector3 cameraRightProject = cameraRight - cameraRight.Project(middleCollisionNormal);
+		Vector3 localCameraBackward = cameraBackwardProject * Basis;
+		Vector3 localCameraRight = cameraRightProject * Basis;
+		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraRightProject);
+		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
+		
 		if (Input.IsActionPressed("player_forward"))
 		{
-			Translate(Vector3.Forward * MoveSpeed * (float)delta);
+			isMoving = true;
+			Translate(-localCameraBackward.Normalized() * MoveSpeed * (float)delta);
 		}
 		if (Input.IsActionPressed("player_backward"))
 		{
-			Translate(Vector3.Back * MoveSpeed * (float)delta);
+			isMoving = true;
+			Translate(localCameraBackward.Normalized() * MoveSpeed * (float)delta);
 		}
 		if (Input.IsActionPressed("player_left"))
 		{
-			Translate(Vector3.Left * MoveSpeed * (float)delta);
+			isMoving = true;
+			Translate(-localCameraRight.Normalized() * MoveSpeed * (float)delta);
 		}
 		if (Input.IsActionPressed("player_right"))
 		{
-			Translate(Vector3.Right * MoveSpeed * (float)delta);
+			isMoving = true;
+			Translate(localCameraRight.Normalized() * MoveSpeed * (float)delta);
 		}
-		
-		
-		Translate(inputDirection * MoveSpeed * (float)delta);
+
+		if (Input.IsActionPressed("camera_zoom_up"))
+		{
+			SpringArm3D.SpringLength = Mathf.Clamp(SpringArm3D.SpringLength + 0.1f, minArm, maxArm);
+		}
+
+		if (Input.IsActionPressed("camera_zoom_down"))
+		{
+			SpringArm3D.SpringLength = Mathf.Clamp(SpringArm3D.SpringLength - 0.1f, minArm, maxArm);
+		}
 		
 		
 		int index = 0;
@@ -118,6 +153,34 @@ public partial class DronPlayer : RigidBody3D
 		// 	Colors.Green);
 		
 		AlignWithFloor();
+		
+		
+		
+		if (isMoving)
+		{
+			if (isFirstMove)
+			{
+				Visual.GlobalTransform = Transform
+					.LookingAt(Visual.GlobalTransform.Origin - cameraBackwardProject, middleCollisionNormal)
+					.Orthonormalized();
+				isFirstMove = false;
+			}
+			
+			Quaternion currentRotation = Visual.GlobalTransform.Basis.Orthonormalized().GetRotationQuaternion();
+			Quaternion targetRotation = Transform
+				.LookingAt(Visual.GlobalTransform.Origin - cameraBackwardProject, middleCollisionNormalComputed)
+				.Basis
+				.Orthonormalized()
+				.GetRotationQuaternion();
+			
+			Transform3D TargetedTransform = new Transform3D(new Basis(targetRotation), Visual.GlobalTransform.Origin);
+			Visual.GlobalTransform = Visual.GlobalTransform.InterpolateWith(
+				Transform
+				.LookingAt(Visual.GlobalTransform.Origin - cameraBackwardProject, middleCollisionNormalComputed)
+				.Orthonormalized(), 
+				0.1f);
+		}
+		
 	}
 
 	private Vector3 GetDotNormalForCollision()
@@ -137,6 +200,6 @@ public partial class DronPlayer : RigidBody3D
 		Vector3 newZ = GlobalTransform.Basis.Z;
 		Basis basis = new Basis(newX, newY, newZ).Orthonormalized();
 		Transform3D trans = new Transform3D(basis, GlobalTransform.Origin);
-		GlobalTransform = GlobalTransform.InterpolateWith(trans, 0.1f);
+		GlobalTransform = GlobalTransform.InterpolateWith(trans, 0.2f);
 	}
 }

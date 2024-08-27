@@ -28,10 +28,12 @@ shape = SubResource("CylinderShape3D_uu8j4")
 mesh = SubResource("CylinderMesh_2hldc")
 
 [node name="DronPlayer" parent="." instance=ExtResource("2_x14j2")]
+unique_name_in_owner = true
 transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 7.57488, 1.78913, 0)
 freeze = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.966649, 0.256104, 0, -0.256104, 0.966649, 5.57977, 1.69907, 4.39082)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

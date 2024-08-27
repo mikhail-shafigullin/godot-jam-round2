@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://entites/player/DronPlayer.cs" id="1_cd7vm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gtvnv"]
-size = Vector3(0.3, 0.6, 0.3)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ih7t2"]
+height = 0.494533
+radius = 0.257765
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ohwei"]
 top_radius = 0.1
@@ -18,15 +19,20 @@ script = ExtResource("1_cd7vm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
-shape = SubResource("BoxShape3D_gtvnv")
+shape = SubResource("CylinderShape3D_ih7t2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Visual" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
 mesh = SubResource("CylinderMesh_ohwei")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478037, -0.519989)
 mesh = SubResource("BoxMesh_dyayg")
+skeleton = NodePath("../..")
 
 [node name="Raycasts" type="Node3D" parent="."]
 
@@ -66,7 +72,12 @@ target_position = Vector3(0, -5, 0)
 unique_name_in_owner = true
 target_position = Vector3(0, -5, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="SpringArm" type="SpringArm3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.936727, 0.35006, 0, -0.35006, 0.936727, 0, 1.14954, 1.29159)
+transform = Transform3D(1, 0, 0, 0, 0.940359, 0.340183, 0, -0.340183, 0.940359, 0, 0.403449, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.998567, -0.0535209, 0, 0.0535209, 0.998567, 0, 0.167664, 1.48214)
 current = true
