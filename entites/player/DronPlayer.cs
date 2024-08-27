@@ -66,7 +66,7 @@ public partial class DronPlayer : RigidBody3D
 			{
 				SpringArm3D.RotateY(RotationDelta.X);
 				SpringArm3D.RotateX(RotationDelta.Y);
-				SpringArm3D.Rotation = new Vector3((float)Mathf.Clamp(SpringArm3D.Rotation.X, -Math.PI/6, Math.PI/6), SpringArm3D.Rotation.Y, 0);
+				SpringArm3D.Rotation = new Vector3((float)Mathf.Clamp(SpringArm3D.Rotation.X, -Math.PI/3, Math.PI/4), SpringArm3D.Rotation.Y, 0);
 				// Rotate(middleCollisionNormalComputed, RotationDelta.X);	
 
 			}
