@@ -89,4 +89,5 @@ camera_zoom_down={
 
 [layer_names]
 
+3d_physics/layer_7="Player"
 3d_physics/layer_8="Usable"

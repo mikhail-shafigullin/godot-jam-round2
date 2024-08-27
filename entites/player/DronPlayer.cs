@@ -7,7 +7,7 @@ using Quaternion = Godot.Quaternion;
 using Vector2 = Godot.Vector2;
 using Vector3 = Godot.Vector3;
 
-public partial class DronPlayer : RigidBody3D
+public partial class DronPlayer : CharacterBody3D
 {
 	Array<RayCast3D> raycasts = new Array<RayCast3D>();
 	RayCast3D MiddleRayCast;
@@ -180,6 +180,8 @@ public partial class DronPlayer : RigidBody3D
 				.Orthonormalized(), 
 				0.1f);
 		}
+		
+		
 		
 	}
 

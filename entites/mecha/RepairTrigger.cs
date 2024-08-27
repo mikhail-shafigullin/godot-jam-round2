@@ -2,6 +2,7 @@ using Godot;
 using System;
 using GodotJamRound2.entites.mecha;
 using GodotJamRound2.entites.ui;
+using GodotJamRound2.ship;
 
 public partial class RepairTrigger : Node3D, ITriggerable
 {
@@ -13,8 +14,8 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	private float _repairProgress = 0.0f;
 	[Export]
 	private float _repairSpeed = 20.0f;
-	[Export]
-	private EMechaPartType _mechaPartType = EMechaPartType.LEFT_ARM;
+	
+	private BrokenPartRes _brokenPart = null;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -64,8 +65,25 @@ public partial class RepairTrigger : Node3D, ITriggerable
 		
 	}
 	
-	public EMechaPartType GetMechaPartType()
+	public void SetBrokenPart(BrokenPartRes brokenPart)
 	{
-		return _mechaPartType;
+		_brokenPart = brokenPart;
 	}
+
+	public void _on_area_3d_body_entered(Node3D node)
+	{
+		if(node is DronPlayer)
+		{
+			Trigger();
+		}
+	}
+	
+	public void _on_area_3d_body_exited(Node3D node)
+	{
+		if(node is DronPlayer)
+		{
+			RemoveTrigger();
+		}
+	}
+	
 }

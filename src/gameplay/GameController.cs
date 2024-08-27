@@ -3,72 +3,71 @@ using System;
 using Godot.Collections;
 using GodotJamRound2.gameplay;
 using GodotJamRound2.mechas;
+using GodotJamRound2.ship;
 using Array = System.Array;
 
 public partial class GameController : Node
 {
-	[Export]
-	private Array<MechaPanel> _mechaPanels = new Array<MechaPanel>();
-	
 	private Globals _globals = null;
-	
-	private HangarRes _hangarRes;
-	
-	private Array<GameSituationScript> _gameSituationScripts = new Array<GameSituationScript>();
-	
 	private Timer _timer;
-	
+	private MissionManager _missionManager;
+	private ShipRes _shipRes;
+
+	[ExportGroup("firstMission")]
+	[Export] private Array<RepairTrigger> RepairTriggers;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_globals = GetNode<Globals>("/root/Globals");
 		_globals.SetGameController(this);
-
-		_hangarRes = new HangarRes();
-		
-		if(_mechaPanels.Count != 3){
-			GD.PrintErr("There should be 3 mecha panels");
-		}
-		
-		_mechaPanels[0].SetHangarRes(_hangarRes.GetPanel(0));
-		_mechaPanels[1].SetHangarRes(_hangarRes.GetPanel(1));
-		_mechaPanels[2].SetHangarRes(_hangarRes.GetPanel(2));
 		
 		_timer = new Timer();
 		_timer.OneShot = true;
 		AddChild(_timer);
 
-		CreateScripts();
+		_missionManager = _globals.GetMissionManager();
 		
-		RunGameSituationScripts(_gameSituationScripts[0]);
+		_timer.WaitTime = 3;
+		_timer.Start();
+		_timer.Timeout += StartFirstMission;
+
+		_shipRes = new ShipRes();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 	}
 	
-	private void CreateScripts()
+	[Signal]
+	public delegate void OnGameStartEventHandler();
+	
+	[Signal]
+	public delegate void OnGameEndEventHandler();
+	
+	public void StartFirstMission()
 	{
-		_gameSituationScripts = new Array<GameSituationScript>();
-		var firstScript = new GameSituationScript();
-		_gameSituationScripts.Add(firstScript);
-		firstScript.AddGameSituation(new GameSituation(_hangarRes.GetPanel(0).createMechaSignal, 2));
-		firstScript.AddGameSituation(new GameSituation(_hangarRes.GetPanel(1).createMechaSignal, 3));
-		firstScript.AddGameSituation(new GameSituation(_hangarRes.GetPanel(2).createMechaSignal, 3));
-		
-		var secondScript = new GameSituationScript();
-		_gameSituationScripts.Add(secondScript);
-		
-		var thirdScript = new GameSituationScript();
-		_gameSituationScripts.Add(thirdScript);
-	}
-
-	private void RunGameSituationScripts(GameSituationScript gameSituationScript)
-	{
-		gameSituationScript.Run(_timer);
+		MissionRes firstMission = new MissionRes("Repair all broken parts");
+		int brokenPartsCount = 0;
+		foreach (BrokenPartRes brokenPartRes in _shipRes.GetBrokenParts("firstMission"))
+		{
+			RepairTrigger repairTrigger = RepairTriggers[brokenPartsCount];
+			repairTrigger.SetBrokenPart(brokenPartRes);
+			TaskRes task = new TaskRes("Repair engine #" + (brokenPartsCount+1), new Signal(brokenPartRes, "OnPartRepaired"));
+			firstMission.AddTask(task);
+			
+			brokenPartsCount++;
+		}
+		_missionManager.StartMission(firstMission);
+		EmitSignal("OnGameStart");
+		_timer.Timeout -= StartFirstMission;
 	}
 	
+	public MissionManager GetMissionManager()
+	{
+		return _missionManager;
+	}
 	
 }

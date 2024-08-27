@@ -19,16 +19,6 @@ public partial class MechaPanel : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		MechaMesh = GetNode<Node3D>("%Mecha");
-		RepairTriggers = GetNode<Node3D>("%RepairTriggers");
-
-		foreach (Node3D repairTrigger in RepairTriggers.GetChildren())
-		{
-			RepairTrigger trigger = (RepairTrigger)repairTrigger;
-			RepairTriggersDictionary[trigger.GetMechaPartType()] = trigger;
-		}
-		
-		HideMecha();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

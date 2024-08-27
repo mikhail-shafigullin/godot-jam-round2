@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0so1iux7cmev"]
+
+[ext_resource type="Script" path="res://entites/ui/CurrentMission.cs" id="1_eodth"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 317.0
+offset_bottom = 384.0
+script = ExtResource("1_eodth")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderControl" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="HeaderRichText" type="RichTextLabel" parent="VBoxContainer/HeaderControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "Mission: Kill all people on the ship "
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TaskContainer" type="VBoxContainer" parent="VBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Control/TaskContainer"]
+layout_mode = 2
+text = "- 1st person"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Control/TaskContainer"]
+layout_mode = 2
+text = "- 2nd person"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Control/TaskContainer"]
+layout_mode = 2
+text = "- 3rd person"
+fit_content = true

@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b12p5bchxuxqw"]
+[gd_scene load_steps=8 format=3 uid="uid://b12p5bchxuxqw"]
 
 [ext_resource type="Script" path="res://scenes/SpaceshipLevel.cs" id="1_gw6r2"]
 [ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="2_x14j2"]
+[ext_resource type="PackedScene" uid="uid://ctgsgjglpau0g" path="res://entites/mecha/repair_trigger.tscn" id="3_85rth"]
+[ext_resource type="Script" path="res://src/gameplay/GameController.cs" id="4_kg4ld"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uu8j4"]
-height = 4.0
-radius = 1.0
+height = 10.0
+radius = 2.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2hldc"]
-top_radius = 1.0
-bottom_radius = 1.0
-height = 4.0
+top_radius = 2.0
+bottom_radius = 2.0
+height = 10.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_6a03l"]
 size = Vector3(0.345, 0.27, 0.425)
@@ -19,7 +21,6 @@ size = Vector3(0.345, 0.27, 0.425)
 script = ExtResource("1_gw6r2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57977, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("CylinderShape3D_uu8j4")
@@ -29,12 +30,11 @@ mesh = SubResource("CylinderMesh_2hldc")
 
 [node name="DronPlayer" parent="." instance=ExtResource("2_x14j2")]
 unique_name_in_owner = true
-transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 7.57488, 1.78913, 0)
-freeze = true
+transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 4.30883, 1.78913, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.966649, 0.256104, 0, -0.256104, 0.966649, 5.57977, 1.69907, 4.39082)
+transform = Transform3D(1, 0, 0, 0, 0.966649, 0.256104, 0, -0.256104, 0.966649, 0, 1.699, 4.391)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.915782, -0.0703991, 0.395459, -4.44089e-16, 0.984522, 0.175263, -0.401676, -0.160503, 0.901607, 7.85385, 1.30729, 1.8138)
@@ -42,3 +42,15 @@ transform = Transform3D(0.915782, -0.0703991, 0.395459, -4.44089e-16, 0.984522, 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42543, 0.519645, 0)
 mesh = SubResource("BoxMesh_6a03l")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="RepairTrigger" parent="Node3D" instance=ExtResource("3_85rth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77081, 1.51249, 1.15083)
+
+[node name="RepairTrigger2" parent="Node3D" instance=ExtResource("3_85rth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87401, 1.51249, -0.978854)
+
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("RepairTriggers")]
+script = ExtResource("4_kg4ld")
+RepairTriggers = [NodePath("../Node3D/RepairTrigger"), NodePath("../Node3D/RepairTrigger2")]

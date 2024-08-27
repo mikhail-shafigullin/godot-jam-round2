@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://entites/mecha/RepairTrigger.cs" id="1_5mtbo"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_73xjj"]
-radius = 0.267578
-
 [sub_resource type="BoxMesh" id="BoxMesh_hawf6"]
 size = Vector3(0.1, 0.1, 0.1)
 
@@ -12,17 +9,25 @@ size = Vector3(0.1, 0.1, 0.1)
 albedo_color = Color(0.337255, 1, 0.337255, 1)
 albedo_texture_force_srgb = true
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_73xjj"]
+radius = 0.506951
+
 [node name="RepairTrigger" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51249, 1.99931)
 script = ExtResource("1_5mtbo")
 
-[node name="Trigger" type="StaticBody3D" parent="."]
-collision_layer = 128
-collision_mask = 128
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hawf6")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_iictf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
+[node name="Area3D" type="Area3D" parent="."]
+disable_mode = 2
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_73xjj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Trigger"]
-mesh = SubResource("BoxMesh_hawf6")
-surface_material_override/0 = SubResource("StandardMaterial3D_iictf")
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
