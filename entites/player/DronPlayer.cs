@@ -19,7 +19,7 @@ public partial class DronPlayer : CharacterBody3D
 	
 	private Node3D Visual;
 	private const float RotationSpeed = 1.0f;
-	private const float MoveSpeed = 5.0f;
+	private const float MoveSpeed = 15.0f;
 	private const float MouseSensitivity = 0.4f;
 	
 	private Vector3[] _bottomPoints = new Vector3[8];
@@ -80,48 +80,20 @@ public partial class DronPlayer : CharacterBody3D
 	public override void _Process(double delta)
 	{
 		isMoving = false;
-		Vector3 offsetVector = middleCollisionNormal * 0.2f;
+		Vector3 offsetVector = middleCollisionNormal * 0.3f;
 		GlobalTransform = new Transform3D(GlobalTransform.Basis, middleCollisionPoint + offsetVector);
 		
 		
 		Vector3 cameraBackward = Camera3D.GlobalTransform.Basis.Z.Normalized();
-		Vector3 cameraBackwardProject = cameraBackward - cameraBackward.Project(middleCollisionNormal);
-		Vector3 cameraRight = cameraBackward.Cross(middleCollisionNormal);
-		Vector3 cameraRightProject = cameraRight - cameraRight.Project(middleCollisionNormal);
+		Vector3 cameraBackwardProject = cameraBackward - cameraBackward.Project(middleCollisionNormalComputed);
+		Vector3 cameraRight = cameraBackward.Cross(middleCollisionNormalComputed);
+		Vector3 cameraRightProject = cameraRight - cameraRight.Project(middleCollisionNormalComputed);
 		Vector3 localCameraBackward = cameraBackwardProject * Basis;
 		Vector3 localCameraRight = cameraRightProject * Basis;
 		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraRightProject);
 		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
 		
-		Velocity = Vector3.Zero;
-
-		Vector3 velocityInput = Vector3.Zero;
-		if (Input.IsActionPressed("player_forward"))
-		{
-			isMoving = true;
-			velocityInput = -cameraBackwardProject.Normalized();
-		}
-		if (Input.IsActionPressed("player_backward"))
-		{
-			isMoving = true;
-			velocityInput = cameraBackwardProject.Normalized();
-		}
-		if (Input.IsActionPressed("player_left"))
-		{
-			isMoving = true;
-			velocityInput = -cameraRightProject.Normalized();
-		}
-		if (Input.IsActionPressed("player_right"))
-		{
-			isMoving = true;
-			velocityInput = cameraRightProject.Normalized();
-		}
-
-		if (isMoving)
-		{
-			Velocity = velocityInput.Normalized() * MoveSpeed;
-			MoveAndSlide();			
-		}
+		
 
 		if (Input.IsActionPressed("camera_zoom_up"))
 		{
@@ -144,11 +116,11 @@ public partial class DronPlayer : CharacterBody3D
 			}
 			index++;
 		}
-		// DebugDraw3D.DrawPoints(_bottomPoints);
-		// for(int i = 0; i < _bottomPoints.Length; i++)
-		// {
-		// 	DebugDraw3D.DrawLine(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
-		// }
+		DebugDraw3D.DrawPoints(_bottomPoints);
+		for(int i = 0; i < _bottomPoints.Length; i++)
+		{
+			DebugDraw3D.DrawLine(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
+		}
 
 
 		if (MiddleRayCast.IsColliding())
@@ -161,12 +133,42 @@ public partial class DronPlayer : CharacterBody3D
 
 		middleCollisionNormalComputed = GetDotNormalForCollision().Normalized();
 
-		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormalComputed,
-		// 	Colors.Green);
+		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormalComputed,
+			Colors.Green);
 		
 		AlignWithFloor();
 		
-		
+		Velocity = Vector3.Zero;
+
+		Vector3 velocityInput = Vector3.Zero;
+		if (Input.IsActionPressed("player_forward"))
+		{
+			isMoving = true;
+			velocityInput = -cameraBackward.Normalized();
+		}
+		if (Input.IsActionPressed("player_backward"))
+		{
+			isMoving = true;
+			velocityInput = cameraBackward.Normalized();
+		}
+		if (Input.IsActionPressed("player_left"))
+		{
+			isMoving = true;
+			velocityInput = -cameraRight.Normalized();
+		}
+		if (Input.IsActionPressed("player_right"))
+		{
+			isMoving = true;
+			velocityInput = cameraRight.Normalized();
+		}	
+
+		if (isMoving)
+		{
+			Velocity = velocityInput.Normalized() * MoveSpeed;
+			var values = MoveAndSlide();
+			// var values = MoveAndCollide(Velocity * (float)delta, false, 0.1f);
+			GD.Print(values);
+		}
 		
 		if (isMoving)
 		{
@@ -192,8 +194,6 @@ public partial class DronPlayer : CharacterBody3D
 				.Orthonormalized(), 
 				0.1f);
 		}
-		
-		
 		
 	}
 
