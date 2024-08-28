@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1cjq0ra0cfiy"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7bawqu3bnv8q" path="res://models/objects/wentHatchOpen.res" id="1_coega"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jvirm"]
+size = Vector3(1.97656, 1.02051, 3.82785)
+
+[node name="wentHatchOpen" type="StaticBody3D"]
+
+[node name="WentHatchOpen" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_coega")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393066, 0.880875)
+shape = SubResource("BoxShape3D_jvirm")

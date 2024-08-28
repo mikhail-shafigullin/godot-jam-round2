@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://nx7qc2uj0bdk"]
+
+[ext_resource type="ArrayMesh" uid="uid://b853308t1dl3f" path="res://models/objects/wentLongThin.res" id="1_k0jd4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lq4k5"]
+size = Vector3(0.869385, 1.9613, 4.44189)
+
+[node name="wentLongThin" type="StaticBody3D"]
+
+[node name="WentLongThin" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_k0jd4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24884, -0.0012207)
+shape = SubResource("BoxShape3D_lq4k5")

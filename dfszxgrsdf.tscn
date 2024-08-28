@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://hekbm2dxw10b"]
+
+[sub_resource type="Environment" id="Environment_eybs7"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.241156, 0.241156, 0.241156, 1)
+ambient_light_energy = 0.2
+reflected_light_source = 1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.350579, -0.520183, 0.778784, 0.915852, -0.0166341, 0.401171, -0.195728, 0.853892, 0.482243, 57.2654, 42.3088, 81.0222)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eybs7")

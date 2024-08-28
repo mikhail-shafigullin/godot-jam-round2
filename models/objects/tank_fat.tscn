@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1hn7f70q3x1w"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1clvtlqvvqn6" path="res://models/objects/tankFat.res" id="1_bwnml"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1cu0"]
+size = Vector3(5.16626, 3.96899, 5.94336)
+
+[node name="tankFat" type="StaticBody3D"]
+
+[node name="TankFat" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_bwnml")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4845, 0)
+shape = SubResource("BoxShape3D_g1cu0")

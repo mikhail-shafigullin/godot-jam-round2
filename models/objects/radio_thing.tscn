@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b35ovj2uonjr3"]
+
+[ext_resource type="ArrayMesh" uid="uid://cm73w0jdpo0my" path="res://models/objects/radioThing.res" id="1_sag23"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddna7"]
+radius = 2.0
+height = 8.0
+
+[node name="radioThing" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("CapsuleShape3D_ddna7")
+
+[node name="RadioThing" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_sag23")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://o24cjec2jcwu"]
+
+[ext_resource type="ArrayMesh" uid="uid://jivq0agm8kru" path="res://models/objects/junkPanel.res" id="1_dy0r7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ao6d"]
+size = Vector3(1, 0.153351, 1.41565)
+
+[node name="junkPanel" type="StaticBody3D"]
+
+[node name="JunkPanel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0263107, 0.7)
+mesh = ExtResource("1_dy0r7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075943, 0.640076)
+shape = SubResource("BoxShape3D_7ao6d")

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://uormc75eqx6q"]
+
+[ext_resource type="Texture2D" uid="uid://casqjm56poqo2" path="res://models/shipFinal.png" id="1_bu4lk"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 1
+albedo_texture = ExtResource("1_bu4lk")
+metallic_specular = 1.0
+roughness = 0.62
+texture_filter = 2

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcjgeog3ytb0q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cm14twwgw0q7t" path="res://models/objects/tank.res" id="1_xt83k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cl5le"]
+size = Vector3(2.11914, 3.7948, 6.2959)
+
+[node name="tank" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3974, 0)
+shape = SubResource("BoxShape3D_cl5le")
+
+[node name="Tank" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_xt83k")

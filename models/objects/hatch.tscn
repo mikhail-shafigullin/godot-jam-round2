@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl4fm1x4swd3g"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvifm4msa44y0" path="res://models/objects/hatch.res" id="1_cgko7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg21l"]
+size = Vector3(2.99414, 1.33618, 3.00195)
+
+[node name="hatch" type="StaticBody3D"]
+
+[node name="Hatch" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255491, 0)
+mesh = ExtResource("1_cgko7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jg21l")

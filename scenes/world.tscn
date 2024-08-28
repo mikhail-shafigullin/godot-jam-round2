@@ -1,0 +1,102 @@
+[gd_scene load_steps=23 format=3 uid="uid://cplxklxlve7d5"]
+
+[ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
+[ext_resource type="Script" path="res://scenes/SpaceshipLevel.cs" id="1_i6lmv"]
+[ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="3_2yh1p"]
+[ext_resource type="Texture2D" uid="uid://dpn3n8kef0wfv" path="res://models/starmap_2020_2k.exr" id="3_uu5it"]
+[ext_resource type="PackedScene" uid="uid://c2kiqy3sytbgd" path="res://models/objects/antena_big_cele.tscn" id="5_jkr3t"]
+[ext_resource type="PackedScene" uid="uid://c7e5krujvkj0c" path="res://models/objects/antena_cup.tscn" id="6_lo0no"]
+[ext_resource type="PackedScene" uid="uid://b25atdo6ybkhq" path="res://models/objects/antena_tiny.tscn" id="7_52olp"]
+[ext_resource type="PackedScene" uid="uid://b566atj4ltecm" path="res://models/objects/antena_tv.tscn" id="8_ssuoc"]
+[ext_resource type="PackedScene" uid="uid://cl4fm1x4swd3g" path="res://models/objects/hatch.tscn" id="9_qhtjx"]
+[ext_resource type="PackedScene" uid="uid://o24cjec2jcwu" path="res://models/objects/junk_panel.tscn" id="10_ipret"]
+[ext_resource type="PackedScene" uid="uid://b35ovj2uonjr3" path="res://models/objects/radio_thing.tscn" id="11_0kybk"]
+[ext_resource type="PackedScene" uid="uid://bcjgeog3ytb0q" path="res://models/objects/tank.tscn" id="12_dgaxu"]
+[ext_resource type="PackedScene" uid="uid://c1hn7f70q3x1w" path="res://models/objects/tank_fat.tscn" id="13_fgl6h"]
+[ext_resource type="PackedScene" uid="uid://c4b8s4fjgek1g" path="res://models/objects/went_fancy_stand.tscn" id="14_kuc1q"]
+[ext_resource type="PackedScene" uid="uid://b1cjq0ra0cfiy" path="res://models/objects/went_hatch_open.tscn" id="15_a0ogk"]
+[ext_resource type="PackedScene" uid="uid://nx7qc2uj0bdk" path="res://models/objects/went_long_thin.tscn" id="16_0nap8"]
+[ext_resource type="PackedScene" uid="uid://76vgv0s6k1an" path="res://models/objects/went_loong.tscn" id="17_cvknq"]
+[ext_resource type="PackedScene" uid="uid://dvb1nq52andr1" path="res://models/objects/went_sircle.tscn" id="18_7ydva"]
+[ext_resource type="PackedScene" uid="uid://cwlyorxlq5fio" path="res://models/objects/went_stand.tscn" id="19_g2fqg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q2sxf"]
+panorama = ExtResource("3_uu5it")
+filter = false
+
+[sub_resource type="Sky" id="Sky_xh54j"]
+sky_material = SubResource("PanoramaSkyMaterial_q2sxf")
+process_mode = 3
+
+[sub_resource type="Environment" id="Environment_u4bxu"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_xh54j")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.09
+reflected_light_source = 1
+sdfgi_read_sky_light = false
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_i6lmv")
+
+[node name="Ship" parent="." instance=ExtResource("1_81tjy")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u4bxu")
+
+[node name="DronPlayer" parent="." instance=ExtResource("3_2yh1p")]
+unique_name_in_owner = true
+transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 7.04145, 51.4208, 56.7775)
+freeze = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.966649, 0.256104, 0, -0.256104, 0.966649, 5.57977, 1.69907, 4.39082)
+far = 9000.0
+
+[node name="antenaBigCele" parent="." instance=ExtResource("5_jkr3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27448, 51.8507, 38.3624)
+
+[node name="antenaCup" parent="." instance=ExtResource("6_lo0no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99386, 52.1978, 36.6537)
+
+[node name="antenaTiny" parent="." instance=ExtResource("7_52olp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.441, 51.9685, 38.4412)
+
+[node name="antenaTV" parent="." instance=ExtResource("8_ssuoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80924, 51.4674, 41.7511)
+
+[node name="hatch" parent="." instance=ExtResource("9_qhtjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23172, 51.4417, 43.41)
+
+[node name="junkPanel" parent="." instance=ExtResource("10_ipret")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02804, 51.5729, 43.0378)
+
+[node name="radioThing" parent="." instance=ExtResource("11_0kybk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60099, 51.2164, 43.6285)
+
+[node name="tank" parent="." instance=ExtResource("12_dgaxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85036, 50.7357, 48.6433)
+
+[node name="tankFat" parent="." instance=ExtResource("13_fgl6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8556, 50.7955, 42.0956)
+
+[node name="wentFancyStand" parent="." instance=ExtResource("14_kuc1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92895, 50.563, 49.0677)
+
+[node name="wentHatchOpen" parent="." instance=ExtResource("15_a0ogk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09836, 50.9382, 47.1419)
+
+[node name="wentLongThin" parent="." instance=ExtResource("16_0nap8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378243, 51.0213, 48.0701)
+
+[node name="wentLoong" parent="." instance=ExtResource("17_cvknq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34579, 50.5227, 52.0472)
+
+[node name="wentSircle" parent="." instance=ExtResource("18_7ydva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44611, 50.1472, 52.6742)
+
+[node name="wentStand" parent="." instance=ExtResource("19_g2fqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7378, 49.6749, 52.1567)

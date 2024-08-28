@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4b8s4fjgek1g"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4ryrmiv51a2e" path="res://models/objects/wentFancyStand.res" id="1_1gld8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vt7tj"]
+size = Vector3(3.69922, 1.97534, 2.03101)
+
+[node name="wentFancyStand" type="StaticBody3D"]
+
+[node name="WentFancyStand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = ExtResource("1_1gld8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.196167, 0)
+shape = SubResource("BoxShape3D_vt7tj")

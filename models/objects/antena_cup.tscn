@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7e5krujvkj0c"]
+
+[ext_resource type="ArrayMesh" uid="uid://c671eu5h2moee" path="res://models/objects/antenaCup.res" id="1_joahr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbrfe"]
+size = Vector3(5.6123, 6.24237, 4.92285)
+
+[node name="antenaCup" type="StaticBody3D"]
+
+[node name="AntenaCup" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_joahr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39706, 0.825195)
+shape = SubResource("BoxShape3D_pbrfe")

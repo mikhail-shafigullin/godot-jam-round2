@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2kiqy3sytbgd"]
+
+[ext_resource type="ArrayMesh" uid="uid://b8v4wy2xhfi72" path="res://models/objects/antenaBigCele.res" id="1_ipln2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_13vi0"]
+height = 1.80436
+radius = 0.980205
+
+[node name="antenaBigCele" type="StaticBody3D"]
+
+[node name="AntenaBigCele" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ipln2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.777318, 0)
+shape = SubResource("CylinderShape3D_13vi0")

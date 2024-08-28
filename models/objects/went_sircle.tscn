@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvb1nq52andr1"]
+
+[ext_resource type="ArrayMesh" uid="uid://bud4gf5qtqqqa" path="res://models/objects/wentSircle.res" id="1_2ykqr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ekcxg"]
+height = 0.924923
+radius = 0.981907
+
+[node name="wentSircle" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_ekcxg")
+
+[node name="WentSircle" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_2ykqr")
