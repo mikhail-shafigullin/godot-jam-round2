@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://pfdlxhe8yqjp"]
+
+[ext_resource type="Script" path="res://entites/ui/MapUiController.cs" id="1_qth7b"]
+[ext_resource type="Texture2D" uid="uid://di4akjobhkrdl" path="res://assets/sprites/shipSideFrame.png" id="1_ywva7"]
+[ext_resource type="Texture2D" uid="uid://codiouqreqxlm" path="res://assets/sprites/shipTopFrame.png" id="2_84ku0"]
+[ext_resource type="Material" uid="uid://d3dn4gb4ftnw6" path="res://entites/shaders/map_ui_controller.tres" id="2_b7u72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cpu5"]
+atlas = ExtResource("1_ywva7")
+region = Rect2(0, 391.293, 1080, 233.28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1lbg"]
+atlas = ExtResource("2_84ku0")
+region = Rect2(0, 231.48, 1080, 617.54)
+
+[node name="MapUIController" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qth7b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureLeft" type="TextureRect" parent="VBoxContainer/Control"]
+unique_name_in_owner = true
+material = ExtResource("2_b7u72")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.5
+offset_top = -38.5
+offset_right = 177.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_4cpu5")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureTop" type="TextureRect" parent="VBoxContainer/Control2"]
+unique_name_in_owner = true
+material = ExtResource("2_b7u72")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.5
+offset_top = -104.0
+offset_right = 181.5
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_d1lbg")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

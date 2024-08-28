@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://mvsi3yh8xcfv"]
 
-[ext_resource type="PackedScene" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
+[ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
 [ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="3_2yh1p"]
 [ext_resource type="Texture2D" uid="uid://qvdw6c4rkrol" path="res://models/31506352382uefgy4dqaqnhjdxg1ux1kcojh3hbffkkggbyzjirljrevb7s6ic3gnis5m6ddbszy5lh5l011aumlgnycogp6sun8otukbpvtzv9-1199252123.png" id="3_imk67"]
 [ext_resource type="Texture2D" uid="uid://dpn3n8kef0wfv" path="res://models/starmap_2020_2k.exr" id="3_uu5it"]
