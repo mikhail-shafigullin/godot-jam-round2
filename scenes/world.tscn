@@ -39,6 +39,12 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.09
 reflected_light_source = 1
 sdfgi_read_sky_light = false
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_curve = 7.99998
+fog_depth_end = 126.6
+adjustment_brightness = 1.8
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hfmk1"]
 size = Vector2(20, 20)
@@ -60,8 +66,9 @@ environment = SubResource("Environment_u4bxu")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.350579, -0.520183, 0.778784, 0.915852, -0.0166344, 0.401171, -0.195728, 0.853893, 0.482243, 57.2654, 42.3088, 81.0222)
 light_energy = 2.0
+light_bake_mode = 1
 shadow_enabled = true
-shadow_normal_bias = 4.952
+directional_shadow_max_distance = 480.0
 sky_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/DirectionalLight3D"]

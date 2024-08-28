@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceatoye0uhdof"]
+
+[ext_resource type="ArrayMesh" uid="uid://cddvghk6nhf21" path="res://models/baton/hatch.res" id="1_8xce3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cm0gj"]
+height = 0.981453
+radius = 2.35402
+
+[node name="hatch" type="StaticBody3D"]
+
+[node name="Hatch" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_8xce3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_cm0gj")

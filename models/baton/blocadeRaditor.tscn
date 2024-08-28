@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx7pg8yxtacfk"]
+
+[ext_resource type="ArrayMesh" uid="uid://dvu0c6ea3w6gv" path="res://models/baton/blocadeRadiator.res" id="1_k6cka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fgw5"]
+size = Vector3(3.68945, 1.48438, 1.50293)
+
+[node name="blocadeRadiator" type="StaticBody3D"]
+
+[node name="BlocadeRadiator" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_k6cka")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.721558, 0)
+shape = SubResource("BoxShape3D_3fgw5")

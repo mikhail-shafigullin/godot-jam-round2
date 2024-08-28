@@ -1,13 +1,14 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://uormc75eqx6q"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://uormc75eqx6q"]
 
 [ext_resource type="Texture2D" uid="uid://casqjm56poqo2" path="res://models/shipFinal.png" id="1_bu4lk"]
+[ext_resource type="Texture2D" uid="uid://bw8r4172infko" path="res://models/random.png" id="2_0u60i"]
 
 [resource]
 shading_mode = 2
 diffuse_mode = 1
 albedo_texture = ExtResource("1_bu4lk")
 metallic_specular = 0.16
-roughness = 0.44
+roughness_texture = ExtResource("2_0u60i")
 rim = 0.55
 rim_tint = 1.0
 texture_filter = 2

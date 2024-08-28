@@ -47,7 +47,6 @@ skeleton = NodePath("../..")
 [node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.00852152, 0.00268324, 0.912659, -0.408625)
 bones/3/rotation = Quaternion(-0.704121, 0.0444125, -0.0347798, 0.707836)
 bones/3/scale = Vector3(1, 1, 1)
 

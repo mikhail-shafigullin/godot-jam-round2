@@ -3631,6 +3631,12 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"robot": {
+"use_external/enabled": true,
+"use_external/path": "res://models/player/robot.tres"
+}
 }
 }
 gltf/naming_version=1

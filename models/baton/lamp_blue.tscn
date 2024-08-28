@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxrx3tjor6dcm"]
+
+[ext_resource type="ArrayMesh" uid="uid://mdl31dpemfph" path="res://models/baton/lampBlue.res" id="1_l40wd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mbjsv"]
+height = 0.877031
+radius = 0.105743
+
+[node name="lampBlue" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_mbjsv")
+
+[node name="LampBlue" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.347442, -0.0481163, -0.320659)
+mesh = ExtResource("1_l40wd")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhmrje6cre2yf"]
+
+[ext_resource type="ArrayMesh" uid="uid://6jnuup5lki8c" path="res://models/baton/lampOrange.res" id="1_w0yak"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ig20o"]
+radius = 0.16279
+
+[node name="lampOrange" type="StaticBody3D"]
+
+[node name="LampOrange" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_w0yak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941259, 0)
+shape = SubResource("CylinderShape3D_ig20o")
