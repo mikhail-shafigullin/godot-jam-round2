@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://gdbj1r3rb0fm" path="res://models/objects/antenaTV.res" id="1_ufyin"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x11j6"]
-size = Vector3(1.55103, 2.52435, 4.95593)
+size = Vector3(0.426758, 2.52435, 0.685547)
 
 [node name="antenaTV" type="StaticBody3D"]
 
@@ -11,5 +11,5 @@ size = Vector3(1.55103, 2.52435, 4.95593)
 mesh = ExtResource("1_ufyin")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762177, 1.97797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762177, -0.0263935)
 shape = SubResource("BoxShape3D_x11j6")

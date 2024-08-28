@@ -12,6 +12,7 @@ tmp/
 data/saves/
 reports/
 *.log
+*.dll
 
 *.blend?
 *.blend??

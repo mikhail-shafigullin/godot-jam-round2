@@ -6,6 +6,8 @@
 shading_mode = 2
 diffuse_mode = 1
 albedo_texture = ExtResource("1_bu4lk")
-metallic_specular = 1.0
-roughness = 0.62
+metallic_specular = 0.16
+roughness = 0.44
+rim = 0.55
+rim_tint = 1.0
 texture_filter = 2

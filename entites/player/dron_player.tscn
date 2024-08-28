@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0d7n0xgmrro5"]
+[gd_scene load_steps=7 format=3 uid="uid://d0d7n0xgmrro5"]
 
 [ext_resource type="Script" path="res://entites/player/DronPlayer.cs" id="1_cd7vm"]
 [ext_resource type="PackedScene" uid="uid://ddhl0dhq8pw83" path="res://entites/ui/baseUI.tscn" id="2_d2834"]
+[ext_resource type="PackedScene" uid="uid://ckj06i615owsk" path="res://models/player/spacePlayerRobot.glb" id="3_qwvx6"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_lje85"]
-radius = 0.226852
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1twj6"]
+height = 0.667331
+radius = 0.995787
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ohwei"]
 top_radius = 0.1
@@ -21,21 +23,33 @@ collision_mask = 65
 script = ExtResource("1_cd7vm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.483091, 0)
-shape = SubResource("SphereShape3D_lje85")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622719, 0)
+shape = SubResource("CylinderShape3D_1twj6")
 
 [node name="Visual" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245691, 0)
+visible = false
 mesh = SubResource("CylinderMesh_ohwei")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478037, -0.519989)
+visible = false
 mesh = SubResource("BoxMesh_dyayg")
 skeleton = NodePath("../..")
+
+[node name="spacePlayerRobot" parent="Visual" instance=ExtResource("3_qwvx6")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Visual/spacePlayerRobot"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.867257, 0.622308, 0.31285)
+light_color = Color(0.929412, 1, 1, 1)
+light_energy = 4.0
+spot_range = 90.0
+spot_angle = 24.7284
+spot_angle_attenuation = 0.812252
 
 [node name="Raycasts" type="Node3D" parent="."]
 
