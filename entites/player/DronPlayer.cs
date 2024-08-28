@@ -90,25 +90,34 @@ public partial class DronPlayer : CharacterBody3D
 		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraRightProject);
 		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
 		
+		Velocity = Vector3.Zero;
+
+		Vector3 velocityInput = Vector3.Zero;
 		if (Input.IsActionPressed("player_forward"))
 		{
 			isMoving = true;
-			Translate(-localCameraBackward.Normalized() * MoveSpeed * (float)delta);
+			velocityInput = -cameraBackwardProject.Normalized();
 		}
 		if (Input.IsActionPressed("player_backward"))
 		{
 			isMoving = true;
-			Translate(localCameraBackward.Normalized() * MoveSpeed * (float)delta);
+			velocityInput = cameraBackwardProject.Normalized();
 		}
 		if (Input.IsActionPressed("player_left"))
 		{
 			isMoving = true;
-			Translate(-localCameraRight.Normalized() * MoveSpeed * (float)delta);
+			velocityInput = -cameraBackward.Normalized();
 		}
 		if (Input.IsActionPressed("player_right"))
 		{
 			isMoving = true;
-			Translate(localCameraRight.Normalized() * MoveSpeed * (float)delta);
+			velocityInput = cameraBackward.Normalized();
+		}
+
+		if (isMoving)
+		{
+			Velocity = velocityInput.Normalized() * MoveSpeed;
+			MoveAndSlide();			
 		}
 
 		if (Input.IsActionPressed("camera_zoom_up"))
