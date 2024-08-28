@@ -52,6 +52,7 @@ spot_angle = 24.7284
 spot_angle_attenuation = 0.812252
 
 [node name="Raycasts" type="Node3D" parent="."]
+transform = Transform3D(3.8419, 0, 0, 0, 1, 0, 0, 0, 3.0739, 0, 0.29004, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Raycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
@@ -83,6 +84,38 @@ target_position = Vector3(0, -5, 0)
 
 [node name="RayCast3D8" type="RayCast3D" parent="Raycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176452, 0, -0.1771)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D9" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, -0.0912864, 0, 0.222485)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D10" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0.0912648, 0, -0.222423)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D11" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0.222443, 0, 0.142614)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D12" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923878, 0, -0.382683, 0, 0.999999, 0, 0.382683, 0, 0.923879, -0.222465, 0, -0.142552)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D13" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, -0.22202, 0, 0.0560348)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D14" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0.221998, 0, -0.0559731)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D15" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0.0919735, 0, 0.257906)
+target_position = Vector3(0, -5, 0)
+
+[node name="RayCast3D16" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, -0.0923608, 0, -0.258191)
 target_position = Vector3(0, -5, 0)
 
 [node name="MiddleRayCast" type="RayCast3D" parent="."]

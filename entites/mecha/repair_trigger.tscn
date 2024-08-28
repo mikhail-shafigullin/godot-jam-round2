@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctgsgjglpau0g"]
+[gd_scene load_steps=6 format=3 uid="uid://ctgsgjglpau0g"]
 
 [ext_resource type="Script" path="res://entites/mecha/RepairTrigger.cs" id="1_5mtbo"]
+[ext_resource type="Script" path="res://entites/mecha/MissionMarker.cs" id="2_qnqbv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hawf6"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -10,10 +11,9 @@ albedo_color = Color(0.337255, 1, 0.337255, 1)
 albedo_texture_force_srgb = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_73xjj"]
-radius = 0.506951
+radius = 0.731141
 
 [node name="RepairTrigger" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51249, 1.99931)
 script = ExtResource("1_5mtbo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -28,6 +28,9 @@ collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_73xjj")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+script = ExtResource("2_qnqbv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -19,11 +19,11 @@ public partial class DronPlayer : CharacterBody3D
 	
 	private Node3D Visual;
 	private const float RotationSpeed = 1.0f;
-	private const float MoveSpeed = 15.0f;
+	private const float MoveSpeed = 30.0f;
 	private const float MouseSensitivity = 0.4f;
 	
-	private Vector3[] _bottomPoints = new Vector3[8];
-	private Vector3[] _bottomNormals = new Vector3[8];
+	private Vector3[] _bottomPoints = new Vector3[16];
+	private Vector3[] _bottomNormals = new Vector3[16];
 
 	private Vector3 inputDirection;
 	private Vector3 strongInputDirection;
@@ -86,14 +86,12 @@ public partial class DronPlayer : CharacterBody3D
 		
 		Vector3 cameraBackward = Camera3D.GlobalTransform.Basis.Z.Normalized();
 		Vector3 cameraBackwardProject = cameraBackward - cameraBackward.Project(middleCollisionNormalComputed);
-		Vector3 cameraRight = cameraBackward.Cross(middleCollisionNormalComputed);
-		Vector3 cameraRightProject = cameraRight - cameraRight.Project(middleCollisionNormalComputed);
+		Vector3 cameraLeft = cameraBackward.Cross(middleCollisionNormalComputed);
+		Vector3 cameraLeftProject = cameraLeft - cameraLeft.Project(middleCollisionNormalComputed);
 		Vector3 localCameraBackward = cameraBackwardProject * Basis;
-		Vector3 localCameraRight = cameraRightProject * Basis;
-		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraRightProject);
-		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
-		
-		
+		Vector3 localCameraLeft = cameraLeftProject * Basis;
+		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraLeftProject);
+		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
 
 		if (Input.IsActionPressed("camera_zoom_up"))
 		{
@@ -116,11 +114,11 @@ public partial class DronPlayer : CharacterBody3D
 			}
 			index++;
 		}
-		DebugDraw3D.DrawPoints(_bottomPoints);
-		for(int i = 0; i < _bottomPoints.Length; i++)
-		{
-			DebugDraw3D.DrawLine(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
-		}
+		// DebugDraw3D.DrawPoints(_bottomPoints);
+		// for(int i = 0; i < _bottomPoints.Length; i++)
+		// {
+		// 	DebugDraw3D.DrawLine(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
+		// }
 
 
 		if (MiddleRayCast.IsColliding())
@@ -133,8 +131,8 @@ public partial class DronPlayer : CharacterBody3D
 
 		middleCollisionNormalComputed = GetDotNormalForCollision().Normalized();
 
-		DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormalComputed,
-			Colors.Green);
+		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + middleCollisionNormalComputed,
+		// 	Colors.Green);
 		
 		AlignWithFloor();
 		
@@ -154,12 +152,12 @@ public partial class DronPlayer : CharacterBody3D
 		if (Input.IsActionPressed("player_left"))
 		{
 			isMoving = true;
-			velocityInput = -cameraRight.Normalized();
+			velocityInput = cameraLeft.Normalized();
 		}
 		if (Input.IsActionPressed("player_right"))
 		{
 			isMoving = true;
-			velocityInput = cameraRight.Normalized();
+			velocityInput = -cameraLeft.Normalized();
 		}	
 
 		if (isMoving)
@@ -167,18 +165,17 @@ public partial class DronPlayer : CharacterBody3D
 			Velocity = velocityInput.Normalized() * MoveSpeed;
 			var values = MoveAndSlide();
 			// var values = MoveAndCollide(Velocity * (float)delta, false, 0.1f);
-			GD.Print(values);
 		}
 		
 		if (isMoving)
 		{
-			if (isFirstMove)
-			{
-				Visual.GlobalTransform = Transform
-					.LookingAt(Visual.GlobalTransform.Origin - cameraBackwardProject, middleCollisionNormal)
-					.Orthonormalized();
-				isFirstMove = false;
-			}
+			// if (isFirstMove)
+			// {
+			// 	Visual.GlobalTransform = Transform
+			// 		.LookingAt(Visual.GlobalTransform.Origin - cameraBackwardProject, middleCollisionNormal)
+			// 		.Orthonormalized();
+			// 	isFirstMove = false;
+			// }
 			
 			Quaternion currentRotation = Visual.GlobalTransform.Basis.Orthonormalized().GetRotationQuaternion();
 			Quaternion targetRotation = Transform
@@ -194,7 +191,9 @@ public partial class DronPlayer : CharacterBody3D
 				.Orthonormalized(), 
 				0.1f);
 		}
-		
+
+		Camera3D.GlobalScale(new Vector3(1, 1, 1));
+
 	}
 
 	private Vector3 GetDotNormalForCollision()
@@ -209,7 +208,7 @@ public partial class DronPlayer : CharacterBody3D
 
 	private void AlignWithFloor()
 	{
-		Vector3 newX = GlobalTransform.Basis.Z.Cross(middleCollisionNormalComputed);
+		Vector3 newX = -GlobalTransform.Basis.Z.Cross(middleCollisionNormalComputed);
 		Vector3 newY = middleCollisionNormalComputed;
 		Vector3 newZ = GlobalTransform.Basis.Z;
 		Basis basis = new Basis(newX, newY, newZ).Orthonormalized();
