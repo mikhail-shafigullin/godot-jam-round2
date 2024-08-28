@@ -76,12 +76,18 @@ target_position = Vector3(0, -5, 0)
 unique_name_in_owner = true
 target_position = Vector3(0, -5, 0)
 
-[node name="SpringArm" type="SpringArm3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.403449, 0)
+
+[node name="RotateXNode" type="Node3D" parent="Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.948046, 0.318132, 0, -0.318132, 0.948046, 0, 0.403449, 0)
+
+[node name="SpringArm" type="SpringArm3D" parent="Node3D/RotateXNode"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 spring_length = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm"]
+[node name="Camera3D" type="Camera3D" parent="Node3D/RotateXNode/SpringArm"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.986153, -0.165839, 0, 0.165839, 0.986153, 0, 0.00583714, 1.4236)
 current = true

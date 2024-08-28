@@ -13,6 +13,7 @@ public partial class DronPlayer : CharacterBody3D
 	RayCast3D MiddleRayCast;
 	public Camera3D Camera3D;
 	private SpringArm3D SpringArm3D;
+	private Node3D RotateXNode;
 	private float minArm = 1.5f;
 	private float maxArm = 5.0f;
 	
@@ -51,6 +52,7 @@ public partial class DronPlayer : CharacterBody3D
 		MiddleRayCast = GetNode<RayCast3D>("%MiddleRayCast");
 		SpringArm3D = GetNode<SpringArm3D>("%SpringArm");
 		Visual = GetNode<Node3D>("%Visual");
+		RotateXNode = GetNode<Node3D>("%RotateXNode");
 
 		strongInputDirection = GlobalBasis * Vector3.Forward;
 	}
@@ -64,7 +66,8 @@ public partial class DronPlayer : CharacterBody3D
 			RotationDelta.Y = Mathf.DegToRad(-mouseEvent.Relative.Y * MouseSensitivity);
 			if (middleCollisionNormalComputed != Vector3.Zero)
 			{
-				SpringArm3D.RotateY(RotationDelta.X);
+				RotateXNode.RotateY(RotationDelta.X);
+				
 				SpringArm3D.RotateX(RotationDelta.Y);
 				SpringArm3D.Rotation = new Vector3((float)Mathf.Clamp(SpringArm3D.Rotation.X, -Math.PI/3, Math.PI/4), SpringArm3D.Rotation.Y, 0);
 				// Rotate(middleCollisionNormalComputed, RotationDelta.X);	
