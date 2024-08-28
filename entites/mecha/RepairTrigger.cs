@@ -15,6 +15,8 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	[Export]
 	private float _repairSpeed = 20.0f;
 	
+	private float maxRepairProgress = BrokenPartRes.maxRepairProgress;
+	
 	private BrokenPartRes _brokenPart = null;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -30,6 +32,11 @@ public partial class RepairTrigger : Node3D, ITriggerable
 		{
 			_repairProgress += _repairSpeed * (float)delta;
 			_globals.GetPlayerUI().SetActionProgress(_repairProgress);
+			if(_repairProgress >= maxRepairProgress)
+			{
+				_brokenPart.SetRepairProgress(_repairProgress);
+				_isRepairing = false;
+			}
 		}
 	}
 
@@ -52,6 +59,11 @@ public partial class RepairTrigger : Node3D, ITriggerable
 			BasePlayerUI ui = _globals.GetPlayerUI();
 			ui.ShowActionProgress(false);
 			_isRepairing = false;
+			
+			if(_brokenPart != null)
+			{
+				_brokenPart.SetRepairProgress(_repairProgress);
+			}
 		}
 	}
 	

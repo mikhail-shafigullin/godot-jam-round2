@@ -12,6 +12,8 @@ public partial class MissionRes: Resource
     
     private bool _isComplete = false;
     
+    private MissionManager _missionManager;
+    
     public MissionRes(String missionDescription)
     {
         _missionDescription = missionDescription;
@@ -37,6 +39,8 @@ public partial class MissionRes: Resource
         
         if(allTasksComplete)
         {
+            GD.Print("Mission " + _missionDescription + " is completed!");
+            EmitSignal(nameof(OnMissionComplete));
             _isComplete = true;
         }
     }
@@ -55,4 +59,16 @@ public partial class MissionRes: Resource
     {
         return tasks;
     }
+    
+    public void SetMissionManager(MissionManager missionManager)
+    {
+        _missionManager = missionManager;
+        foreach (TaskRes task in tasks)
+        {
+            task.OnTaskComplete += _missionManager.OnTaskComplete;
+        }
+    }
+    
+    [Signal]
+    public delegate void OnMissionCompleteEventHandler();
 }

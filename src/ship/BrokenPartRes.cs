@@ -8,7 +8,7 @@ public partial class BrokenPartRes: Resource
 {
     private Vector3 _position;
     private float repairProgress = 0;
-    private float maxRepairProgress = 100;
+    public static float maxRepairProgress = 100;
     private bool isRepaired = false;
     
     public void SetPosition(Vector3 position)
@@ -23,8 +23,16 @@ public partial class BrokenPartRes: Resource
     
     public void SetRepairProgress(float progress)
     {
-        repairProgress = progress;
-        EmitSignal(nameof(OnRepairChanged));
+        if (!isRepaired)
+        {
+            repairProgress = Mathf.Clamp(progress, 0, maxRepairProgress);
+            EmitSignal(nameof(OnRepairChanged));
+            if(repairProgress >= maxRepairProgress)
+            {
+                isRepaired = true;
+                EmitSignal(nameof(OnPartRepaired));
+            }
+        }
     }
     
     [Signal]

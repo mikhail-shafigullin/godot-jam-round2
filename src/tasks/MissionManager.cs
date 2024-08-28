@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 namespace GodotJamRound2.gameplay;
 
@@ -6,6 +7,7 @@ public partial class MissionManager : Resource
 {
     
     private MissionRes _currentMissionRes;
+    private Array<MissionRes> previousMissions = new Array<MissionRes>();
     
     public MissionRes GetCurrentMission()
     {
@@ -20,9 +22,10 @@ public partial class MissionManager : Resource
     
     public void OnTaskComplete()
     {
+        EmitSignal(nameof(OnCurrentMissionChanged));
         if(IsMissionComplete())
         {
-            GD.Print("Mission Complete");
+            previousMissions.Add(_currentMissionRes);
         }
     }
     
@@ -33,6 +36,7 @@ public partial class MissionManager : Resource
     public void StartMission(MissionRes missionRes)
     {
         _currentMissionRes = missionRes;
+        missionRes.SetMissionManager(this);
         EmitSignal(nameof(OnCurrentMissionChanged));
     }
 }

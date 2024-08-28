@@ -10,7 +10,6 @@ public partial class TaskRes : Resource
     
     private bool _isComplete = false;
     
-    
     public TaskRes(String name, Signal taskCompleteSignal)
     {
         _name = name;
@@ -37,7 +36,9 @@ public partial class TaskRes : Resource
     
     public void Complete()
     {
+        GD.Print("Task " + _name + " is completed!");
         _isComplete = true;
+        EmitSignal(nameof(OnTaskComplete));
     }
     
     [Signal]

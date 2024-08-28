@@ -30,7 +30,7 @@ mesh = SubResource("CylinderMesh_2hldc")
 
 [node name="DronPlayer" parent="." instance=ExtResource("2_x14j2")]
 unique_name_in_owner = true
-transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 4.30883, 1.78913, 0)
+transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 2.8154, 1.78913, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
