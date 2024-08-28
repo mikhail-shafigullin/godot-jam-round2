@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddhl0dhq8pw83" path="res://entites/ui/baseUI.tscn" id="2_d2834"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ih7t2"]
-height = 0.494533
+height = 0.311652
 radius = 0.257765
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ohwei"]
