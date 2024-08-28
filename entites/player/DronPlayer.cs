@@ -167,7 +167,6 @@ public partial class DronPlayer : CharacterBody3D
 			Velocity = velocityInput.Normalized() * MoveSpeed;
 			var values = MoveAndSlide();
 			// var values = MoveAndCollide(Velocity * (float)delta, false, 0.1f);
-			GD.Print(values);
 		}
 		
 		if (isMoving)

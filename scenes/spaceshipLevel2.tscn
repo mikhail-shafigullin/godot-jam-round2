@@ -6,13 +6,13 @@
 [ext_resource type="Script" path="res://src/gameplay/GameController.cs" id="4_kg4ld"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uu8j4"]
-height = 10.0
-radius = 2.0
+height = 20.0
+radius = 4.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2hldc"]
-top_radius = 2.0
-bottom_radius = 2.0
-height = 10.0
+top_radius = 4.0
+bottom_radius = 4.0
+height = 15.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_6a03l"]
 size = Vector3(0.345, 0.27, 0.425)
@@ -30,7 +30,7 @@ mesh = SubResource("CylinderMesh_2hldc")
 
 [node name="DronPlayer" parent="." instance=ExtResource("2_x14j2")]
 unique_name_in_owner = true
-transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 2.8154, 1.78913, 0)
+transform = Transform3D(0.513646, 0.858002, 0, -0.858002, 0.513646, 0, 0, 0, 1, 5.57684, 1.78913, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true

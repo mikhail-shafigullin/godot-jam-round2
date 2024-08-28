@@ -55,11 +55,19 @@ public partial class GameController : Node
 		{
 			RepairTrigger repairTrigger = RepairTriggers[brokenPartsCount];
 			repairTrigger.SetBrokenPart(brokenPartRes);
-			TaskRes task = new TaskRes("Repair engine #" + (brokenPartsCount+1), new Signal(brokenPartRes, "OnPartRepaired"));
+			TaskRes task = new TaskRes("Repair part of external shell", new Signal(brokenPartRes, "OnPartRepaired"));
 			firstMission.AddTask(task);
 			
 			brokenPartsCount++;
 		}
+		firstMission.OnMissionComplete += () =>
+		{
+			_timer.WaitTime = 3;
+			_timer.Start();
+			_timer.Timeout += StartFirstMission;
+			EmitSignal("OnGameEnd");
+		};
+		
 		_missionManager.StartMission(firstMission);
 		EmitSignal("OnGameStart");
 		_timer.Timeout -= StartFirstMission;

@@ -52,6 +52,7 @@ spot_angle = 24.7284
 spot_angle_attenuation = 0.812252
 
 [node name="Raycasts" type="Node3D" parent="."]
+transform = Transform3D(3.8419, 0, 0, 0, 1, 0, 0, 0, 3.0739, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Raycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)

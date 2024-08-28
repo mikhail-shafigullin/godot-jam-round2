@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddhl0dhq8pw83"]
+[gd_scene load_steps=6 format=3 uid="uid://ddhl0dhq8pw83"]
 
 [ext_resource type="Script" path="res://entites/ui/BasePlayerUI.cs" id="1_2hsfm"]
 [ext_resource type="PackedScene" uid="uid://b0so1iux7cmev" path="res://entites/ui/CurrentMission.tscn" id="2_vl2mo"]
+[ext_resource type="Script" path="res://entites/ui/MarkerDisplay.cs" id="3_nf1n7"]
 
 [sub_resource type="Gradient" id="Gradient_c6bdr"]
 
@@ -34,6 +35,7 @@ grow_vertical = 2
 
 [node name="EventText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -50,7 +52,14 @@ scale = Vector2(1.00239, 0.992995)
 bbcode_enabled = true
 text = "[center]click"
 
-[node name="ActionProgress" type="TextureProgressBar" parent="."]
+[node name="Control" parent="." instance=ExtResource("2_vl2mo")]
+visible = false
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 332.0
+offset_bottom = 399.0
+
+[node name="RepairBlock" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -65,14 +74,47 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RepairingText" type="RichTextLabel" parent="RepairBlock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -164.0
+offset_right = 80.5
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Repairing..."
+
+[node name="ActionProgress" type="TextureProgressBar" parent="RepairBlock"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -132.0
+offset_right = 32.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
 value = 45.0
 rounded = true
 fill_mode = 4
 texture_progress = SubResource("GradientTexture2D_8dfsl")
 
-[node name="Control" parent="." instance=ExtResource("2_vl2mo")]
-visible = false
-offset_left = 15.0
-offset_top = 15.0
-offset_right = 332.0
-offset_bottom = 399.0
+[node name="MarkerDisplay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_nf1n7")
