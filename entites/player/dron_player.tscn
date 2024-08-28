@@ -43,13 +43,28 @@ skeleton = NodePath("../..")
 
 [node name="spacePlayerRobot" parent="Visual" instance=ExtResource("3_qwvx6")]
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Visual/spacePlayerRobot"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.867257, 0.622308, 0.31285)
+[node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.00852152, 0.00268324, 0.912659, -0.408625)
+bones/3/rotation = Quaternion(-0.704121, 0.0444125, -0.0347798, 0.707836)
+bones/3/scale = Vector3(1, 1, 1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236252, 0)
+bone_name = "body"
+bone_idx = 0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.999777, -0.0210655, -0.00168842, 0.0211327, 0.996077, 0.0859259, -0.00012827, -0.0859424, 0.9963, -0.799221, 0.403948, 0.37748)
 light_color = Color(0.929412, 1, 1, 1)
 light_energy = 4.0
 spot_range = 90.0
 spot_angle = 24.7284
 spot_angle_attenuation = 0.812252
+
+[node name="AnimationPlayer" parent="Visual/spacePlayerRobot" index="1"]
+autoplay = "idleFly"
 
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(3.8419, 0, 0, 0, 1, 0, 0, 0, 3.0739, 0, 0.29004, 0)
@@ -130,7 +145,7 @@ unique_name_in_owner = true
 
 [node name="SpringArm" type="SpringArm3D" parent="Node3D/RotateXNode"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.271162, 0)
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="Node3D/RotateXNode/SpringArm"]
@@ -141,3 +156,5 @@ current = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BaseUi" parent="CanvasLayer" instance=ExtResource("2_d2834")]
+
+[editable path="Visual/spacePlayerRobot"]

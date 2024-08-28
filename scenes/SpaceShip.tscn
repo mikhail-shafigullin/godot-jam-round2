@@ -43,11 +43,11 @@ data = PackedVector3Array(-67.3756, -8.72522, 118.509, -66.3599, -3.103, 85.3319
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_akvdy"]
 height = 63.2806
-radius = 22.129
+radius = 21.2821
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fl8sh"]
-height = 36.0298
-radius = 9.61562
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gxn10"]
+height = 3.12761
+radius = 22.9241
 
 [node name="Ship" type="Node3D"]
 
@@ -134,22 +134,12 @@ surface_material_override/0 = ExtResource("4_7hla0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74815, 61.3111, 9.61926)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82062, -3.98515, 0.731932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82062, 23.3814, 0.731932)
 shape = SubResource("CylinderShape3D_akvdy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6002, 0, 2.76398)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-0.1512, -0.978806, 0.138118, 0.988486, -0.148889, 0.0269776, -0.00584156, 0.140607, 0.990048, -1.6136, -1.63459, 5.36393)
-shape = SubResource("CylinderShape3D_fl8sh")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.7283, 0, 2.76398)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(0.202558, -0.974345, -0.0980934, 0.978843, 0.204412, -0.00912367, 0.028941, -0.0941699, 0.995135, -1.6136, -1.63459, 5.36393)
-shape = SubResource("CylinderShape3D_fl8sh")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82062, -4.86576, 2.29545)
+shape = SubResource("CylinderShape3D_gxn10")
 
 [editable path="spaceShip"]
 [editable path="spaceShipThrusters"]
