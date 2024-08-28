@@ -1,0 +1,297 @@
+[gd_scene load_steps=7 format=3 uid="uid://pfdlxhe8yqjp"]
+
+[ext_resource type="Script" path="res://entites/ui/MapUiController.cs" id="1_qth7b"]
+[ext_resource type="Texture2D" uid="uid://di4akjobhkrdl" path="res://assets/sprites/shipSideFrame.png" id="1_ywva7"]
+[ext_resource type="Texture2D" uid="uid://codiouqreqxlm" path="res://assets/sprites/shipTopFrame.png" id="2_84ku0"]
+[ext_resource type="Material" uid="uid://d3dn4gb4ftnw6" path="res://entites/shaders/map_ui_controller.tres" id="2_b7u72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cpu5"]
+atlas = ExtResource("1_ywva7")
+region = Rect2(0, 391.293, 1080, 233.28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1lbg"]
+atlas = ExtResource("2_84ku0")
+region = Rect2(0, 231.48, 1080, 617.54)
+
+[node name="MapUIController" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qth7b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureLeft" type="TextureRect" parent="VBoxContainer/Control"]
+unique_name_in_owner = true
+material = ExtResource("2_b7u72")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.5
+offset_top = -38.5
+offset_right = 177.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_4cpu5")
+expand_mode = 1
+
+[node name="StaticMarkers" type="Control" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -45.5
+offset_right = 178.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="zBackLeft" type="Control" parent="VBoxContainer/Control/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = 0.5
+offset_right = -164.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="zForwardLeft" type="Control" parent="VBoxContainer/Control/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 166.0
+offset_top = 0.5
+offset_right = 166.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="yTopLeft" type="Control" parent="VBoxContainer/Control/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -37.5
+offset_bottom = -37.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="yBottomLeft" type="Control" parent="VBoxContainer/Control/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 36.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Markers" type="Control" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -45.5
+offset_right = 178.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPlayerMarker" type="Control" parent="VBoxContainer/Control/Markers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control/Markers/LeftPlayerMarker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 1, 1, 1)
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureTop" type="TextureRect" parent="VBoxContainer/Control2"]
+unique_name_in_owner = true
+material = ExtResource("2_b7u72")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.5
+offset_top = -104.0
+offset_right = 181.5
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_d1lbg")
+expand_mode = 1
+
+[node name="StaticMarkers" type="Control" parent="VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -118.5
+offset_right = 184.0
+offset_bottom = 126.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="zBackTop" type="Control" parent="VBoxContainer/Control2/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 0.5
+offset_right = -160.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="zForwardTop" type="Control" parent="VBoxContainer/Control2/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 167.0
+offset_right = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="xLeftTop" type="Control" parent="VBoxContainer/Control2/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -106.5
+offset_bottom = -106.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="xRightTop" type="Control" parent="VBoxContainer/Control2/StaticMarkers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 99.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Markers" type="Control" parent="VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -118.5
+offset_right = 184.0
+offset_bottom = 126.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopPlayerMarker" type="Control" parent="VBoxContainer/Control2/Markers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control2/Markers/TopPlayerMarker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 1, 1, 1)
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3dn4gb4ftnw6"]
+
+[ext_resource type="Shader" path="res://entites/shaders/map_ui_texture.gdshader" id="1_3si7b"]
+
+[resource]
+shader = ExtResource("1_3si7b")
+shader_parameter/exclude_color = Color(0.392157, 0.870588, 0.176471, 1)
+shader_parameter/pulse_speed = 1.0
+shader_parameter/threshold = 0.5

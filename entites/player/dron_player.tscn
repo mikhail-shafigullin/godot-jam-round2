@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0d7n0xgmrro5"]
+[gd_scene load_steps=8 format=3 uid="uid://d0d7n0xgmrro5"]
 
 [ext_resource type="Script" path="res://entites/player/DronPlayer.cs" id="1_cd7vm"]
 [ext_resource type="PackedScene" uid="uid://ddhl0dhq8pw83" path="res://entites/ui/baseUI.tscn" id="2_d2834"]
 [ext_resource type="PackedScene" uid="uid://ckj06i615owsk" path="res://models/player/spacePlayerRobot.glb" id="3_qwvx6"]
+[ext_resource type="PackedScene" uid="uid://d23vn5jtb04to" path="res://entites/ui/ComputerUI.tscn" id="4_df0p3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1twj6"]
 height = 0.667331
@@ -156,5 +157,9 @@ current = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BaseUi" parent="CanvasLayer" instance=ExtResource("2_d2834")]
+
+[node name="ComputerUi" parent="CanvasLayer" instance=ExtResource("4_df0p3")]
+unique_name_in_owner = true
+visible = false
 
 [editable path="Visual/spacePlayerRobot"]

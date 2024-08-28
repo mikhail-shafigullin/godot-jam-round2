@@ -34,6 +34,9 @@ public partial class DronPlayer : CharacterBody3D
 	private bool isMoving = false;
 	private bool isFirstMove = true;
 	
+	public ComputerUi ComputerUi = null;
+	private bool _computerOpened = false;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -53,13 +56,14 @@ public partial class DronPlayer : CharacterBody3D
 		SpringArm3D = GetNode<SpringArm3D>("%SpringArm");
 		Visual = GetNode<Node3D>("%Visual");
 		RotateXNode = GetNode<Node3D>("%RotateXNode");
+		ComputerUi = GetNode<ComputerUi>("%ComputerUi");
 
 		strongInputDirection = GlobalBasis * Vector3.Forward;
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion mouseEvent)
+		if (@event is InputEventMouseMotion mouseEvent && !_computerOpened)
 		{
 			Vector2 RotationDelta = new Vector2();
 			RotationDelta.X = Mathf.DegToRad(-mouseEvent.Relative.X * MouseSensitivity);
@@ -72,6 +76,22 @@ public partial class DronPlayer : CharacterBody3D
 				SpringArm3D.Rotation = new Vector3((float)Mathf.Clamp(SpringArm3D.Rotation.X, -Math.PI/3, Math.PI/4), SpringArm3D.Rotation.Y, 0);
 				// Rotate(middleCollisionNormalComputed, RotationDelta.X);	
 
+			}
+		}
+		
+		if(@event.IsActionPressed("player_computer"))
+		{
+			if (ComputerUi.Visible)
+			{
+				ComputerUi.Visible = false;
+				Input.MouseMode = Input.MouseModeEnum.Captured;
+				_computerOpened = false;
+			}
+			else
+			{
+				ComputerUi.Visible = true;
+				Input.MouseMode = Input.MouseModeEnum.Visible;
+				_computerOpened = true;
 			}
 		}
 	}

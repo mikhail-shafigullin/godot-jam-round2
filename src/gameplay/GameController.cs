@@ -13,8 +13,17 @@ public partial class GameController : Node
 	private MissionManager _missionManager;
 	private ShipRes _shipRes;
 
+	[Export] private DronPlayer DronPlayer;
+	
 	[ExportGroup("firstMission")]
 	[Export] private Array<RepairTrigger> RepairTriggers;
+
+	private Marker3D zBackMarker;
+	private Marker3D zForwardMarker;
+	private Marker3D yTopMarker;
+	private Marker3D yBottomMarker;
+	private Marker3D xLeftMarker;
+	private Marker3D xRightMarker;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,12 +42,19 @@ public partial class GameController : Node
 		_timer.Timeout += StartFirstMission;
 
 		_shipRes = new ShipRes();
+		
+		zBackMarker = GetParent().GetNode<Marker3D>("%zBack");
+		zForwardMarker = GetParent().GetNode<Marker3D>("%zForward");
+		yTopMarker = GetParent().GetNode<Marker3D>("%yTop");
+		yBottomMarker = GetParent().GetNode<Marker3D>("%yBottom");
+		xLeftMarker = GetParent().GetNode<Marker3D>("%xLeft");
+		xRightMarker = GetParent().GetNode<Marker3D>("%xRight");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		GetPlayerPositionForMap();
 	}
 	
 	[Signal]
@@ -77,5 +93,22 @@ public partial class GameController : Node
 	{
 		return _missionManager;
 	}
+
+	public Vector3 GetNodePositionForMap(Node3D node)
+	{
+		Vector3 mapPosition = Vector3.Zero;
+		mapPosition.X = (node.GlobalPosition.X - xLeftMarker.GlobalPosition.X) / (xRightMarker.GlobalPosition.X - xLeftMarker.GlobalPosition.X);
+		mapPosition.Y = (node.GlobalPosition.Y - yBottomMarker.GlobalPosition.Y) / (yTopMarker.GlobalPosition.Y - yBottomMarker.GlobalPosition.Y);
+		mapPosition.Z = (node.GlobalPosition.Z - zBackMarker.GlobalPosition.Z) / (zForwardMarker.GlobalPosition.Z - zBackMarker.GlobalPosition.Z);
+
+		return mapPosition;
+	}
+	
+	public Vector3 GetPlayerPositionForMap()
+	{
+		Vector3 mapPosition = GetNodePositionForMap(DronPlayer);
+		return mapPosition;
+	}
+	
 	
 }

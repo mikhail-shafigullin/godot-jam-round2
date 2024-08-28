@@ -3,6 +3,9 @@ using System;
 
 public partial class MarkerDisplay : Control
 {
+	private Camera3D Camera;
+	
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

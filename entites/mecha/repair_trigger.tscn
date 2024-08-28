@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctgsgjglpau0g"]
+[gd_scene load_steps=8 format=3 uid="uid://ctgsgjglpau0g"]
 
 [ext_resource type="Script" path="res://entites/mecha/RepairTrigger.cs" id="1_5mtbo"]
 [ext_resource type="Script" path="res://entites/mecha/MissionMarker.cs" id="2_qnqbv"]
+[ext_resource type="Script" path="res://entites/mecha/Waypoint.cs" id="3_fraek"]
+[ext_resource type="Texture2D" uid="uid://cqfke070y70y8" path="res://icon.svg" id="3_nw7em"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hawf6"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -31,6 +33,26 @@ shape = SubResource("SphereShape3D_73xjj")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 script = ExtResource("2_qnqbv")
+
+[node name="waypoint" type="Node3D" parent="."]
+script = ExtResource("3_fraek")
+
+[node name="Origin" type="Node2D" parent="waypoint"]
+
+[node name="Sprite2D" type="Sprite2D" parent="waypoint/Origin"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_nw7em")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="waypoint/Origin"]
+offset_left = -15.0
+offset_top = -54.0
+offset_right = 188.0
+offset_bottom = -25.0
+bbcode_enabled = true
+text = "Needs to fix"
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="waypoint"]
+aabb = AABB(-0.212443, -0.254494, -0.331338, 0.424887, 0.508988, 0.662676)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
