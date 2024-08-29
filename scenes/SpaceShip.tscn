@@ -310,9 +310,6 @@ transform = Transform3D(0.995197, 0.0978954, 7.40674e-09, -0.0975589, 0.991776, 
 [node name="blocadeRadiator60" parent="bottom" instance=ExtResource("9_7257o")]
 transform = Transform3D(0.992667, 0.120882, 7.40674e-09, -0.120466, 0.989255, -0.082843, -0.0100142, 0.0822355, 0.996563, 55.7362, -4.54228, 180.344)
 
-[node name="blocadeRadiator61" parent="bottom" instance=ExtResource("9_7257o")]
-transform = Transform3D(0.99919, -0.0402365, 7.40674e-09, 0.0400982, 0.995756, -0.082843, 0.00333331, 0.0827759, 0.996563, 18.2379, -3.34407, 180.444)
-
 [node name="blocadeRadiator62" parent="bottom" instance=ExtResource("9_7257o")]
 transform = Transform3D(0.999499, -0.0316376, 7.40674e-09, 0.0315289, 0.996064, -0.082843, 0.00262095, 0.0828015, 0.996563, 12.7276, -3.76314, 180.409)
 
@@ -671,10 +668,10 @@ transform = Transform3D(0.328003, 0.495565, 0.182612, -0.0310601, 0.232691, -0.5
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 11.1679, -23.96, -75.8796)
 
 [node name="wentSircle5" parent="." instance=ExtResource("16_xfiu1")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -9.19707, -17.1182, 112.008)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -5.57191, -17.1182, 111.074)
 
 [node name="wentSircle9" parent="." instance=ExtResource("16_xfiu1")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 11.9239, -16.5629, 117.46)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 11.2233, -16.5629, 114.75)
 
 [editable path="spaceShip"]
 [editable path="spaceShipThrusters"]
