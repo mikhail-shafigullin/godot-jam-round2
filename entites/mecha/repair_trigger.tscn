@@ -44,12 +44,19 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_nw7em")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="waypoint/Origin"]
-offset_left = -15.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
 offset_top = -54.0
-offset_right = 188.0
+offset_right = 101.5
 offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
-text = "Needs to fix"
+text = "[center]Needs to fix"
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="waypoint"]
 aabb = AABB(-0.212443, -0.254494, -0.331338, 0.424887, 0.508988, 0.662676)

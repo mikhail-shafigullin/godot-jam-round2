@@ -65,7 +65,6 @@ public partial class MapUiController : Control
 		playerPositionOnTopMap.X = zBackTopMarker.GlobalPosition.X + (zForwardTopMarker.GlobalPosition.X - zBackTopMarker.GlobalPosition.X) * playerPositionForMap.Z;
 		playerPositionOnTopMap.Y = xLeftTopMarker.GlobalPosition.Y + (xRightTopMarker.GlobalPosition.Y - xLeftTopMarker.GlobalPosition.Y) * playerPositionForMap.X;
 		
-		GD.Print(playerPositionOnLeftMap, playerPositionOnTopMap);
 		LeftPlayerMarker.GlobalPosition = playerPositionOnLeftMap;
 		TopPlayerMarker.GlobalPosition = playerPositionOnTopMap;
 	}

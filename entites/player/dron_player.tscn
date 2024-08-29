@@ -57,7 +57,7 @@ bones/3/scale = Vector3(1, 1, 1)
 layers = 3
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999991, -0.00416829, -0.000856975, 0.00417385, 0.99997, 0.00659785, 0.000829447, -0.00660136, 0.999978, 0.0832141, 0.274524, 0.0523268)
+transform = Transform3D(0.999991, -0.00416829, -0.000856976, 0.00417385, 0.99997, 0.00659785, 0.000829448, -0.00660137, 0.999978, 0.0832141, 0.274524, 0.0523268)
 bone_name = "body"
 bone_idx = 0
 

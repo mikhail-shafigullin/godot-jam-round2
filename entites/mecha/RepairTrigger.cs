@@ -7,7 +7,10 @@ using GodotJamRound2.ship;
 public partial class RepairTrigger : Node3D, ITriggerable
 {
 	private Globals _globals = null;
+	
 	private bool _isRepairing = false;
+	private bool _isRepaired = false;
+	
 	private bool _isDisabled = false;
 	
 	[Export]
