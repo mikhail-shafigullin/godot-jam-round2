@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entites/mecha/RepairTrigger.cs" id="1_5mtbo"]
 [ext_resource type="Script" path="res://entites/mecha/MissionMarker.cs" id="2_qnqbv"]
 [ext_resource type="Script" path="res://entites/mecha/Waypoint.cs" id="3_fraek"]
-[ext_resource type="Texture2D" uid="uid://cqfke070y70y8" path="res://icon.svg" id="3_nw7em"]
+[ext_resource type="Texture2D" uid="uid://d3s2ia8f4j7l4" path="res://assets/sprites/focus.png" id="4_j6juh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hawf6"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -40,8 +40,7 @@ script = ExtResource("3_fraek")
 [node name="Origin" type="Node2D" parent="waypoint"]
 
 [node name="Sprite2D" type="Sprite2D" parent="waypoint/Origin"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_nw7em")
+texture = ExtResource("4_j6juh")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="waypoint/Origin"]
 anchors_preset = 8
@@ -50,9 +49,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -101.5
-offset_top = -54.0
+offset_top = -42.0
 offset_right = 101.5
-offset_bottom = -25.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true

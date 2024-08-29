@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddhl0dhq8pw83"]
+[gd_scene load_steps=5 format=3 uid="uid://ddhl0dhq8pw83"]
 
 [ext_resource type="Script" path="res://entites/ui/BasePlayerUI.cs" id="1_2hsfm"]
 [ext_resource type="PackedScene" uid="uid://b0so1iux7cmev" path="res://entites/ui/CurrentMission.tscn" id="2_vl2mo"]
 [ext_resource type="Script" path="res://entites/ui/MarkerDisplay.cs" id="3_nf1n7"]
-
-[sub_resource type="Gradient" id="Gradient_c6bdr"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8dfsl"]
-gradient = SubResource("Gradient_c6bdr")
+[ext_resource type="Texture2D" uid="uid://cqclb1llofjb1" path="res://assets/sprites/loadWheel.png" id="3_xehyk"]
 
 [node name="BaseUi" type="Control"]
 layout_mode = 3
@@ -99,16 +95,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -132.0
-offset_right = 32.0
-offset_bottom = -68.0
+offset_left = -43.0
+offset_top = -137.5
+offset_right = 85.0
+offset_bottom = -9.49999
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 value = 45.0
 rounded = true
 fill_mode = 4
-texture_progress = SubResource("GradientTexture2D_8dfsl")
+texture_progress = ExtResource("3_xehyk")
 
 [node name="MarkerDisplay" type="Control" parent="."]
 layout_mode = 1

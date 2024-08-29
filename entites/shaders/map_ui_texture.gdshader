@@ -10,14 +10,14 @@ void vertex() {
 
 void fragment() {
 	float minAlpha = 0.5;
-	
+
 	// Called for every pixel the material is visible on.
 	vec4 color = texture(TEXTURE, UV);
 	float time = TIME * pulse_speed;
 	float pulse = minAlpha + (1.0 - minAlpha)*abs(sin(time));
-	
+
 	float distanceColor = length(color.rgba - exclude_color);
-	
+
 	if(color.a == 0.0){
 		COLOR = color;
 	} else {
@@ -27,11 +27,11 @@ void fragment() {
 	        color.a = 1.0;
 	    }
 	}
-	
-	
+
+
 
     COLOR = color;
-	
+
 }
 
 //void light() {
