@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://src/Globals.cs"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -29,6 +30,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="GodotJamRound2"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
