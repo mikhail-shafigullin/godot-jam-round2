@@ -4,8 +4,8 @@
 [ext_resource type="Material" uid="uid://uormc75eqx6q" path="res://models/shipBodyMat.tres" id="2_pxtnp"]
 [ext_resource type="PackedScene" uid="uid://dpg28v4onv4ov" path="res://models/spaceShipThrusters.glb" id="3_hjsqr"]
 [ext_resource type="Material" uid="uid://bkenjdktq0ied" path="res://models/blackHide.tres" id="4_7hla0"]
-[ext_resource type="PackedScene" uid="uid://cp6bdhucc5015" path="res://models/spaceShipWindows.glb" id="5_rf8mh"]
 [ext_resource type="PackedScene" uid="uid://cl4fm1x4swd3g" path="res://models/objects/hatch.tscn" id="6_nkwwx"]
+[ext_resource type="PackedScene" uid="uid://b3w3wvkntsluo" path="res://models/space_ship_windows.tscn" id="7_4v0hk"]
 [ext_resource type="PackedScene" uid="uid://bcjgeog3ytb0q" path="res://models/objects/tank.tscn" id="7_yrkmf"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_314f7"]
@@ -144,8 +144,6 @@ shape = SubResource("CylinderShape3D_akvdy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82062, -4.86576, 2.29545)
 shape = SubResource("CylinderShape3D_gxn10")
 
-[node name="spaceShipWindows" parent="." instance=ExtResource("5_rf8mh")]
-
 [node name="hatch" parent="." instance=ExtResource("6_nkwwx")]
 transform = Transform3D(-0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0, 1, -38, -20, -80)
 
@@ -157,6 +155,8 @@ transform = Transform3D(-1, -8.9407e-08, 0, 8.9407e-08, -1, 0, 0, 0, 1, -31.1704
 
 [node name="tank3" parent="." instance=ExtResource("7_yrkmf")]
 transform = Transform3D(-1, -8.9407e-08, 0, 8.9407e-08, -1, 0, 0, 0, 1, -27.1704, -21.2941, -68)
+
+[node name="spaceShipWindows" parent="." instance=ExtResource("7_4v0hk")]
 
 [editable path="spaceShip"]
 [editable path="spaceShipThrusters"]

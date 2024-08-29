@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/spaceShipWindows.glb-5653537cfeb2953b6806cbe6
 
 nodes/root_type=""
 nodes/root_name=""
-nodes/apply_root_scale=true
+nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=false
@@ -36,6 +36,28 @@ _subresources={
 "Material.002": {
 "use_external/enabled": true,
 "use_external/path": "res://models/windows.tres"
+}
+},
+"meshes": {
+"spaceShipWindows_window": {
+"generate/lightmap_uv": 2,
+"generate/lods": 2,
+"generate/shadow_meshes": 2,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+}
+},
+"nodes": {
+"PATH:window_262": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:window_263": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:window_274": {
+"mesh_instance/cast_shadow": 0
 }
 }
 }

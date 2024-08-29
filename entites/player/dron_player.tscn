@@ -45,23 +45,39 @@ skeleton = NodePath("../..")
 [node name="spacePlayerRobot" parent="Visual" instance=ExtResource("3_qwvx6")]
 
 [node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
+bones/0/position = Vector3(0.0832141, 0.274524, 0.0523268)
+bones/0/rotation = Quaternion(-0.00329983, -0.000421609, 0.00208555, 0.999992)
+bones/1/rotation = Quaternion(-0.711659, 0.00210876, 0.00219668, 0.702519)
 bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0078758, 0.00115459, 0.913209, -0.407414)
 bones/3/rotation = Quaternion(-0.704121, 0.0444125, -0.0347798, 0.707836)
 bones/3/scale = Vector3(1, 1, 1)
 
+[node name="robot" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="0"]
+layers = 3
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236252, 0)
+transform = Transform3D(0.999991, -0.00416829, -0.000856975, 0.00417385, 0.99997, 0.00659785, 0.000829447, -0.00660136, 0.999978, 0.0832141, 0.274524, 0.0523268)
 bone_name = "body"
 bone_idx = 0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(0.999777, -0.0210655, -0.00168842, 0.0211327, 0.996077, 0.0859259, -0.00012827, -0.0859424, 0.9963, -0.799221, 0.403948, 0.37748)
+transform = Transform3D(0.999987, 0.00325333, 0.00380926, -0.00352136, 0.997354, 0.0726132, -0.00356294, -0.0726257, 0.997353, -0.970101, 0.400744, -0.208629)
 light_color = Color(0.929412, 1, 1, 1)
-light_energy = 4.0
-spot_range = 90.0
-spot_angle = 24.7284
+light_energy = 6.0
+spot_range = 75.0
+spot_attenuation = 0.6
+spot_angle = 45.62
 spot_angle_attenuation = 0.812252
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 2.55386e-09, 8.14907e-10, -2.09093e-09, 1, 7.91624e-09, -8.73115e-10, -7.91624e-09, 1, -0.000187121, -0.0448272, -0.000295773)
+light_color = Color(0.4059, 0.97053, 0.99, 1)
+light_energy = 0.295
+light_size = 0.175
+light_specular = 4.0
+light_cull_mask = 4294967294
+omni_range = 0.731151
 
 [node name="AnimationPlayer" parent="Visual/spacePlayerRobot" index="1"]
 autoplay = "idleFly"

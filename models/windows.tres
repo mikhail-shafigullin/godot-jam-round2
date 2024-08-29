@@ -5,7 +5,9 @@
 [resource]
 resource_name = "Material.002"
 shading_mode = 0
-albedo_color = Color(0.187176, 0.187176, 0.187176, 1)
-albedo_texture = ExtResource("2_g4ig6")
+specular_mode = 1
+albedo_color = Color(0.97, 0.97, 0.776, 1)
+refraction_scale = -0.35
+refraction_texture = ExtResource("2_g4ig6")
 texture_filter = 2
-disable_receive_shadows = true
+point_size = 15.5
