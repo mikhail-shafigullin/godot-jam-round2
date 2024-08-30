@@ -1,5 +1,8 @@
 using Godot;
 using System;
+using Godot.Collections;
+using GodotJamRound2.gameplay;
+using GodotJamRound2.ship;
 
 public partial class MapUiController : Control
 {
@@ -23,11 +26,18 @@ public partial class MapUiController : Control
 	
 	private GameController _gameController;
 	
+	private Array<Control> _brokenPartMarkers = new Array<Control>();
+	
+	[Export]
+	private Control _leftBrokenPartTemplate;
+	[Export]
+	private Control _topBrokenPartTemplate;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_globals = GetNode<Globals>("/root/Globals");
+		_globals.SetMapUiController(this);
 		
 		zBackLeftMarker = GetNode<Control>("%zBackLeft");
 		zForwardLeftMarker = GetNode<Control>("%zForwardLeft");
@@ -49,12 +59,16 @@ public partial class MapUiController : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		WritePlayerPosition();
+		DrawPlayerPosition();
 	}
 
-	public void WritePlayerPosition()
+	public void DrawPlayerPosition()
 	{
-		_gameController = _globals.GetGameController();
+		if (_gameController == null)
+		{
+			_gameController = _globals.GetGameController();
+		}
+
 		Vector3 playerPositionForMap = _gameController.GetPlayerPositionForMap();
 
 		Vector2 playerPositionOnLeftMap = Vector2.Zero;
@@ -68,4 +82,37 @@ public partial class MapUiController : Control
 		LeftPlayerMarker.GlobalPosition = playerPositionOnLeftMap;
 		TopPlayerMarker.GlobalPosition = playerPositionOnTopMap;
 	}
+	
+	public void AddBrokenPart(RepairTrigger repairTrigger, Vector3 positionOnMap)
+	{
+		
+		Vector2 playerPositionOnLeftMap = Vector2.Zero;
+		playerPositionOnLeftMap.X = zBackLeftMarker.GlobalPosition.X + (zForwardLeftMarker.GlobalPosition.X - zBackLeftMarker.GlobalPosition.X) * positionOnMap.Z;
+		playerPositionOnLeftMap.Y = yBottomLeftMarker.GlobalPosition.Y + (yTopLeftMarker.GlobalPosition.Y - yBottomLeftMarker.GlobalPosition.Y) * positionOnMap.Y;
+		
+		Control leftBrokenPartMarker = (Control)_leftBrokenPartTemplate.Duplicate();
+		leftBrokenPartMarker.Visible = true;
+		_leftBrokenPartTemplate.GetParent().AddChild(leftBrokenPartMarker);
+		_brokenPartMarkers.Add(leftBrokenPartMarker);
+		
+		Vector2 playerPositionOnTopMap = Vector2.Zero;
+		playerPositionOnTopMap.X = zBackTopMarker.GlobalPosition.X + (zForwardTopMarker.GlobalPosition.X - zBackTopMarker.GlobalPosition.X) * positionOnMap.Z;
+		playerPositionOnTopMap.Y = xLeftTopMarker.GlobalPosition.Y + (xRightTopMarker.GlobalPosition.Y - xLeftTopMarker.GlobalPosition.Y) * positionOnMap.X;
+		Control topBrokenPartMarker = (Control)_topBrokenPartTemplate.Duplicate();
+		topBrokenPartMarker.Visible = true;
+		_topBrokenPartTemplate.GetParent().AddChild(topBrokenPartMarker);
+		_brokenPartMarkers.Add(topBrokenPartMarker);
+		
+		leftBrokenPartMarker.GlobalPosition = playerPositionOnLeftMap;
+		topBrokenPartMarker.GlobalPosition = playerPositionOnTopMap;
+		
+		repairTrigger.OnPartRepaired += () =>
+		{
+			_brokenPartMarkers.Remove(leftBrokenPartMarker);
+			leftBrokenPartMarker.QueueFree();
+			_brokenPartMarkers.Remove(topBrokenPartMarker);
+			topBrokenPartMarker.QueueFree();
+		};
+	}
+	
 }

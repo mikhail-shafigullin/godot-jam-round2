@@ -13,7 +13,7 @@ region = Rect2(0, 391.293, 1080, 233.28)
 atlas = ExtResource("2_84ku0")
 region = Rect2(0, 231.48, 1080, 617.54)
 
-[node name="MapUIController" type="Control"]
+[node name="MapUIController" type="Control" node_paths=PackedStringArray("_leftBrokenPartTemplate", "_topBrokenPartTemplate")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qth7b")
+_leftBrokenPartTemplate = NodePath("VBoxContainer/Control/Markers/LeftTemplateTriggerMarker")
+_topBrokenPartTemplate = NodePath("VBoxContainer/Control2/Markers/TopTemplateTriggerMarker")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -154,13 +156,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.109804, 1, 1, 1)
+
+[node name="LeftTemplateTriggerMarker" type="Control" parent="VBoxContainer/Control/Markers"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control/Markers/LeftTemplateTriggerMarker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.757619, 0.102176, 0.409053, 1)
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -284,13 +313,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.109804, 1, 1, 1)
+
+[node name="TopTemplateTriggerMarker" type="Control" parent="VBoxContainer/Control2/Markers"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control2/Markers/TopTemplateTriggerMarker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.757619, 0.102176, 0.409053, 1)
 
 [node name="Control3" type="Control" parent="VBoxContainer"]
 layout_mode = 2

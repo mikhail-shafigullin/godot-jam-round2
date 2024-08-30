@@ -7,7 +7,7 @@ public partial class Globals : Node
 	private BasePlayerUI _ui;
 	private GameController _gameController;
 	private MissionManager _missionManager;
-	
+	private MapUiController _mapUiController;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -43,6 +43,16 @@ public partial class Globals : Node
 	public MissionManager GetMissionManager()
 	{
 		return _missionManager;
+	}
+	
+	public void SetMapUiController(MapUiController mapUiController)
+	{
+		_mapUiController = mapUiController;
+	}
+	
+	public MapUiController GetMapUiController()
+	{
+		return _mapUiController;
 	}
 	
 }
