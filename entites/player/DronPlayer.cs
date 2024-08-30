@@ -22,8 +22,8 @@ public partial class DronPlayer : CharacterBody3D
 	private const float MoveSpeed = 30.0f;
 	private const float MouseSensitivity = 0.4f;
 	
-	private Vector3[] _bottomPoints = new Vector3[16];
-	private Vector3[] _bottomNormals = new Vector3[16];
+	private Vector3[] _bottomPoints = new Vector3[32];
+	private Vector3[] _bottomNormals = new Vector3[32];
 
 	private Vector3 inputDirection;
 	private Vector3 strongInputDirection;

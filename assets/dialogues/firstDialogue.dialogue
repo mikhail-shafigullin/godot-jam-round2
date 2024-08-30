@@ -2,45 +2,61 @@
 
 #add to blackscreen
 crew1: Capitan, we detected pressure in cargo area.
-#CAP: Send rearing crew, and check hull damage.
-#
-#crew1: something leak to cargo. Suitup and check nitrogen line on A6
-#rep man: roger.
-#crew1: and spinout our welder
-#crew2: we deploying the AW-1
-## Fade in 
-#
-#crew2.0: Capitan want to check leak from space? he don't aware how space works?
-#crew2.1: Yea put see dog on space weasel was strange idea. we chugging along just fine.
-#crew2.0: two weeks and wee are back to earth. Why problems always towards the end.
+Crew 1: Captain, there's pressure detected in the cargo area.
+Captain: Send the repair crew and assess for hull damage.
 
+Crew 1: There's a leak into the cargo. Suit up and check the nitrogen line on A6.
+Repair Technician: Copy that.
+Crew 1: Crew 2, deploy the welder.
+Crew 2: Deploying the AW-1.
+## Fade in 
 => END
 
 ~ secondDialogue
-crew2: our bot detected damage below
-#rep man: On A6. All set. Coolant line is moving. May be something is clogging it.
-#crew1: Understood. go to cargo and check the internals.
-#rep man: i thing we would have the bad news for our gamblers/passengers.
+Crew 2: Repairing drone has detected damage below.
+Repair Technician: On A6. It's all set. Coolant line is moving, something might be clogging it.
+Crew 1: Understood. Check the cargo internals next.
+Repair Technician: I suspect we have bad news for our passengers.
 => END
 
 ~ thirdDialogue
-crew1: Pressure spike in air lines.
-#crew2: we just fixed the coolant clogging on the recycler. 
-#rep man: ahm.. it all gone, guys
-#crew1: what do you mean? We have explosion in cargo?
-#rep man: no it is all gone. there nothing here
-#crew1: nothing!? check the DECK behind the bridge. Cargo cannot just vanish
-#crew2: rodger it.
-#
-#rep man: black gue is all over the place
-#crew1: take the sample, and send it to medic bay.
+Crew 1: Pressure spike detected in the air lines.
+Crew 2: We just fixed the coolant clog in the recycler.
+Repair Technician: It's all gone, folks.
+Crew 1: What do you mean? there was an explosion in the cargo?
+Repair Technician: No, it's just... empty. It vanished.
+Crew 1: Empty?! Check opposite side immediately.
+Crew 2: On it.
 => END
 
 ~ fourthDialogue
-crew1: running high on oxygen. switch off enricher tank on the stem
-#crew2: We lost communication line.
-#crew1: Send your bot and manual override it then!
-#
-#crew1: check the air line, on your way back.
-#rep man: will check it
+Crew 1: We're high on oxygen. Turn off the enricher tank on the stem.
+Crew 2: We've lost the communication line. We can try to manually override it!
+Crew 1: Then do it!
+Crew 1: Repair Technitian, verify the air line on your return.
+Repair Technician: Will do.
 => END
+
+
+~ fifthDialogue
+Crew 2: Seems like our communication bus is complytly toasted.
+Crew 1: We've just lost remote control of the ship?
+Crew 2: correct.
+Repair Technician: We're in the vents. There's goo it's moving.
+Crew 1: Forget it. Prepare to fix the enricher.
+Repair Technician: It has eyes and moving towords us. Run!
+=> END
+
+~ sixthDialogue
+Crew 1: We have a security breach in sector A!
+Crew 1: Security, gear up and check A5.
+Security: Understood.
+Crew 1: Pressure's climbing. We need to vent some off. Crew 2, handle it.
+Crew 2: Understood, will do.
+=> END!
+
+~ seventhDialogue
+Captain: Seal off the deck area!
+
+~ eighthDialogue
+Captain: *sounds of engagement*
