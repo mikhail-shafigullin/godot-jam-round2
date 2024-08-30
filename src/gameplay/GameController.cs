@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DialogueManagerRuntime;
 using Godot.Collections;
 using GodotJamRound2.gameplay;
 using GodotJamRound2.mechas;
@@ -16,7 +17,10 @@ public partial class GameController : Node
 	[Export] private DronPlayer DronPlayer;
 	
 	[ExportGroup("firstMission")]
-	[Export] private Array<RepairTrigger> RepairTriggers;
+	[Export] private Array<RepairTrigger> RepairTriggersFirstMission;
+	
+	[ExportGroup("secondMission")]
+	[Export] private Array<RepairTrigger> RepairTriggersSecondMission;
 
 	private Marker3D zBackMarker;
 	private Marker3D zForwardMarker;
@@ -37,9 +41,9 @@ public partial class GameController : Node
 
 		_missionManager = _globals.GetMissionManager();
 		
-		_timer.WaitTime = 3;
+		_timer.WaitTime = 1;
 		_timer.Start();
-		_timer.Timeout += StartFirstMission;
+		_timer.Timeout += StartFirstDialogue;
 
 		_shipRes = new ShipRes();
 		
@@ -62,15 +66,26 @@ public partial class GameController : Node
 	
 	[Signal]
 	public delegate void OnGameEndEventHandler();
-	
-	public void StartFirstMission()
+
+	public void StartFirstDialogue()
 	{
+		var dialogue = GD.Load<Resource>("res://assets/dialogues/firstDialogue.dialogue");
+		DialogueManager.ShowDialogueBalloon(dialogue, "firstDialogue");
+		DialogueManager.DialogueEnded += StartFirstMission;
+		_missionManager.SetHidden(true);
+	}
+	
+	public void StartFirstMission(Resource dialogueResource)
+	{
+		
 		MissionRes firstMission = new MissionRes("Repair all broken parts");
 		int brokenPartsCount = 0;
 		foreach (BrokenPartRes brokenPartRes in _shipRes.GetBrokenParts("firstMission"))
 		{
-			RepairTrigger repairTrigger = RepairTriggers[brokenPartsCount];
+			RepairTrigger repairTrigger = RepairTriggersFirstMission[brokenPartsCount];
 			repairTrigger.SetBrokenPart(brokenPartRes);
+			repairTrigger.SetDisabled(false);
+			_missionManager.OnChangeVisibility += repairTrigger.SetDisabled;
 			TaskRes task = new TaskRes("Repair part of external shell", new Signal(brokenPartRes, "OnPartRepaired"));
 			firstMission.AddTask(task);
 			
@@ -78,15 +93,68 @@ public partial class GameController : Node
 		}
 		firstMission.OnMissionComplete += () =>
 		{
-			_timer.WaitTime = 3;
+			_timer.WaitTime = 1;
 			_timer.Start();
-			_timer.Timeout += StartFirstMission;
-			EmitSignal("OnGameEnd");
+			_timer.Timeout += StartSecondDialogue;
 		};
 		
 		_missionManager.StartMission(firstMission);
 		EmitSignal("OnGameStart");
-		_timer.Timeout -= StartFirstMission;
+		_timer.Timeout -= StartFirstDialogue;
+		DialogueManager.DialogueEnded -= StartFirstMission;
+		_missionManager.SetHidden(false);
+	}
+	
+	public void StartSecondDialogue()
+	{
+		var dialogue = GD.Load<Resource>("res://assets/dialogues/firstDialogue.dialogue");
+		DialogueManager.ShowDialogueBalloon(dialogue, "secondDialogue");
+		DialogueManager.DialogueEnded += StartSecondMission;
+		foreach (RepairTrigger repairTrigger in RepairTriggersFirstMission)
+		{
+			_missionManager.OnChangeVisibility -= repairTrigger.SetDisabled;
+		}
+		_missionManager.SetHidden(true);
+	}
+	
+	public void StartSecondMission(Resource dialogueResource)
+	{
+		MissionRes secondMission = new MissionRes("Repair all broken parts");
+		int brokenPartsCount = 0;
+		foreach (BrokenPartRes brokenPartRes in _shipRes.GetBrokenParts("secondMission"))
+		{
+			RepairTrigger repairTrigger = RepairTriggersSecondMission[brokenPartsCount];
+			repairTrigger.SetBrokenPart(brokenPartRes);
+			repairTrigger.SetDisabled(false);
+			_missionManager.OnChangeVisibility += repairTrigger.SetDisabled;
+			TaskRes task = new TaskRes("Repair part of external shell", new Signal(brokenPartRes, "OnPartRepaired"));
+			secondMission.AddTask(task);
+			
+			brokenPartsCount++;
+		}
+		secondMission.OnMissionComplete += () =>
+		{
+			_timer.WaitTime = 1;
+			_timer.Start();
+			_timer.Timeout += StartThirdDialogue;
+		};
+		
+		_missionManager.StartMission(secondMission);
+		EmitSignal("OnGameStart");
+		_timer.Timeout -= StartSecondDialogue;
+		DialogueManager.DialogueEnded -= StartSecondMission;
+		_missionManager.SetHidden(false);
+	}
+	
+	public void StartThirdDialogue()
+	{
+		var dialogue = GD.Load<Resource>("res://assets/dialogues/firstDialogue.dialogue");
+		DialogueManager.ShowDialogueBalloon(dialogue, "thirdDialogue");
+		foreach (RepairTrigger repairTrigger in RepairTriggersSecondMission)
+		{
+			_missionManager.OnChangeVisibility -= repairTrigger.SetDisabled;
+		}
+		_missionManager.SetHidden(true);
 	}
 	
 	public MissionManager GetMissionManager()
@@ -112,3 +180,17 @@ public partial class GameController : Node
 	
 	
 }
+
+
+/*
+ Show dialogue
+ Start first mission (Show repair triggers) (Show tasks in panel)
+ Repair one broken part
+ Trigger disappear + task crossed in panel
+ Repair another broken part
+ Trigger disappear + task crossed in panel
+ Mission complete 
+ 1 second delay
+ Show dialogue
+  
+*/

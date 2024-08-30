@@ -16,6 +16,7 @@ public partial class CurrentMission : Control
 		_missionManager = _globals.GetMissionManager();
 		
 		_missionManager.OnCurrentMissionChanged += OnCurrentMissionChanged;
+		_missionManager.OnChangeVisibility += OnVisibilityChanged;
 		
 		_missionLabel = GetNode<RichTextLabel>("%HeaderRichText");
 		_taskContainer = GetNode<Control>("%TaskContainer");
@@ -59,5 +60,10 @@ public partial class CurrentMission : Control
 			_taskContainer.AddChild(taskLabel);
 			
 		}
+	}
+	
+	public void OnVisibilityChanged(bool isHidden)
+	{
+		Visible = !isHidden;
 	}
 }

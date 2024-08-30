@@ -155,10 +155,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44611, 50.1472, 52.6742)
 [node name="wentStand" parent="." instance=ExtResource("19_g2fqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7378, 49.6749, 52.1567)
 
-[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("DronPlayer", "RepairTriggers")]
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("DronPlayer", "RepairTriggersFirstMission", "RepairTriggersSecondMission")]
 script = ExtResource("20_b7f6e")
 DronPlayer = NodePath("../DronPlayer")
-RepairTriggers = [NodePath("../FirstMissionRepairTriggers/RepairTrigger"), NodePath("../FirstMissionRepairTriggers/RepairTrigger2")]
+RepairTriggersFirstMission = [NodePath("../FirstMissionRepairTriggers/RepairTrigger"), NodePath("../FirstMissionRepairTriggers/RepairTrigger2")]
+RepairTriggersSecondMission = [NodePath("../SecondMissionRepairTriggers/RepairTrigger"), NodePath("../SecondMissionRepairTriggers/RepairTrigger2"), NodePath("../SecondMissionRepairTriggers/RepairTrigger3")]
 
 [node name="FirstMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9664, 47.7102, 68.6192)
@@ -167,3 +168,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9664, 47.7102, 68.6192)
 
 [node name="RepairTrigger2" parent="FirstMissionRepairTriggers" instance=ExtResource("21_5powe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33322, 0.155506, 4.07291)
+
+[node name="SecondMissionRepairTriggers" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05905, 47.045, 81.8882)
+
+[node name="RepairTrigger" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
+
+[node name="RepairTrigger2" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33322, -0.91748, 4.07291)
+
+[node name="RepairTrigger3" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76288, -1.68059, 1.63105)

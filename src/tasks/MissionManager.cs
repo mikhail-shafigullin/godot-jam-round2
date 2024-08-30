@@ -8,6 +8,7 @@ public partial class MissionManager : Resource
     
     private MissionRes _currentMissionRes;
     private Array<MissionRes> previousMissions = new Array<MissionRes>();
+    private bool isHidden = false;
     
     public MissionRes GetCurrentMission()
     {
@@ -28,10 +29,6 @@ public partial class MissionManager : Resource
             previousMissions.Add(_currentMissionRes);
         }
     }
-    
-    [Signal]
-    public delegate void OnCurrentMissionChangedEventHandler();
-
 
     public void StartMission(MissionRes missionRes)
     {
@@ -39,4 +36,19 @@ public partial class MissionManager : Resource
         missionRes.SetMissionManager(this);
         EmitSignal(nameof(OnCurrentMissionChanged));
     }
+
+    [Signal]
+    public delegate void OnCurrentMissionChangedEventHandler();
+
+    [Signal]
+    public delegate void OnChangeVisibilityEventHandler(bool hidden);
+    
+    public void SetHidden(bool hidden)
+    {
+        isHidden = hidden;
+        EmitSignal(nameof(OnChangeVisibility), hidden);
+    }
+    
+    
+    
 }
