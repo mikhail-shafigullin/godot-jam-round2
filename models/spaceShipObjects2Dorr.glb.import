@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://byu03qobr1m4b"
-path="res://.godot/imported/spaceShipObjects2.glb-54f83ff9e7026f04c0d68ce8738779cb.scn"
+uid="uid://bfmkevwtxmmw"
+path="res://.godot/imported/spaceShipObjects2Dorr.glb-9d2ebc337dd8d0262901a2e907c98985.scn"
 
 [deps]
 
-source_file="res://models/spaceShipObjects2.glb"
-dest_files=["res://.godot/imported/spaceShipObjects2.glb-54f83ff9e7026f04c0d68ce8738779cb.scn"]
+source_file="res://models/spaceShipObjects2Dorr.glb"
+dest_files=["res://.godot/imported/spaceShipObjects2Dorr.glb-9d2ebc337dd8d0262901a2e907c98985.scn"]
 
 [params]
 
@@ -33,13 +33,20 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"glassdome": {
+"Material.001": {
 "use_external/enabled": true,
-"use_external/path": "res://models/dome.tres"
+"use_external/path": "res://models/doot.tres"
+}
 },
-"shipbody": {
-"use_external/enabled": true,
-"use_external/path": "res://models/shipBodyMat.tres"
+"meshes": {
+"spaceShipObjects2Dorr_Cube_003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://models/door.res"
 }
 }
 }

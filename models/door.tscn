@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://hsq8lmihh30d"]
+
+[ext_resource type="ArrayMesh" uid="uid://bt5rmovdq8aq2" path="res://models/door.res" id="1_2pvau"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_am3c2"]
+size = Vector3(4.48097, 13.4041, 22.0042)
+
+[node name="door" type="StaticBody3D"]
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99903, 0.000657133, 0.044033, 0, 0.999889, -0.014922, -0.0440379, 0.0149075, 0.998919, -0.349033, 0, 0.0130669)
+mesh = ExtResource("1_2pvau")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10683, 0, 0)
+shape = SubResource("BoxShape3D_am3c2")
