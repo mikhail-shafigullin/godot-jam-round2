@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://mvsi3yh8xcfv"]
+[gd_scene load_steps=28 format=3 uid="uid://mvsi3yh8xcfv"]
 
 [ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
+[ext_resource type="Script" path="res://scenes/World.cs" id="1_fp0dg"]
 [ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="3_2yh1p"]
 [ext_resource type="Texture2D" uid="uid://qvdw6c4rkrol" path="res://models/31506352382uefgy4dqaqnhjdxg1ux1kcojh3hbffkkggbyzjirljrevb7s6ic3gnis5m6ddbszy5lh5l011aumlgnycogp6sun8otukbpvtzv9-1199252123.png" id="3_imk67"]
 [ext_resource type="Texture2D" uid="uid://dpn3n8kef0wfv" path="res://models/starmap_2020_2k.exr" id="3_uu5it"]
@@ -60,6 +61,7 @@ albedo_texture = ExtResource("3_imk67")
 disable_receive_shadows = true
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_fp0dg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u4bxu")
@@ -153,10 +155,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44611, 50.1472, 52.6742)
 [node name="wentStand" parent="." instance=ExtResource("19_g2fqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7378, 49.6749, 52.1567)
 
-[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("DronPlayer", "RepairTriggers")]
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("DronPlayer", "RepairTriggersFirstMission", "RepairTriggersSecondMission")]
 script = ExtResource("20_b7f6e")
 DronPlayer = NodePath("../DronPlayer")
-RepairTriggers = [NodePath("../FirstMissionRepairTriggers/RepairTrigger"), NodePath("../FirstMissionRepairTriggers/RepairTrigger2")]
+RepairTriggersFirstMission = [NodePath("../FirstMissionRepairTriggers/RepairTrigger"), NodePath("../FirstMissionRepairTriggers/RepairTrigger2")]
+RepairTriggersSecondMission = [NodePath("../SecondMissionRepairTriggers/RepairTrigger"), NodePath("../SecondMissionRepairTriggers/RepairTrigger2"), NodePath("../SecondMissionRepairTriggers/RepairTrigger3")]
 
 [node name="FirstMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9664, 47.7102, 68.6192)
@@ -165,3 +168,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9664, 47.7102, 68.6192)
 
 [node name="RepairTrigger2" parent="FirstMissionRepairTriggers" instance=ExtResource("21_5powe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33322, 0.155506, 4.07291)
+
+[node name="SecondMissionRepairTriggers" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05905, 47.045, 81.8882)
+
+[node name="RepairTrigger" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
+
+[node name="RepairTrigger2" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33322, -0.91748, 4.07291)
+
+[node name="RepairTrigger3" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76288, -1.68059, 1.63105)

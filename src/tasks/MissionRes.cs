@@ -11,6 +11,7 @@ public partial class MissionRes: Resource
     private Array<TaskRes> tasks = new Array<TaskRes>();
     
     private bool _isComplete = false;
+    private bool _isMissionHidden = false;
     
     private MissionManager _missionManager;
     
@@ -71,4 +72,24 @@ public partial class MissionRes: Resource
     
     [Signal]
     public delegate void OnMissionCompleteEventHandler();
+    
+    [Signal]
+    public delegate void OnVisibilityChangedEventHandler(bool isVisible);
+    
+    public void HideMission()
+    {
+        _isMissionHidden = true;
+        EmitSignal(nameof(OnVisibilityChanged), false);
+    }
+    
+    public void ShowMission()
+    {
+        _isMissionHidden = false;
+        EmitSignal(nameof(OnVisibilityChanged), true);
+    }
+    
+    public bool IsMissionHidden()
+    {
+        return _isMissionHidden;
+    }
 }

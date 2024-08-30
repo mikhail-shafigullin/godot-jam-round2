@@ -2,6 +2,7 @@ using Godot;
 using System;
 using GodotJamRound2.entites.mecha;
 using GodotJamRound2.entites.ui;
+using GodotJamRound2.gameplay;
 using GodotJamRound2.ship;
 
 public partial class RepairTrigger : Node3D, ITriggerable
@@ -11,8 +12,7 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	private bool _isRepairing = false;
 	private bool _isRepaired = false;
 	
-	private bool _isDisabled = false;
-	
+	private bool _isDisabled = true;
 	[Export]
 	private float _repairProgress = 0.0f;
 	[Export]
@@ -21,17 +21,22 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	private float maxRepairProgress = BrokenPartRes.maxRepairProgress;
 	
 	private BrokenPartRes _brokenPart = null;
+
+	private Area3D _area3D;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_globals = GetNode<Globals>("/root/Globals");
+		_area3D = GetNode<Area3D>("%Area3D");
+
+		SetDisabled(true);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (_isRepairing)
+		if (_isRepairing )
 		{
 			_repairProgress += _repairSpeed * (float)delta;
 			_globals.GetPlayerUI().SetActionProgress(_repairProgress);
@@ -77,12 +82,20 @@ public partial class RepairTrigger : Node3D, ITriggerable
 			RemoveTrigger();
 		}
 		_isDisabled = disabled;
-		
+		_area3D.Monitoring = !disabled;
+		Visible = !disabled;
 	}
 	
 	public void SetBrokenPart(BrokenPartRes brokenPart)
 	{
 		_brokenPart = brokenPart;
+		brokenPart.OnPartRepaired += PartRepaired;
+	}
+	
+	public void PartRepaired()
+	{
+		_isRepaired = true;
+		SetDisabled(true);
 	}
 
 	public void _on_area_3d_body_entered(Node3D node)

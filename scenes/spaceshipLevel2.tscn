@@ -51,6 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77081, 1.51249, 1.15083)
 [node name="RepairTrigger2" parent="Node3D" instance=ExtResource("3_85rth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87401, 1.51249, -0.978854)
 
-[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("RepairTriggers")]
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("RepairTriggersFirstMission", "RepairTriggersSecondMission")]
 script = ExtResource("4_kg4ld")
-RepairTriggers = [NodePath("../Node3D/RepairTrigger"), NodePath("../Node3D/RepairTrigger2")]
+RepairTriggersFirstMission = []
+RepairTriggersSecondMission = []

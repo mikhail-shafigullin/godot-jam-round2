@@ -162,22 +162,22 @@ public partial class DronPlayer : CharacterBody3D
 		if (Input.IsActionPressed("player_forward"))
 		{
 			isMoving = true;
-			velocityInput = -cameraBackward.Normalized();
+			velocityInput += -cameraBackward.Normalized();
 		}
 		if (Input.IsActionPressed("player_backward"))
 		{
 			isMoving = true;
-			velocityInput = cameraBackward.Normalized();
+			velocityInput += cameraBackward.Normalized();
 		}
 		if (Input.IsActionPressed("player_left"))
 		{
 			isMoving = true;
-			velocityInput = cameraLeft.Normalized();
+			velocityInput += cameraLeft.Normalized();
 		}
 		if (Input.IsActionPressed("player_right"))
 		{
 			isMoving = true;
-			velocityInput = -cameraLeft.Normalized();
+			velocityInput += -cameraLeft.Normalized();
 		}	
 
 		if (isMoving)
