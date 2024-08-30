@@ -1,0 +1,21 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://hsj4vfvx4qs7"]
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_x8un5"]
+resource_name = "Filter"
+cutoff_hz = 400.0
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_82byf"]
+resource_name = "PitchShift"
+pitch_scale = 0.5
+
+[resource]
+bus/1/name = &"World"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -0.328256
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectFilter_x8un5")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectPitchShift_82byf")
+bus/1/effect/1/enabled = false

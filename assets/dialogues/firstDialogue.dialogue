@@ -1,7 +1,7 @@
 ~ firstDialogue
 
 #add to blackscreen
-crew1: Capitan, we detected pressure in cargo aria.
+crew1: Capitan, we detected pressure in cargo area.
 #CAP: Send rearing crew, and check hull damage.
 #
 #crew1: something leak to cargo. Suitup and check nitrogen line on A6
@@ -17,7 +17,7 @@ crew1: Capitan, we detected pressure in cargo aria.
 => END
 
 ~ secondDialogue
-crew2: our space wheel detected damage below
+crew2: our bot detected damage below
 #rep man: On A6. All set. Coolant line is moving. May be something is clogging it.
 #crew1: Understood. go to cargo and check the internals.
 #rep man: i thing we would have the bad news for our gamblers/passengers.

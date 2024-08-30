@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0d7n0xgmrro5"]
+[gd_scene load_steps=18 format=3 uid="uid://d0d7n0xgmrro5"]
 
 [ext_resource type="Script" path="res://entites/player/DronPlayer.cs" id="1_cd7vm"]
 [ext_resource type="PackedScene" uid="uid://ddhl0dhq8pw83" path="res://entites/ui/baseUI.tscn" id="2_d2834"]
 [ext_resource type="PackedScene" uid="uid://ckj06i615owsk" path="res://models/player/spacePlayerRobot.glb" id="3_qwvx6"]
 [ext_resource type="PackedScene" uid="uid://d23vn5jtb04to" path="res://entites/ui/ComputerUI.tscn" id="4_df0p3"]
+[ext_resource type="AudioStream" uid="uid://b31c3vawe8f0x" path="res://assets/audio/fluorescent_light_humming-Mike_Koenig-43042887.mp3" id="5_1036k"]
+[ext_resource type="AudioStream" uid="uid://dp5d32h73mkx4" path="res://assets/audio/Retro Ambience Stretch Large 01.wav" id="6_4dx36"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1twj6"]
 height = 0.667331
@@ -45,6 +47,33 @@ min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_8edoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.295]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.148]
+}
+
 [sub_resource type="Animation" id="Animation_i73vu"]
 resource_name = "pulse"
 length = 1.001
@@ -72,33 +101,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1.36604),
 "update": 0,
 "values": [0.145, 0.31]
-}
-
-[sub_resource type="Animation" id="Animation_8edoe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.295]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2:light_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.148]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dkl0a"]
@@ -176,7 +178,7 @@ light_cull_mask = 4294967293
 omni_range = 1.70235
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.741131, 3.35276e-08, 0.671361, -9.31323e-09, -1, 6.56582e-08, 0.671361, 2.04891e-08, 0.74113, 1.05844, 1.01952, -0.209614)
+transform = Transform3D(-0.741131, 6.95698e-07, 0.671361, -9.12696e-08, -1, 9.58331e-07, 0.671361, 6.22123e-07, 0.74113, 1.05844, 1.01952, -0.209614)
 bone_name = "welder"
 bone_idx = 3
 
@@ -312,5 +314,22 @@ libraries = {
 "": SubResource("AnimationLibrary_dkl0a")
 }
 autoplay = "pulse"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353514, 0)
+stream = ExtResource("5_1036k")
+volume_db = -16.18
+pitch_scale = 0.5
+autoplay = true
+max_distance = 6.0
+bus = &"World"
+playback_type = 1
+doppler_tracking = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayer3D"]
+stream = ExtResource("6_4dx36")
+volume_db = -16.0
+autoplay = true
+bus = &"World"
 
 [editable path="Visual/spacePlayerRobot"]

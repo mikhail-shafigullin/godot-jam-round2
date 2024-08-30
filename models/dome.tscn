@@ -87,7 +87,7 @@ tracks/0/path = NodePath("../Explosion:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667),
+"times": PackedFloat32Array(0, 0.0333333, 0.166667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -111,7 +111,7 @@ tracks/2/path = NodePath("../Explosion:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.266667, 0.333333),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.233333, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(10, 10, 10), Vector3(2, 2, 2), Vector3(0, 0, 0)]
