@@ -85,6 +85,7 @@ public partial class GameController : Node
 			RepairTrigger repairTrigger = RepairTriggersFirstMission[brokenPartsCount];
 			repairTrigger.SetBrokenPart(brokenPartRes);
 			repairTrigger.SetDisabled(false);
+			_globals.GetMapUiController().AddBrokenPart(repairTrigger, GetNodePositionForMap(repairTrigger));
 			_missionManager.OnChangeVisibility += repairTrigger.SetDisabled;
 			TaskRes task = new TaskRes("Repair part of external shell", new Signal(brokenPartRes, "OnPartRepaired"));
 			firstMission.AddTask(task);
@@ -126,6 +127,7 @@ public partial class GameController : Node
 			RepairTrigger repairTrigger = RepairTriggersSecondMission[brokenPartsCount];
 			repairTrigger.SetBrokenPart(brokenPartRes);
 			repairTrigger.SetDisabled(false);
+			_globals.GetMapUiController().AddBrokenPart(repairTrigger, GetNodePositionForMap(repairTrigger));
 			_missionManager.OnChangeVisibility += repairTrigger.SetDisabled;
 			TaskRes task = new TaskRes("Repair part of external shell", new Signal(brokenPartRes, "OnPartRepaired"));
 			secondMission.AddTask(task);

@@ -96,6 +96,7 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	{
 		_isRepaired = true;
 		SetDisabled(true);
+		EmitSignal(nameof(OnPartRepaired));
 	}
 
 	public void _on_area_3d_body_entered(Node3D node)
@@ -113,5 +114,8 @@ public partial class RepairTrigger : Node3D, ITriggerable
 			RemoveTrigger();
 		}
 	}
+	
+	[Signal]
+	public delegate void OnPartRepairedEventHandler();
 	
 }
