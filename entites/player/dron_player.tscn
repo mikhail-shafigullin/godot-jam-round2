@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0d7n0xgmrro5"]
+[gd_scene load_steps=16 format=3 uid="uid://d0d7n0xgmrro5"]
 
 [ext_resource type="Script" path="res://entites/player/DronPlayer.cs" id="1_cd7vm"]
 [ext_resource type="PackedScene" uid="uid://ddhl0dhq8pw83" path="res://entites/ui/baseUI.tscn" id="2_d2834"]
@@ -16,6 +16,96 @@ height = 0.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_dyayg"]
 size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ucfq"]
+cull_mode = 2
+disable_ambient_light = true
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 0.325, 0.19, 1)
+emission_energy_multiplier = 11.59
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_o5wil"]
+size = 0.059
+sections = 2
+section_length = 0.777
+section_segments = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks830"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_727xo"]
+material = SubResource("StandardMaterial3D_ks830")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_3gb1t"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_i73vu"]
+resource_name = "pulse"
+length = 1.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1.36604),
+"update": 0,
+"values": [0.145, 0.31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5667),
+"transitions": PackedFloat32Array(1, 1.36604),
+"update": 0,
+"values": [0.145, 0.31]
+}
+
+[sub_resource type="Animation" id="Animation_8edoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.295]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.148]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkl0a"]
+_data = {
+"RESET": SubResource("Animation_8edoe"),
+"pulse": SubResource("Animation_i73vu")
+}
 
 [node name="DronPlayer" type="CharacterBody3D"]
 disable_mode = 2
@@ -45,19 +135,16 @@ skeleton = NodePath("../..")
 [node name="spacePlayerRobot" parent="Visual" instance=ExtResource("3_qwvx6")]
 
 [node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
-bones/0/position = Vector3(0.0832141, 0.274524, 0.0523268)
-bones/0/rotation = Quaternion(-0.00329983, -0.000421609, 0.00208555, 0.999992)
-bones/1/rotation = Quaternion(-0.711659, 0.00210876, 0.00219668, 0.702519)
+bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.0078758, 0.00115459, 0.913209, -0.407414)
 bones/3/rotation = Quaternion(-0.704121, 0.0444125, -0.0347798, 0.707836)
 bones/3/scale = Vector3(1, 1, 1)
 
 [node name="robot" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="0"]
-layers = 3
+layers = 2
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999991, -0.00416829, -0.000856976, 0.00417385, 0.99997, 0.00659785, 0.000829448, -0.00660137, 0.999978, 0.0832141, 0.274524, 0.0523268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236252, 0)
 bone_name = "body"
 bone_idx = 0
 
@@ -78,6 +165,49 @@ light_size = 0.175
 light_specular = 4.0
 light_cull_mask = 4294967294
 omni_range = 0.731151
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 3.00588e-09, 9.31323e-10, -2.56887e-09, 1, 8.84756e-09, -8.73115e-10, -8.84756e-09, 1, -0.000769757, -0.184413, -0.00121677)
+light_color = Color(0.4059, 0.97053, 0.99, 1)
+light_energy = 0.148
+light_size = 0.175
+light_specular = 4.0
+light_cull_mask = 4294967293
+omni_range = 1.70235
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.741131, 3.35276e-08, 0.671361, -9.31323e-09, -1, 6.56582e-08, 0.671361, 2.04891e-08, 0.74113, 1.05844, 1.01952, -0.209614)
+bone_name = "welder"
+bone_idx = 3
+
+[node name="onWeld" type="Node3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2"]
+transform = Transform3D(1, 9.31323e-10, 8.9407e-08, 0, 1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2/onWeld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76951e-08, 1.45469, 0)
+material_override = SubResource("StandardMaterial3D_5ucfq")
+mesh = SubResource("RibbonTrailMesh_o5wil")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2/onWeld"]
+transform = Transform3D(1, -8.88178e-16, 0, 3.55271e-15, 1, 0, 0, 1.77636e-15, 1, 2.61933e-10, 1.38777, 8.44014e-10)
+amount = 48
+lifetime = 0.73
+randomness = 0.26
+mesh = SubResource("QuadMesh_727xo")
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.91
+initial_velocity_max = 7.25
+linear_accel_min = 4.25
+linear_accel_max = 4.25
+angle_min = -20.0
+angle_max = 25.5
+scale_amount_min = 0.0
+scale_amount_max = 0.8
+hue_variation_min = 0.05
+hue_variation_max = 0.19
+hue_variation_curve = SubResource("Curve_3gb1t")
 
 [node name="AnimationPlayer" parent="Visual/spacePlayerRobot" index="1"]
 autoplay = "idleFly"
@@ -176,5 +306,11 @@ current = true
 [node name="ComputerUi" parent="CanvasLayer" instance=ExtResource("4_df0p3")]
 unique_name_in_owner = true
 visible = false
+
+[node name="pulse" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dkl0a")
+}
+autoplay = "pulse"
 
 [editable path="Visual/spacePlayerRobot"]
