@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://coixxd045d6na"]
 
-[ext_resource type="Shader" path="res://models/windowshader.gdshader" id="1_va7p5"]
+[ext_resource type="Shader" path="res://models/explosionStrain.gdshader" id="1_va7p5"]
 
 [resource]
 render_priority = 0

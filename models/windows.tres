@@ -6,7 +6,7 @@
 resource_name = "Material.002"
 shading_mode = 0
 specular_mode = 1
-albedo_color = Color(0.97, 0.97, 0.776, 1)
+albedo_color = Color(0.903455, 0.922032, 0.448518, 1)
 refraction_scale = -0.35
 refraction_texture = ExtResource("2_g4ig6")
 texture_filter = 2
