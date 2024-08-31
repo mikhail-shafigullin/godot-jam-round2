@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3xj5ug4ccisa"]
 
-[ext_resource type="Script" path="res://entites/ui/ScreenManager.cs" id="1_epbf5"]
+[ext_resource type="Script" path="res://entites/ui/ScreenManager.gd" id="1_onjfu"]
 
 [sub_resource type="Animation" id="Animation_1ek0a"]
 length = 0.001
@@ -69,7 +69,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_epbf5")
+script = ExtResource("1_onjfu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 unique_name_in_owner = true

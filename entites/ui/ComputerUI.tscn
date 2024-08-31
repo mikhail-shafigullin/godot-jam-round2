@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d23vn5jtb04to"]
 
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="1_qh4yq"]
-[ext_resource type="Script" path="res://entites/ui/ComputerUi.cs" id="1_vntti"]
+[ext_resource type="Script" path="res://entites/ui/ComputerUi.gd" id="2_6q8q0"]
 [ext_resource type="PackedScene" uid="uid://pfdlxhe8yqjp" path="res://entites/ui/map_ui_controller.tscn" id="2_q6u6v"]
 
 [node name="ComputerUi" type="Control"]
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qh4yq")
-script = ExtResource("1_vntti")
+script = ExtResource("2_6q8q0")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1

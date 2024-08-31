@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctgsgjglpau0g"]
 
-[ext_resource type="Script" path="res://entites/mecha/RepairTrigger.cs" id="1_5mtbo"]
+[ext_resource type="Script" path="res://entites/mecha/RepairTrigger.gd" id="1_duffd"]
 [ext_resource type="Script" path="res://entites/mecha/MissionMarker.cs" id="2_qnqbv"]
 [ext_resource type="Script" path="res://entites/mecha/Waypoint.cs" id="3_fraek"]
 [ext_resource type="Texture2D" uid="uid://d3s2ia8f4j7l4" path="res://assets/sprites/focus.png" id="4_j6juh"]
@@ -17,7 +17,7 @@ albedo_texture_force_srgb = true
 radius = 0.731141
 
 [node name="RepairTrigger" type="Node3D"]
-script = ExtResource("1_5mtbo")
+script = ExtResource("1_duffd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_hawf6")

@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://76vgv0s6k1an" path="res://models/objects/went_loong.tscn" id="17_cvknq"]
 [ext_resource type="PackedScene" uid="uid://dvb1nq52andr1" path="res://models/objects/went_sircle.tscn" id="18_7ydva"]
 [ext_resource type="PackedScene" uid="uid://cwlyorxlq5fio" path="res://models/objects/went_stand.tscn" id="19_g2fqg"]
-[ext_resource type="Script" path="res://src/gameplay/GameController.cs" id="20_b7f6e"]
 [ext_resource type="PackedScene" uid="uid://ctgsgjglpau0g" path="res://entites/mecha/repair_trigger.tscn" id="21_5powe"]
+[ext_resource type="Script" path="res://src/gameplay/GameController.gd" id="21_sefmn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q2sxf"]
 panorama = ExtResource("3_uu5it")
@@ -155,9 +155,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44611, 50.1472, 52.6742)
 [node name="wentStand" parent="." instance=ExtResource("19_g2fqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7378, 49.6749, 52.1567)
 
-[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("DronPlayer", "RepairTriggersFirstMission", "RepairTriggersSecondMission", "RepairTriggersThirdMission", "RepairTriggersFourthMission", "RepairTriggersFifthMission", "RepairTriggersSixthMission", "RepairTriggersSeventhMission", "RepairTriggersEighthMission")]
-script = ExtResource("20_b7f6e")
-DronPlayer = NodePath("../DronPlayer")
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_dronPlayer", "RepairTriggersFirstMission", "RepairTriggersSecondMission", "RepairTriggersThirdMission", "RepairTriggersFourthMission", "RepairTriggersFifthMission", "RepairTriggersSixthMission", "RepairTriggersSeventhMission", "RepairTriggersEighthMission")]
+script = ExtResource("21_sefmn")
+_dronPlayer = NodePath("../DronPlayer")
 RepairTriggersFirstMission = [NodePath("../FirstMissionRepairTriggers/RepairTrigger"), NodePath("../FirstMissionRepairTriggers/RepairTrigger2")]
 RepairTriggersSecondMission = [NodePath("../SecondMissionRepairTriggers/RepairTrigger2"), NodePath("../SecondMissionRepairTriggers/RepairTrigger3")]
 RepairTriggersThirdMission = [NodePath("../ThirdMissionRepairTriggers/RepairTrigger2"), NodePath("../ThirdMissionRepairTriggers/RepairTrigger3"), NodePath("../ThirdMissionRepairTriggers/RepairTrigger4")]
