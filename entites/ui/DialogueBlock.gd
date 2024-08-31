@@ -10,6 +10,9 @@ extends CanvasLayer
 @onready var character_label: RichTextLabel = %CharacterLabel
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 
+@onready var audio: AudioStreamPlayer = $Audio
+@onready var letter_timer: Timer = $Audio/Timer
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -145,3 +148,22 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter, letter_index, speed):
+	audio.play(randf()*( int(letter_index)%60))
+	letter_timer.start()
+
+func stop_sound():
+	audio.stop()
+
+func _on_dialogue_label_skipped_typing():
+	stop_sound()
+
+
+func _on_dialogue_label_finished_typing():
+	stop_sound()
+
+
+func _on_timer_timeout():
+	stop_sound()

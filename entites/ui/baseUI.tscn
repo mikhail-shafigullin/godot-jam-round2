@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddhl0dhq8pw83"]
+[gd_scene load_steps=12 format=3 uid="uid://ddhl0dhq8pw83"]
 
 [ext_resource type="Material" uid="uid://o6je6kosf01w" path="res://entites/shaders/baseUI.tres" id="1_dtibn"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="1_ig8x7"]
@@ -8,6 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://cqclb1llofjb1" path="res://assets/sprites/loadWheel.png" id="3_xehyk"]
 [ext_resource type="PackedScene" uid="uid://br78gk818sde1" path="res://entites/ui/dialogue_block.tscn" id="4_j86fd"]
 [ext_resource type="PackedScene" uid="uid://b3xj5ug4ccisa" path="res://entites/ui/screen_manager.tscn" id="7_7ri15"]
+[ext_resource type="Texture2D" uid="uid://dt1m1mj6dpkq6" path="res://assets/audio/sound-icon.svg" id="9_uer5r"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_67a60"]
+color = Color(0.0565966, 0.365744, 0.0289943, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7248o"]
+color = Color(0.12549, 0.662745, 0.0745098, 1)
+thickness = 2
 
 [node name="BaseUi" type="Control"]
 layout_mode = 3
@@ -30,6 +39,7 @@ offset_right = -12.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
 layout_mode = 1
@@ -55,6 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -71,6 +82,7 @@ offset_right = 2.5
 offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="EventText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -88,6 +100,7 @@ offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.00239, 0.992995)
+mouse_filter = 2
 bbcode_enabled = true
 text = "[center]click"
 
@@ -101,6 +114,7 @@ offset_top = 19.0
 offset_right = 243.0
 offset_bottom = -19.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MissionBlock" parent="LeftBlock" instance=ExtResource("2_vl2mo")]
 layout_mode = 1
@@ -108,6 +122,7 @@ offset_left = 9.0
 offset_top = 14.0
 offset_right = -13.0
 offset_bottom = -13.0
+mouse_filter = 2
 
 [node name="DialogueBlock" parent="LeftBlock" instance=ExtResource("4_j86fd")]
 visible = false
@@ -123,6 +138,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ActionProgress" type="TextureProgressBar" parent="RepairBlock"]
 unique_name_in_owner = true
@@ -139,6 +155,7 @@ offset_bottom = -15.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
+mouse_filter = 2
 value = 100.0
 rounded = true
 fill_mode = 4
@@ -159,6 +176,7 @@ offset_right = -14.0
 offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TutorialBlock"]
 layout_mode = 1
@@ -167,14 +185,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialBlock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TutorialBlock/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 bbcode_enabled = true
 text = "[right]Shift
 Q/E"
@@ -182,13 +203,33 @@ Q/E"
 [node name="VBoxContainer2" type="VBoxContainer" parent="TutorialBlock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TutorialBlock/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 text = "- Accelerate
 - Zoom"
 
 [node name="ScreenManager" parent="." instance=ExtResource("7_7ri15")]
 unique_name_in_owner = true
 layout_mode = 1
+mouse_filter = 2
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 344.0
+offset_right = 147.0
+offset_bottom = 363.0
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("9_uer5r")
+theme_override_icons/grabber_highlight = ExtResource("9_uer5r")
+theme_override_styles/slider = SubResource("StyleBoxLine_67a60")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_7248o")
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]

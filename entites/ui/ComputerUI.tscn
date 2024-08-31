@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_qh4yq")
 script = ExtResource("2_6q8q0")
 
@@ -26,6 +27,7 @@ offset_right = -4.0
 offset_bottom = -18.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_group_ = true
 
 [node name="Map" type="Control" parent="Control"]
@@ -39,10 +41,12 @@ offset_right = 1.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MapUIController" parent="Control/Map" instance=ExtResource("2_q6u6v")]
 unique_name_in_owner = true
 layout_mode = 1
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -57,6 +61,7 @@ offset_right = -11.0
 offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_group_ = true
 
 [node name="TabContainer" type="Panel" parent="Panel"]
@@ -71,3 +76,4 @@ offset_right = -10.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

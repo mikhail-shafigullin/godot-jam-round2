@@ -55,15 +55,16 @@ func _ready():
 	strongInputDirection = global_transform.basis * Vector3.FORWARD
 
 func _input(event):
-	if event is InputEventMouseMotion and not _computerOpened and not isControlsDisabled:
-		var RotationDelta = Vector2()
-		RotationDelta.x = deg_to_rad(-event.relative.x * MouseSensitivity)
-		RotationDelta.y = deg_to_rad(-event.relative.y * MouseSensitivity)
-		if middleCollisionNormalComputed != Vector3.ZERO:
-			RotateXNode.rotate_y(RotationDelta.x)
-			_SpringArm3D.rotate_x(RotationDelta.y)
-			_SpringArm3D.rotation.x = clamp(_SpringArm3D.rotation.x, -PI/3, PI/4);
-			_SpringArm3D.rotation.z = 0;
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion and not _computerOpened and not isControlsDisabled:
+			var RotationDelta = Vector2()
+			RotationDelta.x = deg_to_rad(-event.relative.x * MouseSensitivity)
+			RotationDelta.y = deg_to_rad(-event.relative.y * MouseSensitivity)
+			if middleCollisionNormalComputed != Vector3.ZERO:
+				RotateXNode.rotate_y(RotationDelta.x)
+				_SpringArm3D.rotate_x(RotationDelta.y)
+				_SpringArm3D.rotation.x = clamp(_SpringArm3D.rotation.x, -PI/3, PI/4);
+				_SpringArm3D.rotation.z = 0;
 
 	#if event.is_action_pressed("player_computer") and not isControlsDisabled:
 		#if _computerUi.visible:

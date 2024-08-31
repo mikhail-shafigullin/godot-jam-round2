@@ -9,6 +9,8 @@ var _tutorial_block: Control = null
 var _leftBlock: Control = null;
 
 func _ready():
+	AudioServer.set_bus_volume_db(0, lerpf(-80, 6, 0.8))
+
 	Global._ui = self;
 
 	_event_text = get_node("%EventText")
@@ -23,7 +25,7 @@ func _ready():
 	DialogueManager.got_dialogue.connect(_on_got_dialogue)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
-func _input(event):
+func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -51,3 +53,7 @@ func set_event_text(text):
 
 func set_action_progress(value):
 	_action_progress.value = value
+
+
+func _on_volume_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(0, lerpf(-80, 6, value))
