@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DialogueManagerRuntime;
 
 public partial class BasePlayerUI : Control
 {
@@ -8,6 +9,7 @@ public partial class BasePlayerUI : Control
 	private TextureProgressBar _actionProgress = null;
 	private Control _repairBlock = null;
 	public ScreenManager _screenManager = null;
+	private Control _tutorialBlock;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,6 +22,11 @@ public partial class BasePlayerUI : Control
 		
 		_repairBlock = GetNode<Control>("%RepairBlock");
 		_screenManager = GetNode<ScreenManager>("%ScreenManager");
+		
+		_tutorialBlock = GetNode<Control>("%TutorialBlock");
+		
+		DialogueManager.GotDialogue += (DialogueLine dialogueLine) => { _tutorialBlock.Visible = false; };
+		DialogueManager.DialogueEnded += (Resource dialogueResource) => { _tutorialBlock.Visible = true; };
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,4 +53,5 @@ public partial class BasePlayerUI : Control
 	{
 		_actionProgress.Value = value;
 	}
+
 }
