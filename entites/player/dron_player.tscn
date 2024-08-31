@@ -134,6 +134,7 @@ mesh = SubResource("BoxMesh_dyayg")
 skeleton = NodePath("../..")
 
 [node name="spacePlayerRobot" parent="Visual" instance=ExtResource("3_qwvx6")]
+unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
@@ -177,7 +178,7 @@ light_cull_mask = 4294967293
 omni_range = 1.70235
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.741131, 6.97561e-07, 0.671361, 1.89058e-07, -1, 1.26893e-06, 0.671361, 1.03936e-06, 0.74113, 1.05844, 1.01952, -0.209614)
+transform = Transform3D(-0.741131, 6.95698e-07, 0.671361, -9.12696e-08, -1, 9.58331e-07, 0.671361, 6.22123e-07, 0.74113, 1.05844, 1.01952, -0.209614)
 bone_name = "welder"
 bone_idx = 3
 
