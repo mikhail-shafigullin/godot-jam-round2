@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entites/ui/DialogueBlock.gd" id="1_1wejm"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="2_7ff5j"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_qqfj8"]
-[ext_resource type="AudioStream" uid="uid://d1u7m13irecdq" path="res://assets/audio/254519__kwahmah_02__data-transmission.wav" id="4_y3mjv"]
+[ext_resource type="AudioStream" uid="uid://boj6cgy6yicy6" path="res://assets/audio/254519__kwahmah_02__data-transmission_trim.mp3" id="4_3c0cp"]
 
 [node name="DialogueBlock" type="CanvasLayer"]
 script = ExtResource("1_1wejm")
@@ -87,11 +87,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_y3mjv")
+stream = ExtResource("4_3c0cp")
 volume_db = -16.0
 
 [node name="Timer" type="Timer" parent="Audio"]
-wait_time = 0.304
+wait_time = 0.114
 
 [connection signal="gui_input" from="Control/Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="finished_typing" from="Control/Balloon/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_finished_typing"]

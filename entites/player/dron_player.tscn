@@ -153,11 +153,10 @@ bone_idx = 0
 [node name="SpotLight3D" type="SpotLight3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(0.999987, 0.00325333, 0.00380926, -0.00352136, 0.997354, 0.0726132, -0.00356294, -0.0726257, 0.997353, -0.970101, 0.400744, -0.208629)
 light_color = Color(0.929412, 1, 1, 1)
-light_energy = 6.0
+light_energy = 3.0
 spot_range = 75.0
 spot_attenuation = 0.6
 spot_angle = 45.62
-spot_angle_attenuation = 0.812252
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(1, 2.55386e-09, 8.14907e-10, -2.09093e-09, 1, 7.91624e-09, -8.73115e-10, -7.91624e-09, 1, -0.000187121, -0.0448272, -0.000295773)

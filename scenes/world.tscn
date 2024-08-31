@@ -129,7 +129,7 @@ process_mode = 3
 
 [sub_resource type="Environment" id="Environment_u4bxu"]
 background_mode = 2
-background_energy_multiplier = 0.05
+background_energy_multiplier = 0.25
 sky = SubResource("Sky_xh54j")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
@@ -156,7 +156,6 @@ far = 6000.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="CutScene/Camera3D"]
 transform = Transform3D(0.0754115, 0.988487, -0.131173, 0.915852, -0.0166342, 0.401171, 0.394371, -0.150388, -0.906562, -12.8382, -57.6912, -455.604)
-light_energy = 2.0
 light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_max_distance = 480.0

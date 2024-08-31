@@ -151,11 +151,12 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 func _on_dialogue_label_spoke(letter, letter_index, speed):
-	audio.play(randf()*( int(letter_index)%60))
+	audio.playing = true
+	audio.seek((int(letter_index)%30)/30 * 5)
 	letter_timer.start()
 
 func stop_sound():
-	audio.stop()
+	audio.playing = false
 
 func _on_dialogue_label_skipped_typing():
 	stop_sound()

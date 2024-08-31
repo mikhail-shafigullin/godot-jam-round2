@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpn3n8kef0wfv"
-path.bptc="res://.godot/imported/starmap_2020_2k.exr-1536e1f12efafafa1e58846982d6241b.bptc.ctex"
+path="res://.godot/imported/starmap_2020_2k.exr-1536e1f12efafafa1e58846982d6241b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://models/starmap_2020_2k.exr"
-dest_files=["res://.godot/imported/starmap_2020_2k.exr-1536e1f12efafafa1e58846982d6241b.bptc.ctex"]
+dest_files=["res://.godot/imported/starmap_2020_2k.exr-1536e1f12efafafa1e58846982d6241b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
