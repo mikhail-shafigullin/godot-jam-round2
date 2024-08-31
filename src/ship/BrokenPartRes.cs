@@ -1,6 +1,5 @@
 using System;
 using Godot;
-using GodotJamRound2.mechas;
 
 namespace GodotJamRound2.ship;
 

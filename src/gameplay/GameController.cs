@@ -3,7 +3,6 @@ using System;
 using DialogueManagerRuntime;
 using Godot.Collections;
 using GodotJamRound2.gameplay;
-using GodotJamRound2.mechas;
 using GodotJamRound2.ship;
 using Array = System.Array;
 
