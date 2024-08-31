@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctgsgjglpau0g"]
+[gd_scene load_steps=12 format=3 uid="uid://ctgsgjglpau0g"]
 
 [ext_resource type="Script" path="res://entites/mecha/RepairTrigger.gd" id="1_duffd"]
 [ext_resource type="Script" path="res://entites/mecha/Waypoint.gd" id="2_h8igr"]
@@ -14,6 +14,25 @@ albedo_texture_force_srgb = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_73xjj"]
 radius = 0.731141
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fe3tg"]
+albedo_color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_11ajb"]
+material = SubResource("StandardMaterial3D_fe3tg")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjjsr"]
+albedo_color = Color(1, 1, 0.27, 1)
+rim_enabled = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ga1bq"]
+material = SubResource("StandardMaterial3D_sjjsr")
+size = Vector2(0.1, 0.1)
 
 [node name="RepairTrigger" type="Node3D"]
 script = ExtResource("1_duffd")
@@ -63,6 +82,35 @@ text = "
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="waypoint"]
 aabb = AABB(-0.212443, -0.254494, -0.331338, 0.424887, 0.508988, 0.662676)
+
+[node name="Effects" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Effects"]
+amount = 10
+mesh = SubResource("QuadMesh_11ajb")
+emission_shape = 1
+emission_sphere_radius = 0.6
+direction = Vector3(0, -1, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.5
+radial_accel_min = -4.41
+radial_accel_max = 3.32
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="Effects"]
+lifetime = 1.74
+explosiveness = 0.75
+mesh = SubResource("QuadMesh_ga1bq")
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+tangential_accel_min = -19.89
+tangential_accel_max = 0.8
+angle_min = -151.2
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

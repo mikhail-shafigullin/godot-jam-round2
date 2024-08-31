@@ -118,51 +118,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9778, 5.78098, 4.07291)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05905, -16.0486, -58.4221)
 
 [node name="RepairTrigger2" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.7763, 17.2874, 13.1405)
+transform = Transform3D(1, 0, 0, 0, 0.38099, 0.924579, 0, -0.924579, 0.38099, -67.7763, 17.2874, 13.1405)
 
 [node name="RepairTrigger3" parent="SecondMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.0376, 19.0079, 11.7081)
+transform = Transform3D(1, 0, 0, 0, 0.217581, 0.976042, 0, -0.976042, 0.217581, -85.0376, 19.0079, 11.7081)
 
 [node name="ThirdMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.4468, 27.5752, -184.98)
 
 [node name="RepairTrigger2" parent="ThirdMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4709, -4.53392, 6.19337)
+transform = Transform3D(-0.925196, 0.379488, 0, -0.379488, -0.925196, 0, 0, 0, 1, -27.4709, -4.53392, 6.19337)
 
 [node name="RepairTrigger3" parent="ThirdMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9036, 12.5525, 9.71114)
+transform = Transform3D(-0.968718, -0.248166, 0, 0.248166, -0.968718, 0, 0, 0, 1, 4.9036, 12.5525, 9.71114)
 
 [node name="RepairTrigger4" parent="ThirdMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0548, -0.431942, 28.1942)
+transform = Transform3D(-0.721881, -0.692017, 0, 0.692017, -0.721881, 0, 0, 0, 1, -18.0548, -0.431942, 28.1942)
 
 [node name="FourthMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21456, -11.1233, 235.74)
 
 [node name="RepairTrigger2" parent="FourthMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9949, 6.57411, 16.4209)
+transform = Transform3D(-0.267222, 0.963635, 0, -0.963635, -0.267222, 0, 0, 0, 1, -16.9949, 6.57411, 16.4209)
 
 [node name="RepairTrigger3" parent="FourthMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2001, 6.40181, 22.0393)
+transform = Transform3D(-0.32904, 0.822741, 0.463497, -0.928499, -0.371335, 0, 0.172113, -0.430357, 0.886098, -11.2001, 6.40181, 22.0393)
 
 [node name="RepairTrigger4" parent="FourthMissionRepairTriggers" instance=ExtResource("21_5powe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4222, 6.48924, 19.0749)
+transform = Transform3D(0.213713, 0.976897, 0, -0.976897, 0.213713, 0, 0, 0, 1, -14.4222, 6.48924, 19.0749)
 
 [node name="FifthMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69152, 40.3897, 125.318)
 
 [node name="RepairTrigger2" parent="FifthMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(1, 0, 0, 0, -0.917727, -0.397212, 0, 0.397212, -0.917727, 0, 0, 0)
 
 [node name="SixthMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2403, 46.1751, 75.9695)
 
 [node name="RepairTrigger2" parent="SixthMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(1, 0, 0, 0, -0.986918, 0.161225, 0, -0.161225, -0.986918, 0, 0, 0)
 
 [node name="SeventhMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.901, 72.2747, -90.8301)
 
 [node name="RepairTrigger2" parent="SeventhMissionRepairTriggers" instance=ExtResource("21_5powe")]
+transform = Transform3D(-0.878809, 0.477174, 0, -0.477174, -0.878809, 0, 0, 0, 1, 0, 0, 0)
+withEffects = false
 
 [node name="EighthMissionRepairTriggers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94973, -24.6689, -78.7047)
 
 [node name="RepairTrigger2" parent="EighthMissionRepairTriggers" instance=ExtResource("21_5powe")]
+withEffects = false

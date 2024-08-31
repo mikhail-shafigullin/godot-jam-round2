@@ -15,6 +15,9 @@ var _brokenPart: BrokenPartRes = null;
 var _player: DronPlayer;
 
 @onready var _area3D: Area3D = %Area3D;
+@onready var effectsBlock: Node3D = %Effects;
+
+@export var withEffects = true;
 
 signal OnPartRepaired();
 
@@ -22,6 +25,7 @@ signal OnPartRepaired();
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SetDisabled(true);
+	effectsBlock.visible = withEffects;
 	pass # Replace with function body.
 
 
@@ -74,6 +78,7 @@ func PartRepaired():
 	_isRepaired = true;
 	SetDisabled(true);
 	OnPartRepaired.emit();
+	effectsBlock.visible = false;
 
 func _on_area_3d_body_entered(node: Node3D):
 	if(node is DronPlayer):
