@@ -9,6 +9,7 @@ public partial class Globals : Node
 	private MissionManager _missionManager;
 	private MapUiController _mapUiController;
 	private ScreenManager _screenManager;
+	private DronPlayer _player;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -65,6 +66,16 @@ public partial class Globals : Node
 	public ScreenManager GetScreenManager()
 	{
 		return _screenManager;
+	}
+	
+	public void SetPlayer(DronPlayer player)
+	{
+		_player = player;
+	}
+	
+	public DronPlayer GetPlayer()
+	{
+		return _player;
 	}
 }
 	

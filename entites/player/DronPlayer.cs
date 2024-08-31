@@ -14,8 +14,8 @@ public partial class DronPlayer : CharacterBody3D
 	public Camera3D Camera3D;
 	private SpringArm3D SpringArm3D;
 	private Node3D RotateXNode;
-	private float minArm = 1.5f;
-	private float maxArm = 5.0f;
+	private float minArm = 2.0f;
+	private float maxArm = 7.0f;
 	
 	private Node3D Visual;
 	private const float RotationSpeed = 1.0f;
@@ -40,6 +40,7 @@ public partial class DronPlayer : CharacterBody3D
 	
 	private AnimationPlayer AnimationPlayer;
 	private bool isControlsDisabled = false;
+	private bool isEscapePressed = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -98,6 +99,18 @@ public partial class DronPlayer : CharacterBody3D
 				Input.MouseMode = Input.MouseModeEnum.Visible;
 				_computerOpened = true;
 			}
+		}
+
+		if (@event.IsActionPressed("game_menu"))
+		{
+			if (isEscapePressed)
+			{
+				Input.MouseMode = Input.MouseModeEnum.Visible;				
+			}else
+			{
+				Input.MouseMode = Input.MouseModeEnum.Captured;
+			}
+			isEscapePressed = !isEscapePressed;
 		}
 	}
 

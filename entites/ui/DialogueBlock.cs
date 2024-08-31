@@ -16,6 +16,7 @@ namespace DialogueManagerRuntime
 	Control balloon;
 	RichTextLabel characterLabel;
 	RichTextLabel dialogueLabel;
+	Control tooltip;
 
 	Resource resource;
 	Array<Variant> temporaryGameStates = new Array<Variant>();
@@ -49,6 +50,7 @@ namespace DialogueManagerRuntime
 	  balloon = GetNode<Control>("%Balloon");
 	  characterLabel = GetNode<RichTextLabel>("%CharacterLabel");
 	  dialogueLabel = GetNode<RichTextLabel>("%DialogueLabel");
+	  tooltip = GetNode<Control>("%Tooltip");
 
 	  balloon.Hide();
 
@@ -134,6 +136,7 @@ namespace DialogueManagerRuntime
 
 	private async void UpdateDialogue()
 	{
+		tooltip.Visible = false;
 	  if (!IsNodeReady())
 	  {
 		await ToSignal(this, SignalName.Ready);
@@ -174,6 +177,7 @@ namespace DialogueManagerRuntime
 	  }
 	  else
 	  {
+		  tooltip.Visible = true;
 		isWaitingForInput = true;
 		balloon.FocusMode = Control.FocusModeEnum.All;
 		balloon.GrabFocus();

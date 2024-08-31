@@ -23,22 +23,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 15.0
-offset_right = -13.0
-offset_bottom = -16.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = -16.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control/Balloon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Dialogue" type="MarginContainer" parent="Control/Balloon/Panel"]
+[node name="Dialogue" type="MarginContainer" parent="Control/Balloon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,10 +42,10 @@ offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Balloon/Panel/Dialogue"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Balloon/Dialogue"]
 layout_mode = 2
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Control/Balloon/Panel/Dialogue/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Control/Balloon/Dialogue/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -63,8 +55,31 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Control/Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_qqfj8")]
+[node name="DialogueLabel" parent="Control/Balloon/Dialogue/VBoxContainer" instance=ExtResource("2_qqfj8")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+
+[node name="Tooltip" type="Control" parent="Control/Balloon/Dialogue/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Balloon/Dialogue/VBoxContainer/Tooltip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Space to continue..."
+
+[node name="Panel" type="Panel" parent="Control/Balloon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

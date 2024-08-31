@@ -74,6 +74,7 @@ public partial class GameController : Node
 		xLeftMarker = GetParent().GetNode<Marker3D>("%xLeft");
 		xRightMarker = GetParent().GetNode<Marker3D>("%xRight");
 		
+		_globals.SetPlayer(DronPlayer);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

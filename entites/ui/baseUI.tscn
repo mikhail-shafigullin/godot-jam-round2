@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddhl0dhq8pw83"]
+[gd_scene load_steps=10 format=3 uid="uid://ddhl0dhq8pw83"]
 
 [ext_resource type="Script" path="res://entites/ui/BasePlayerUI.cs" id="1_2hsfm"]
+[ext_resource type="Material" uid="uid://o6je6kosf01w" path="res://entites/shaders/baseUI.tres" id="1_dtibn"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="1_ig8x7"]
 [ext_resource type="PackedScene" uid="uid://b0so1iux7cmev" path="res://entites/ui/CurrentMission.tscn" id="2_vl2mo"]
+[ext_resource type="Texture2D" uid="uid://d3s2ia8f4j7l4" path="res://assets/sprites/focus.png" id="3_6arua"]
 [ext_resource type="Script" path="res://entites/ui/MarkerDisplay.cs" id="3_nf1n7"]
 [ext_resource type="Texture2D" uid="uid://cqclb1llofjb1" path="res://assets/sprites/loadWheel.png" id="3_xehyk"]
 [ext_resource type="PackedScene" uid="uid://br78gk818sde1" path="res://entites/ui/dialogue_block.tscn" id="4_j86fd"]
@@ -17,6 +19,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ig8x7")
 script = ExtResource("1_2hsfm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6arua")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("1_dtibn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -65,11 +105,13 @@ script = ExtResource("3_nf1n7")
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 19.0
 offset_right = 243.0
+offset_bottom = -19.0
 grow_vertical = 2
 
 [node name="MissionBlock" parent="LeftBlock" instance=ExtResource("2_vl2mo")]
-visible = false
 layout_mode = 1
 offset_left = 9.0
 offset_top = 14.0
@@ -88,28 +130,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="RepairingText" type="RichTextLabel" parent="RepairBlock"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.5
-offset_top = -164.0
-offset_right = 80.5
-offset_bottom = -124.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]Repairing..."
 
 [node name="ActionProgress" type="TextureProgressBar" parent="RepairBlock"]
 unique_name_in_owner = true
@@ -119,17 +141,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.0
-offset_top = -137.5
-offset_right = 85.0
-offset_bottom = -9.49999
+offset_left = -44.0
+offset_top = -143.5
+offset_right = 84.0
+offset_bottom = -15.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
-value = 45.0
+value = 100.0
 rounded = true
 fill_mode = 4
 texture_progress = ExtResource("3_xehyk")
+metadata/_edit_group_ = true
 
 [node name="ScreenManager" parent="." instance=ExtResource("7_7ri15")]
 unique_name_in_owner = true

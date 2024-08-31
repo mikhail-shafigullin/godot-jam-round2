@@ -21,6 +21,8 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	private float maxRepairProgress = BrokenPartRes.maxRepairProgress;
 	
 	private BrokenPartRes _brokenPart = null;
+	private RichTextLabel _textTrigger;
+	private DronPlayer _player;
 
 	private Area3D _area3D;
 	
@@ -29,6 +31,7 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	{
 		_globals = GetNode<Globals>("/root/Globals");
 		_area3D = GetNode<Area3D>("%Area3D");
+		_textTrigger = GetNode<RichTextLabel>("%triggerLabel");
 
 		SetDisabled(true);
 	}
@@ -46,7 +49,20 @@ public partial class RepairTrigger : Node3D, ITriggerable
 				_isRepairing = false;
 			}
 		}
+		
+		if(_player == null)
+		{
+			_player = _globals.GetPlayer();
+		}
+		
+		if(!_isDisabled && _player != null)
+		{
+			var distanceTo = _player.GlobalPosition.DistanceTo(GlobalPosition);
+			_textTrigger.Text = string.Format("{0:N2}", distanceTo) + " m";
+		}
 	}
+
+	
 
 	public void Trigger()
 	{
