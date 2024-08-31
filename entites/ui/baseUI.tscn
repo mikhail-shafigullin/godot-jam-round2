@@ -92,6 +92,7 @@ bbcode_enabled = true
 text = "[center]click"
 
 [node name="LeftBlock" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -175,8 +176,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[right]F
-Shift
+text = "[right]Shift
 Q/E"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TutorialBlock/HBoxContainer"]
@@ -186,8 +186,7 @@ size_flags_horizontal = 3
 [node name="RichTextLabel" type="RichTextLabel" parent="TutorialBlock/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "- Map
-- Accelerate
+text = "- Accelerate
 - Zoom"
 
 [node name="ScreenManager" parent="." instance=ExtResource("7_7ri15")]

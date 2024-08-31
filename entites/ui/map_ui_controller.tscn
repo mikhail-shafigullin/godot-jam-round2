@@ -38,6 +38,7 @@ size_flags_vertical = 3
 
 [node name="TextureLeft" type="TextureRect" parent="VBoxContainer/Control"]
 unique_name_in_owner = true
+texture_filter = 2
 material = ExtResource("2_b7u72")
 layout_mode = 1
 anchors_preset = 8
@@ -197,6 +198,7 @@ size_flags_vertical = 3
 
 [node name="TextureTop" type="TextureRect" parent="VBoxContainer/Control2"]
 unique_name_in_owner = true
+texture_filter = 2
 material = ExtResource("2_b7u72")
 layout_mode = 1
 anchors_preset = 8

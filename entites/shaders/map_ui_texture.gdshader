@@ -24,7 +24,7 @@ void fragment() {
 		if (distanceColor < threshold) {
 	        color.a = pulse;
 	    } else {
-	        color.a = 1.0;
+			color.a = 0.3;
 	    }
 	}
 

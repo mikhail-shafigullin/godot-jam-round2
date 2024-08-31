@@ -65,21 +65,22 @@ func _input(event):
 			_SpringArm3D.rotation.x = clamp(_SpringArm3D.rotation.x, -PI/3, PI/4);
 			_SpringArm3D.rotation.z = 0;
 
-	if event.is_action_pressed("player_computer") and not isControlsDisabled:
-		if _computerUi.visible:
-			_computerUi.visible = false
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			_computerOpened = false
-		else:
-			_computerUi.visible = true
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			_computerOpened = true
+	#if event.is_action_pressed("player_computer") and not isControlsDisabled:
+		#if _computerUi.visible:
+			#_computerUi.visible = false
+			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			#_computerOpened = false
+		#else:
+			#_computerUi.visible = true
+			#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			#_computerOpened = true
 
 	if event.is_action_pressed("game_menu"):
 		if isEscapePressed:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			
 		isEscapePressed = not isEscapePressed
 
 func _process(delta):

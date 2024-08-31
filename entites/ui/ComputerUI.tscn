@@ -41,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MapUIController" parent="Control/Map" instance=ExtResource("2_q6u6v")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]

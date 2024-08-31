@@ -370,11 +370,10 @@ current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BaseUi" parent="CanvasLayer" instance=ExtResource("2_d2834")]
-
 [node name="ComputerUi" parent="CanvasLayer" instance=ExtResource("4_df0p3")]
 unique_name_in_owner = true
-visible = false
+
+[node name="BaseUi" parent="CanvasLayer" instance=ExtResource("2_d2834")]
 
 [node name="pulse" type="AnimationPlayer" parent="."]
 libraries = {
