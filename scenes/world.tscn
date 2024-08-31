@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://mvsi3yh8xcfv"]
+[gd_scene load_steps=17 format=3 uid="uid://mvsi3yh8xcfv"]
 
 [ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
 [ext_resource type="Script" path="res://scenes/cut_scene.gd" id="1_t5xwh"]
 [ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="3_2yh1p"]
 [ext_resource type="Texture2D" uid="uid://qvdw6c4rkrol" path="res://models/31506352382uefgy4dqaqnhjdxg1ux1kcojh3hbffkkggbyzjirljrevb7s6ic3gnis5m6ddbszy5lh5l011aumlgnycogp6sun8otukbpvtzv9-1199252123.png" id="3_imk67"]
+[ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="3_sgsal"]
 [ext_resource type="Texture2D" uid="uid://dpn3n8kef0wfv" path="res://models/starmap_2020_2k.exr" id="3_uu5it"]
 [ext_resource type="PackedScene" uid="uid://ctgsgjglpau0g" path="res://entites/mecha/repair_trigger.tscn" id="21_5powe"]
 [ext_resource type="Script" path="res://src/gameplay/GameController.gd" id="21_sefmn"]
@@ -19,47 +20,6 @@ shading_mode = 0
 albedo_color = Color(1, 1, 0.933333, 1)
 albedo_texture = ExtResource("3_imk67")
 disable_receive_shadows = true
-
-[sub_resource type="Animation" id="Animation_p88yr"]
-resource_name = "end"
-length = 1200.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 28, 69, 1196.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-274, 100, -10), Vector3(-260, 91.945, -187), Vector3(-460, 70, -509), Vector3(-300, 100, -8000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:current")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/CreditsLayer/TextEdit:visible_ratio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_jw8ty"]
 length = 0.001
@@ -110,6 +70,47 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p88yr"]
+resource_name = "end"
+length = 1200.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 28, 69, 1196.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-274, 100, -10), Vector3(-260, 91.945, -187), Vector3(-460, 70, -509), Vector3(-300, 100, -8000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/CreditsLayer/TextEdit:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t3xm3"]
@@ -182,13 +183,16 @@ offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_sgsal")
 bbcode_enabled = true
-text = "credits creditscreditscreditsreditsreditsredits
+text = "[right]Bon Voyage!
+Thank you for playing!
 
-credits - credits
-credits - credits
-credits - credits
-credits - credits"
+AltTabber - programming
+noname - programming, 3d
+baton - 3d
+
+"
 fit_content = true
 visible_characters = 0
 visible_ratio = 0.0
