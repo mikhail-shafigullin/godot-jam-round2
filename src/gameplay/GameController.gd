@@ -342,6 +342,9 @@ func EndGame():
 	for repairTrigger in RepairTriggersEighthMission:
 		_missionManager.OnChangeVisibility.disconnect(repairTrigger.SetDisabled)
 	emit_signal("OnGameEnd")
+	Global.cutscener.end()
+	_dronPlayer._computerUi.visible = false
+	_dronPlayer.set_mute(true)
 
 func GetMissionManager():
 	return _missionManager

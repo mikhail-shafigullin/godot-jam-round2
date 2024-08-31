@@ -172,3 +172,6 @@ func stop_repairing():
 
 func set_controls_disabled(disabled: bool):
 	isControlsDisabled = disabled
+
+func set_mute(b: bool):
+	$AudioStreamPlayer3D.playing = not b;

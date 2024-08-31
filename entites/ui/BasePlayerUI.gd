@@ -23,7 +23,7 @@ func _ready():
 	DialogueManager.got_dialogue.connect(_on_got_dialogue)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:

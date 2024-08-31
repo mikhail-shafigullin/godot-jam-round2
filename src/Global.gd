@@ -8,6 +8,7 @@ var _screenManager: ScreenManager;
 var _player: DronPlayer;
 
 var dome;
+var cutscener;
 
 func _init() -> void:
 	_missionManager = MissionManager.new();
