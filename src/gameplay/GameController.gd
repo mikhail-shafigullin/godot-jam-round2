@@ -344,6 +344,7 @@ func EndGame():
 	emit_signal("OnGameEnd")
 	Global.cutscener.end()
 	_dronPlayer._computerUi.visible = false
+	Global._ui.visible = false;
 	_dronPlayer.set_mute(true)
 
 func GetMissionManager():

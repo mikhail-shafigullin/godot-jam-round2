@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mvsi3yh8xcfv"]
+[gd_scene load_steps=18 format=3 uid="uid://mvsi3yh8xcfv"]
 
 [ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
 [ext_resource type="Script" path="res://scenes/cut_scene.gd" id="1_t5xwh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qvdw6c4rkrol" path="res://models/31506352382uefgy4dqaqnhjdxg1ux1kcojh3hbffkkggbyzjirljrevb7s6ic3gnis5m6ddbszy5lh5l011aumlgnycogp6sun8otukbpvtzv9-1199252123.png" id="3_imk67"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="3_sgsal"]
 [ext_resource type="Texture2D" uid="uid://dpn3n8kef0wfv" path="res://models/starmap_2020_2k.exr" id="3_uu5it"]
+[ext_resource type="PackedScene" uid="uid://b25atdo6ybkhq" path="res://models/objects/antena_tiny.tscn" id="9_4orf3"]
 [ext_resource type="PackedScene" uid="uid://ctgsgjglpau0g" path="res://entites/mecha/repair_trigger.tscn" id="21_5powe"]
 [ext_resource type="Script" path="res://src/gameplay/GameController.gd" id="21_sefmn"]
 
@@ -313,3 +314,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94973, -24.6689, -78.7047)
 
 [node name="RepairTrigger2" parent="EighthMissionRepairTriggers" instance=ExtResource("21_5powe")]
 withEffects = false
+
+[node name="antenaTiny" parent="." instance=ExtResource("9_4orf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94159, 40.9962, 123.544)

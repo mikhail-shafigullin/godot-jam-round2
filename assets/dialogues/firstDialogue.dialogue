@@ -2,8 +2,13 @@
 
 do Global._gameController.DisableControls(true)
 #add to blackscreen
-crew1: Capitan, we detected pressure in cargo area.
-#Crew 1: Captain, there's -1.
+Crew 1: Captain, there's pressure detected in the cargo area.
+Captain: Send the repair crew and assess for hull damage.
+
+Crew 1: There's a leak into the cargo. Suit up and check the nitrogen line on A6.
+Repair Technician: Copy that.
+Crew 1: Crew 2, deploy the welder.
+Crew 2: Deploying the AW-1.
 do Global._screenManager.play_fade_out()
 do Global._gameController.DisableControls(false)
 ## Fade in 
@@ -30,7 +35,7 @@ Crew 2: On it.
 Crew 1: We're high on oxygen. Turn off the enricher tank on the stem.
 Crew 2: We've lost the communication line. We can try to manually override it!
 Crew 1: Then do it!
-Crew 1: Repair Technitian, verify the air line on your return.
+Crew 1: Repair Technician, verify the air line on your return.
 Repair Technician: Will do.
 => END
 
@@ -52,7 +57,7 @@ Crew 2: Understood, will do.
 
 ~ seventhDialogue
 do Global.dome.boom()
-Captain: Seal off the deck area!
+......
 
 ~ eighthDialogue
-Captain: *sounds of engagement*
+......
