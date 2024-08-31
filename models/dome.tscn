@@ -230,7 +230,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_t8uk3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_relwe")
-volume_db = -28.51
+volume_db = -21.0
 bus = &"World"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
