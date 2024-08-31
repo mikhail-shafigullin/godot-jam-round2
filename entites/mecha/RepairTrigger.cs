@@ -103,7 +103,9 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	{
 		if(node is DronPlayer)
 		{
+			DronPlayer player = (DronPlayer)node;
 			Trigger();
+			player.Repairing();
 		}
 	}
 	
@@ -111,7 +113,9 @@ public partial class RepairTrigger : Node3D, ITriggerable
 	{
 		if(node is DronPlayer)
 		{
+			DronPlayer player = (DronPlayer)node;
 			RemoveTrigger();
+			player.StopRepairing();
 		}
 	}
 	

@@ -20,10 +20,11 @@ public partial class DronPlayer : CharacterBody3D
 	private Node3D Visual;
 	private const float RotationSpeed = 1.0f;
 	private const float MoveSpeed = 30.0f;
+	private const float FastMoveSpeed = 50.0f;
 	private const float MouseSensitivity = 0.4f;
 	
-	private Vector3[] _bottomPoints = new Vector3[16];
-	private Vector3[] _bottomNormals = new Vector3[16];
+	private Vector3[] _bottomPoints = new Vector3[32];
+	private Vector3[] _bottomNormals = new Vector3[32];
 
 	private Vector3 inputDirection;
 	private Vector3 strongInputDirection;
@@ -36,6 +37,8 @@ public partial class DronPlayer : CharacterBody3D
 	
 	public ComputerUi ComputerUi = null;
 	private bool _computerOpened = false;
+	
+	private AnimationPlayer AnimationPlayer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -57,6 +60,7 @@ public partial class DronPlayer : CharacterBody3D
 		Visual = GetNode<Node3D>("%Visual");
 		RotateXNode = GetNode<Node3D>("%RotateXNode");
 		ComputerUi = GetNode<ComputerUi>("%ComputerUi");
+		AnimationPlayer = GetNode<AnimationPlayer>("%spacePlayerRobot/AnimationPlayer");
 
 		strongInputDirection = GlobalBasis * Vector3.Forward;
 	}
@@ -178,11 +182,16 @@ public partial class DronPlayer : CharacterBody3D
 		{
 			isMoving = true;
 			velocityInput += -cameraLeft.Normalized();
-		}	
+		}
 
 		if (isMoving)
 		{
-			Velocity = velocityInput.Normalized() * MoveSpeed;
+			var speed = MoveSpeed;
+			if (Input.IsActionPressed("player_accelerate"))
+			{
+				speed = FastMoveSpeed;
+			}
+			Velocity = velocityInput.Normalized() * speed;
 			var values = MoveAndSlide();
 			// var values = MoveAndCollide(Velocity * (float)delta, false, 0.1f);
 		}
@@ -234,5 +243,15 @@ public partial class DronPlayer : CharacterBody3D
 		Basis basis = new Basis(newX, newY, newZ).Orthonormalized();
 		Transform3D trans = new Transform3D(basis, GlobalTransform.Origin);
 		GlobalTransform = GlobalTransform.InterpolateWith(trans, 0.2f);
+	}
+
+	public void Repairing()
+	{
+		AnimationPlayer.Play("weld");
+	}
+
+	public void StopRepairing()
+	{
+		AnimationPlayer.Play("idleFly");
 	}
 }

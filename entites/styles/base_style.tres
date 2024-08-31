@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://n1pu8tpnp1u"]
+
+[ext_resource type="FontFile" uid="uid://xd2iofff34di" path="res://assets/fonts/NewsCycle-Regular.ttf" id="1_5malv"]
+
+[resource]
+default_font = ExtResource("1_5malv")
