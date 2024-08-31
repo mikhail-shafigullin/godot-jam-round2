@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddhl0dhq8pw83"]
+[gd_scene load_steps=9 format=3 uid="uid://ddhl0dhq8pw83"]
 
 [ext_resource type="Material" uid="uid://o6je6kosf01w" path="res://entites/shaders/baseUI.tres" id="1_dtibn"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="1_ig8x7"]
 [ext_resource type="Script" path="res://entites/ui/BasePlayerUI.gd" id="2_ikv7r"]
 [ext_resource type="PackedScene" uid="uid://b0so1iux7cmev" path="res://entites/ui/CurrentMission.tscn" id="2_vl2mo"]
 [ext_resource type="Texture2D" uid="uid://d3s2ia8f4j7l4" path="res://assets/sprites/focus.png" id="3_6arua"]
-[ext_resource type="Script" path="res://entites/ui/MarkerDisplay.cs" id="3_nf1n7"]
 [ext_resource type="Texture2D" uid="uid://cqclb1llofjb1" path="res://assets/sprites/loadWheel.png" id="3_xehyk"]
 [ext_resource type="PackedScene" uid="uid://br78gk818sde1" path="res://entites/ui/dialogue_block.tscn" id="4_j86fd"]
 [ext_resource type="PackedScene" uid="uid://b3xj5ug4ccisa" path="res://entites/ui/screen_manager.tscn" id="7_7ri15"]
@@ -91,15 +90,6 @@ grow_vertical = 0
 scale = Vector2(1.00239, 0.992995)
 bbcode_enabled = true
 text = "[center]click"
-
-[node name="MarkerDisplay" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_nf1n7")
 
 [node name="LeftBlock" type="Control" parent="."]
 layout_mode = 1

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctgsgjglpau0g"]
+[gd_scene load_steps=8 format=3 uid="uid://ctgsgjglpau0g"]
 
 [ext_resource type="Script" path="res://entites/mecha/RepairTrigger.gd" id="1_duffd"]
-[ext_resource type="Script" path="res://entites/mecha/MissionMarker.cs" id="2_qnqbv"]
-[ext_resource type="Script" path="res://entites/mecha/Waypoint.cs" id="3_fraek"]
+[ext_resource type="Script" path="res://entites/mecha/Waypoint.gd" id="2_h8igr"]
 [ext_resource type="Texture2D" uid="uid://d3s2ia8f4j7l4" path="res://assets/sprites/focus.png" id="4_j6juh"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="5_hh0vh"]
 
@@ -34,10 +33,9 @@ collision_mask = 129
 shape = SubResource("SphereShape3D_73xjj")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-script = ExtResource("2_qnqbv")
 
 [node name="waypoint" type="Node3D" parent="."]
-script = ExtResource("3_fraek")
+script = ExtResource("2_h8igr")
 
 [node name="Origin" type="Node2D" parent="waypoint"]
 

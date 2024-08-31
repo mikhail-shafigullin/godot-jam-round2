@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://br78gk818sde1"]
 
-[ext_resource type="Script" path="res://entites/ui/DialogueBlock.cs" id="1_xl7ju"]
+[ext_resource type="Script" path="res://entites/ui/DialogueBlock.gd" id="1_1wejm"]
 [ext_resource type="Theme" uid="uid://n1pu8tpnp1u" path="res://entites/styles/base_style.tres" id="2_7ff5j"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_qqfj8"]
 
 [node name="DialogueBlock" type="CanvasLayer"]
-script = ExtResource("1_xl7ju")
+script = ExtResource("1_1wejm")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -83,3 +83,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="gui_input" from="Control/Balloon" to="." method="_on_balloon_gui_input"]

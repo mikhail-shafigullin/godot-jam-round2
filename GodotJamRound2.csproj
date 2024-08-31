@@ -6,9 +6,15 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="entites\mecha\" />
+    <Folder Include="entites\player\" />
     <Folder Include="scenes\" />
+    <Folder Include="src\gameplay\" />
+    <Folder Include="src\ship\" />
+    <Folder Include="src\tasks\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="entites\ui\DialogueBlock.gd" />
     <Content Include="entites\ui\screen_manager.tscn" />
   </ItemGroup>
 </Project>

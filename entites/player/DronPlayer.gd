@@ -92,8 +92,8 @@ func _process(delta):
 	var cameraLeft = cameraBackward.cross(middleCollisionNormalComputed)
 	var cameraLeftProject = cameraLeft - cameraLeft.project(middleCollisionNormalComputed)
 	
-	DebugDraw3D.draw_line(middleCollisionPoint, middleCollisionPoint + cameraLeftProject);
-	DebugDraw3D.draw_line(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
+	#DebugDraw3D.draw_line(middleCollisionPoint, middleCollisionPoint + cameraLeftProject);
+	#DebugDraw3D.draw_line(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
 
 	if Input.is_action_pressed("camera_zoom_up") and not isControlsDisabled:
 		_SpringArm3D.spring_length = clamp(_SpringArm3D.spring_length + 0.1, minArm, maxArm)
@@ -106,9 +106,9 @@ func _process(delta):
 			_bottomPoints[i] = raycasts[i].get_collision_point()
 			_bottomNormals[i] = raycasts[i].get_collision_normal()
 
-	DebugDraw3D.draw_points(_bottomPoints);
-	for i in _bottomPoints.size():
-		DebugDraw3D.draw_line(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
+	#DebugDraw3D.draw_points(_bottomPoints);
+	#for i in _bottomPoints.size():
+		#DebugDraw3D.draw_line(_bottomPoints[i], _bottomPoints[i] + _bottomNormals[i]);
 
 	if MiddleRayCast.is_colliding():
 		middleCollisionPoint = MiddleRayCast.get_collision_point()
