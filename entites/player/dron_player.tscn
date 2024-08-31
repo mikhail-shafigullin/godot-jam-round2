@@ -18,20 +18,6 @@ height = 0.5
 [sub_resource type="BoxMesh" id="BoxMesh_dyayg"]
 size = Vector3(0.1, 0.1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ucfq"]
-cull_mode = 2
-disable_ambient_light = true
-disable_fog = true
-emission_enabled = true
-emission = Color(1, 0.325, 0.19, 1)
-emission_energy_multiplier = 11.59
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_o5wil"]
-size = 0.059
-sections = 2
-section_length = 0.777
-section_segments = 1
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks830"]
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -45,6 +31,20 @@ size = Vector2(0.05, 0.05)
 min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ucfq"]
+cull_mode = 2
+disable_ambient_light = true
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 0.325, 0.19, 1)
+emission_energy_multiplier = 11.59
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_o5wil"]
+size = 0.059
+sections = 2
+section_length = 0.777
+section_segments = 1
 
 [sub_resource type="Animation" id="Animation_8edoe"]
 length = 0.001
@@ -137,11 +137,8 @@ skeleton = NodePath("../..")
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
-bones/0/position = Vector3(0.0176603, 0.285624, -0.0036244)
-bones/0/rotation = Quaternion(-0.00288254, -0.00142678, 0.00246715, 0.999992)
-bones/1/rotation = Quaternion(-0.697284, 0.00212189, 0.00204168, 0.716789)
+bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.000273638, -0.0160487, 0.919079, -0.393747)
 bones/3/rotation = Quaternion(-0.704121, 0.0444125, -0.0347798, 0.707836)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -149,7 +146,7 @@ bones/3/scale = Vector3(1, 1, 1)
 layers = 2
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999984, -0.00492603, -0.00286776, 0.00494248, 0.999971, 0.00575799, 0.00283931, -0.00577207, 0.999979, 0.0176603, 0.285624, -0.0036244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236252, 0)
 bone_name = "body"
 bone_idx = 0
 
@@ -181,21 +178,13 @@ light_cull_mask = 4294967293
 omni_range = 1.70235
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.764474, 0.00508535, 0.644634, -0.0403437, -0.998386, -0.0399677, 0.643391, -0.0565612, 0.763446, 1.03354, 1.03556, -0.173399)
+transform = Transform3D(-0.741131, 6.95698e-07, 0.671361, -9.12696e-08, -1, 9.58331e-07, 0.671361, 6.22123e-07, 0.74113, 1.05844, 1.01952, -0.209614)
 bone_name = "welder"
 bone_idx = 3
 
-[node name="onWeld" type="Node3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2"]
-transform = Transform3D(1, 9.31323e-10, 8.9407e-08, 0, 1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 0, 0)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2/onWeld"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76951e-08, 1.45469, 0)
-material_override = SubResource("StandardMaterial3D_5ucfq")
-mesh = SubResource("RibbonTrailMesh_o5wil")
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2/onWeld"]
-transform = Transform3D(1, -8.88178e-16, 0, 3.55271e-15, 1, 0, 0, 1.77636e-15, 1, 2.61933e-10, 1.38777, 8.44014e-10)
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2"]
+transform = Transform3D(1, -7.45058e-09, 8.9407e-08, 0, 1, 3.72529e-09, 5.96046e-08, 0, 1, 6.08481e-08, 1.22088, -5.96046e-08)
+emitting = false
 amount = 48
 lifetime = 0.73
 randomness = 0.26
@@ -213,6 +202,15 @@ scale_amount_max = 0.8
 hue_variation_min = 0.05
 hue_variation_max = 0.19
 hue_variation_curve = SubResource("Curve_3gb1t")
+
+[node name="onWeld" type="Node3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2"]
+transform = Transform3D(1, 9.31323e-10, 8.9407e-08, 0, 1, 0, -2.98023e-08, 4.65661e-10, 1, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D/BoneAttachment3D2/onWeld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76951e-08, 1.45469, 0)
+material_override = SubResource("StandardMaterial3D_5ucfq")
+mesh = SubResource("RibbonTrailMesh_o5wil")
 
 [node name="AnimationPlayer" parent="Visual/spacePlayerRobot" index="1"]
 autoplay = "idleFly"
@@ -384,12 +382,13 @@ autoplay = "pulse"
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590248, 0)
 stream = ExtResource("5_1036k")
-volume_db = -38.66
+attenuation_model = 3
+volume_db = -16.0
 max_db = -17.056
 pitch_scale = 0.5
 autoplay = true
-max_distance = 6.0
 panning_strength = 2.0
+bus = &"World"
 playback_type = 1
 doppler_tracking = 1
 

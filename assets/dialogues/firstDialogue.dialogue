@@ -37,22 +37,21 @@ Repair Technician: Will do.
 
 ~ fifthDialogue
 Crew 2: Seems like our communication bus is complytly toasted.
-Crew 1: We've just lost remote control of the ship?
-Crew 2: correct.
 Repair Technician: We're in the vents. There's goo it's moving.
 Crew 1: Forget it. Prepare to fix the enricher.
 Repair Technician: It has eyes and moving towords us. Run!
 => END
 
 ~ sixthDialogue
+Crew 2: Cannot establish wireless control. Human intervention needed
 Crew 1: We have a security breach in sector A!
-Crew 1: Security, gear up and check A5.
 Security: Understood.
 Crew 1: Pressure's climbing. We need to vent some off. Crew 2, handle it.
 Crew 2: Understood, will do.
 => END!
 
 ~ seventhDialogue
+do Global.dome.boom()
 Captain: Seal off the deck area!
 
 ~ eighthDialogue

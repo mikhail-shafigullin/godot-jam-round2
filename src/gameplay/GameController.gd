@@ -84,7 +84,7 @@ func StartFirstDialogue():
 
 func StartFirstMission(dialogue_resource):
 	var firstMission = MissionRes.new()
-	firstMission._missionDescription = "Repair all broken parts";
+	firstMission._missionDescription = "CHECK CARGO AREA [C6-0]";
 	var brokenPartsCount = 0
 	for repairTrigger: RepairTrigger in RepairTriggersFirstMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("firstMission")
@@ -93,7 +93,7 @@ func StartFirstMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled) 
 		var task = TaskRes.new();
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Repair damage", Signal(brokenPartRes, "OnPartRepaired"))
 		firstMission.AddTask(task)
 		brokenPartsCount += 1
 	firstMission.OnMissionComplete.connect(func():
@@ -126,7 +126,7 @@ func StartSecondMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new()
-		task.init("Fix Coolant Line #" + str(brokenPartsCount), Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Check ES-01" + str(brokenPartsCount), Signal(brokenPartRes, "OnPartRepaired"))
 		secondMission.AddTask(task)
 		brokenPartsCount += 1
 	secondMission.OnMissionComplete.connect(func():
@@ -150,7 +150,7 @@ func StartThirdDialogue():
 
 func StartThirdMission(dialogue_resource):
 	var thirdMission = MissionRes.new()
-	thirdMission._missionDescription = "Repair all broken parts";
+	thirdMission._missionDescription = "CHECK CARGO AREA [C5-12]";
 	var brokenPartsCount = 0
 	for repairTrigger in RepairTriggersThirdMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("thirdMission")
@@ -159,7 +159,7 @@ func StartThirdMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new();
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Repair damage", Signal(brokenPartRes, "OnPartRepaired"))
 		thirdMission.AddTask(task)
 		brokenPartsCount += 1
 	thirdMission.OnMissionComplete.connect(func():
@@ -183,7 +183,7 @@ func StartFourthDialogue():
 
 func StartFourthMission(dialogue_resource):
 	var fourthMission = MissionRes.new()
-	fourthMission._missionDescription = "Repair all broken parts";
+	fourthMission._missionDescription = "OVERWRITE FLOW CONTROL";
 	var brokenPartsCount = 0
 	for repairTrigger in RepairTriggersFourthMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("fourthMission")
@@ -192,7 +192,7 @@ func StartFourthMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new()
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Redirect the flow valve", Signal(brokenPartRes, "OnPartRepaired"))
 		fourthMission.AddTask(task)
 		brokenPartsCount += 1
 	fourthMission.OnMissionComplete.connect(func():
@@ -216,7 +216,7 @@ func StartFifthDialogue():
 
 func StartFifthMission(dialogue_resource):
 	var fifthMission = MissionRes.new()
-	fifthMission._missionDescription = "Repair all broken parts";
+	fifthMission._missionDescription = "ESTABLISH REMOTE CONTROL";
 	var brokenPartsCount = 0
 	for repairTrigger in RepairTriggersFifthMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("fifthMission")
@@ -225,7 +225,7 @@ func StartFifthMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new()
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Path the WF-6", Signal(brokenPartRes, "OnPartRepaired"))
 		fifthMission.AddTask(task)
 		brokenPartsCount += 1
 	fifthMission.OnMissionComplete.connect(func():
@@ -249,7 +249,7 @@ func StartSixthDialogue():
 
 func StartSixthMission(dialogue_resource):
 	var sixthMission = MissionRes.new()
-	sixthMission._missionDescription = "Repair all broken parts";
+	sixthMission._missionDescription = "ATMOSPHERIC MAINTENANCE";
 	var brokenPartsCount = 0
 	for repairTrigger in RepairTriggersSixthMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("sixthMission")
@@ -258,7 +258,7 @@ func StartSixthMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new()
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Desolder the pressure gauge", Signal(brokenPartRes, "OnPartRepaired"))
 		sixthMission.AddTask(task)
 		brokenPartsCount += 1
 	sixthMission.OnMissionComplete.connect(func():
@@ -282,7 +282,7 @@ func StartSeventhDialogue():
 
 func StartSeventhMission(dialogue_resource):
 	var seventhMission = MissionRes.new()
-	seventhMission._missionDescription = "Repair all broken parts";
+	seventhMission._missionDescription = "FIRE DRILL";
 	var brokenPartsCount = 0
 	for repairTrigger in RepairTriggersSeventhMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("seventhMission")
@@ -291,7 +291,7 @@ func StartSeventhMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new()
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Trigger fire alarm", Signal(brokenPartRes, "OnPartRepaired"))
 		seventhMission.AddTask(task)
 		brokenPartsCount += 1
 	seventhMission.OnMissionComplete.connect(func():
@@ -315,7 +315,7 @@ func StartEighthDialogue():
 
 func StartEighthMission(dialogue_resource):
 	var eighthMission = MissionRes.new()
-	eighthMission._missionDescription = "Repair all broken parts";
+	eighthMission._missionDescription = "OUT OF ORDERS";
 	var brokenPartsCount = 0
 	for repairTrigger in RepairTriggersEighthMission:
 		var brokenPartRes = _shipRes.CreateBrokenPartResForMission("eighthMission") 
@@ -324,7 +324,7 @@ func StartEighthMission(dialogue_resource):
 		Global._mapUiController.add_broken_part(repairTrigger, GetNodePositionForMap(repairTrigger))
 		_missionManager.OnChangeVisibility.connect(repairTrigger.SetDisabled)
 		var task = TaskRes.new()
-		task.init("Repair part of external shell", Signal(brokenPartRes, "OnPartRepaired"))
+		task.init("Return to charging station", Signal(brokenPartRes, "OnPartRepaired"))
 		eighthMission.AddTask(task)
 		brokenPartsCount += 1
 	eighthMission.OnMissionComplete.connect(func():

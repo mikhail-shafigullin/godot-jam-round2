@@ -7,5 +7,7 @@ var _mapUiController: MapUiController;
 var _screenManager: ScreenManager;
 var _player: DronPlayer;
 
+var dome;
+
 func _init() -> void:
 	_missionManager = MissionManager.new();

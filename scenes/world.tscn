@@ -1,24 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://mvsi3yh8xcfv"]
+[gd_scene load_steps=12 format=3 uid="uid://mvsi3yh8xcfv"]
 
 [ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
 [ext_resource type="PackedScene" uid="uid://d0d7n0xgmrro5" path="res://entites/player/dron_player.tscn" id="3_2yh1p"]
 [ext_resource type="Texture2D" uid="uid://qvdw6c4rkrol" path="res://models/31506352382uefgy4dqaqnhjdxg1ux1kcojh3hbffkkggbyzjirljrevb7s6ic3gnis5m6ddbszy5lh5l011aumlgnycogp6sun8otukbpvtzv9-1199252123.png" id="3_imk67"]
 [ext_resource type="Texture2D" uid="uid://dpn3n8kef0wfv" path="res://models/starmap_2020_2k.exr" id="3_uu5it"]
-[ext_resource type="PackedScene" uid="uid://c2kiqy3sytbgd" path="res://models/objects/antena_big_cele.tscn" id="5_jkr3t"]
-[ext_resource type="PackedScene" uid="uid://c7e5krujvkj0c" path="res://models/objects/antena_cup.tscn" id="6_lo0no"]
-[ext_resource type="PackedScene" uid="uid://b25atdo6ybkhq" path="res://models/objects/antena_tiny.tscn" id="7_52olp"]
-[ext_resource type="PackedScene" uid="uid://b566atj4ltecm" path="res://models/objects/antena_tv.tscn" id="8_ssuoc"]
-[ext_resource type="PackedScene" uid="uid://cl4fm1x4swd3g" path="res://models/objects/hatch.tscn" id="9_qhtjx"]
-[ext_resource type="PackedScene" uid="uid://o24cjec2jcwu" path="res://models/objects/junk_panel.tscn" id="10_ipret"]
-[ext_resource type="PackedScene" uid="uid://b35ovj2uonjr3" path="res://models/objects/radio_thing.tscn" id="11_0kybk"]
-[ext_resource type="PackedScene" uid="uid://bcjgeog3ytb0q" path="res://models/objects/tank.tscn" id="12_dgaxu"]
-[ext_resource type="PackedScene" uid="uid://c1hn7f70q3x1w" path="res://models/objects/tank_fat.tscn" id="13_fgl6h"]
-[ext_resource type="PackedScene" uid="uid://c4b8s4fjgek1g" path="res://models/objects/went_fancy_stand.tscn" id="14_kuc1q"]
-[ext_resource type="PackedScene" uid="uid://b1cjq0ra0cfiy" path="res://models/objects/went_hatch_open.tscn" id="15_a0ogk"]
-[ext_resource type="PackedScene" uid="uid://nx7qc2uj0bdk" path="res://models/objects/went_long_thin.tscn" id="16_0nap8"]
-[ext_resource type="PackedScene" uid="uid://76vgv0s6k1an" path="res://models/objects/went_loong.tscn" id="17_cvknq"]
-[ext_resource type="PackedScene" uid="uid://dvb1nq52andr1" path="res://models/objects/went_sircle.tscn" id="18_7ydva"]
-[ext_resource type="PackedScene" uid="uid://cwlyorxlq5fio" path="res://models/objects/went_stand.tscn" id="19_g2fqg"]
 [ext_resource type="PackedScene" uid="uid://ctgsgjglpau0g" path="res://entites/mecha/repair_trigger.tscn" id="21_5powe"]
 [ext_resource type="Script" path="res://src/gameplay/GameController.gd" id="21_sefmn"]
 
@@ -107,51 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.5819, 0)
 unique_name_in_owner = true
 transform = Transform3D(0.995171, -0.0247733, -0.0949771, -0.0248858, -0.99969, 0, -0.0949476, 0.00236358, -0.99548, 7.22056, -24.844, -72.8295)
 rotation_edit_mode = 1
-
-[node name="antenaBigCele" parent="." instance=ExtResource("5_jkr3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27448, 51.8507, 38.3624)
-
-[node name="antenaCup" parent="." instance=ExtResource("6_lo0no")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99386, 52.9788, 36.6537)
-
-[node name="antenaTiny" parent="." instance=ExtResource("7_52olp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.441, 51.9685, 38.4412)
-
-[node name="antenaTV" parent="." instance=ExtResource("8_ssuoc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80924, 51.4674, 41.7511)
-
-[node name="hatch" parent="." instance=ExtResource("9_qhtjx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23172, 51.4417, 43.41)
-
-[node name="junkPanel" parent="." instance=ExtResource("10_ipret")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02804, 51.5729, 43.0378)
-
-[node name="radioThing" parent="." instance=ExtResource("11_0kybk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97663, 51.2164, 41.9956)
-
-[node name="tank" parent="." instance=ExtResource("12_dgaxu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85036, 50.7357, 48.6433)
-
-[node name="tankFat" parent="." instance=ExtResource("13_fgl6h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8556, 50.7955, 42.0956)
-
-[node name="wentFancyStand" parent="." instance=ExtResource("14_kuc1q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92895, 50.563, 49.0677)
-
-[node name="wentHatchOpen" parent="." instance=ExtResource("15_a0ogk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09836, 50.9382, 47.1419)
-
-[node name="wentLongThin" parent="." instance=ExtResource("16_0nap8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378243, 51.0213, 48.0701)
-
-[node name="wentLoong" parent="." instance=ExtResource("17_cvknq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34579, 50.5227, 52.0472)
-
-[node name="wentSircle" parent="." instance=ExtResource("18_7ydva")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44611, 50.1472, 52.6742)
-
-[node name="wentStand" parent="." instance=ExtResource("19_g2fqg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7378, 49.6749, 52.1567)
 
 [node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_dronPlayer", "RepairTriggersFirstMission", "RepairTriggersSecondMission", "RepairTriggersThirdMission", "RepairTriggersFourthMission", "RepairTriggersFifthMission", "RepairTriggersSixthMission", "RepairTriggersSeventhMission", "RepairTriggersEighthMission")]
 script = ExtResource("21_sefmn")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://pqs7lwuuaftt"]
+[gd_scene load_steps=15 format=3 uid="uid://pqs7lwuuaftt"]
 
+[ext_resource type="Script" path="res://models/dome.gd" id="1_k2brg"]
 [ext_resource type="ArrayMesh" uid="uid://hl6wav30etvj" path="res://models/dome.res" id="1_syg1e"]
 [ext_resource type="ArrayMesh" uid="uid://f38jsq1o513s" path="res://models/domeRing.res" id="2_bgl5s"]
 [ext_resource type="ArrayMesh" uid="uid://djlvb214trf3v" path="res://models/explosion.res" id="3_oddg1"]
@@ -201,6 +202,7 @@ _data = {
 }
 
 [node name="dome" type="Node3D"]
+script = ExtResource("1_k2brg")
 
 [node name="dome" type="Node3D" parent="."]
 
@@ -230,7 +232,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_t8uk3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_relwe")
-volume_db = -21.0
+volume_db = -13.0
 bus = &"World"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -238,4 +240,3 @@ root_node = NodePath("../ExternalBroken")
 libraries = {
 "": SubResource("AnimationLibrary_5jvue")
 }
-autoplay = "boom"
