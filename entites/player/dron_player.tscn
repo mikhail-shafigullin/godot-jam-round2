@@ -137,8 +137,11 @@ skeleton = NodePath("../..")
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Visual/spacePlayerRobot/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.705001, 0.00216765, 0.00216765, 0.709199)
+bones/0/position = Vector3(0.0176603, 0.285624, -0.0036244)
+bones/0/rotation = Quaternion(-0.00288254, -0.00142678, 0.00246715, 0.999992)
+bones/1/rotation = Quaternion(-0.697284, 0.00212189, 0.00204168, 0.716789)
 bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.000273638, -0.0160487, 0.919079, -0.393747)
 bones/3/rotation = Quaternion(-0.704121, 0.0444125, -0.0347798, 0.707836)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -146,7 +149,7 @@ bones/3/scale = Vector3(1, 1, 1)
 layers = 2
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236252, 0)
+transform = Transform3D(0.999984, -0.00492603, -0.00286776, 0.00494248, 0.999971, 0.00575799, 0.00283931, -0.00577207, 0.999979, 0.0176603, 0.285624, -0.0036244)
 bone_name = "body"
 bone_idx = 0
 
@@ -178,7 +181,7 @@ light_cull_mask = 4294967293
 omni_range = 1.70235
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Visual/spacePlayerRobot/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.741131, 6.97561e-07, 0.671361, 1.89058e-07, -1, 1.26893e-06, 0.671361, 1.03936e-06, 0.74113, 1.05844, 1.01952, -0.209614)
+transform = Transform3D(-0.764474, 0.00508535, 0.644634, -0.0403437, -0.998386, -0.0399677, 0.643391, -0.0565612, 0.763446, 1.03354, 1.03556, -0.173399)
 bone_name = "welder"
 bone_idx = 3
 

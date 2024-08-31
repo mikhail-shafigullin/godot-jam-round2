@@ -1,5 +1,6 @@
 ~ firstDialogue
 
+do Globals.GetGameController().DisableControls(true)
 #add to blackscreen
 crew1: Capitan, we detected pressure in cargo area.
 Crew 1: Captain, there's pressure detected in the cargo area.
@@ -9,6 +10,8 @@ Crew 1: There's a leak into the cargo. Suit up and check the nitrogen line on A6
 Repair Technician: Copy that.
 Crew 1: Crew 2, deploy the welder.
 Crew 2: Deploying the AW-1.
+do Globals.GetScreenManager().PlayFadeOut()
+do Globals.GetGameController().DisableControls(false)
 ## Fade in 
 => END
 

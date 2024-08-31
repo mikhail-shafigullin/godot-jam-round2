@@ -8,4 +8,7 @@
   <ItemGroup>
     <Folder Include="scenes\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="entites\ui\screen_manager.tscn" />
+  </ItemGroup>
 </Project>

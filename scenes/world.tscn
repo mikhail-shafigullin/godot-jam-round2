@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://mvsi3yh8xcfv"]
+[gd_scene load_steps=28 format=3 uid="uid://mvsi3yh8xcfv"]
 
 [ext_resource type="PackedScene" uid="uid://dqnn0xey3mbow" path="res://scenes/SpaceShip.tscn" id="1_81tjy"]
 [ext_resource type="Script" path="res://scenes/World.cs" id="1_fp0dg"]
@@ -22,79 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cwlyorxlq5fio" path="res://models/objects/went_stand.tscn" id="19_g2fqg"]
 [ext_resource type="Script" path="res://src/gameplay/GameController.cs" id="20_b7f6e"]
 [ext_resource type="PackedScene" uid="uid://ctgsgjglpau0g" path="res://entites/mecha/repair_trigger.tscn" id="21_5powe"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_hfmk1"]
-size = Vector2(20, 20)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2wiu"]
-transparency = 2
-alpha_scissor_threshold = 0.882
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_color = Color(1, 1, 0.933333, 1)
-albedo_texture = ExtResource("3_imk67")
-disable_receive_shadows = true
-
-[sub_resource type="Animation" id="Animation_gn8s2"]
-resource_name = "end"
-length = 600.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 600),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-255.81, 146.88, -57.74), Vector3(-502.48, 347.195, -6005.83)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:current")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_05h1w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:current")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(66.07, 68.495, 355.415)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_odehx"]
-_data = {
-"RESET": SubResource("Animation_05h1w"),
-"end": SubResource("Animation_gn8s2")
-}
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q2sxf"]
 panorama = ExtResource("3_uu5it")
@@ -121,36 +48,36 @@ fog_depth_curve = 7.99998
 fog_depth_end = 126.6
 adjustment_brightness = 1.8
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_hfmk1"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2wiu"]
+transparency = 2
+alpha_scissor_threshold = 0.882
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1, 1, 0.933333, 1)
+albedo_texture = ExtResource("3_imk67")
+disable_receive_shadows = true
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_fp0dg")
 
-[node name="CUTSCENER" type="Node3D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u4bxu")
 
-[node name="Camera3D" type="Camera3D" parent="CUTSCENER"]
-transform = Transform3D(-0.398749, 0.306121, -0.864459, 0, 0.942641, 0.333807, 0.91706, 0.133105, -0.375877, 66.07, 68.495, 355.415)
-fov = 100.0
-far = 14000.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CUTSCENER/Camera3D"]
-transform = Transform3D(-0.0397012, 0.990493, 0.131706, 0.729948, -0.0612615, 0.680752, 0.682349, 0.123165, -0.720577, 185.753, 42.3461, -432.85)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.350579, -0.520183, 0.778784, 0.915852, -0.0166344, 0.401171, -0.195728, 0.853893, 0.482243, 57.2654, 42.3088, 81.0222)
 light_energy = 2.0
 light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_max_distance = 480.0
 sky_mode = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CUTSCENER/Camera3D/DirectionalLight3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/DirectionalLight3D"]
 transform = Transform3D(9.54594, 1.19209e-07, 9.54594, -9.54594, -9.53674e-07, 9.54594, 9.53674e-07, -13.5, -1.66893e-06, -0.00035518, 0.000193345, 3292.58)
 mesh = SubResource("PlaneMesh_hfmk1")
 surface_material_override/0 = SubResource("StandardMaterial3D_y2wiu")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CUTSCENER"]
-libraries = {
-"": SubResource("AnimationLibrary_odehx")
-}
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_u4bxu")
 
 [node name="Ship" parent="." instance=ExtResource("1_81tjy")]
 

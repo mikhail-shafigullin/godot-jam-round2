@@ -39,6 +39,7 @@ public partial class DronPlayer : CharacterBody3D
 	private bool _computerOpened = false;
 	
 	private AnimationPlayer AnimationPlayer;
+	private bool isControlsDisabled = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -67,7 +68,7 @@ public partial class DronPlayer : CharacterBody3D
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion mouseEvent && !_computerOpened)
+		if (@event is InputEventMouseMotion mouseEvent && !_computerOpened && !isControlsDisabled)
 		{
 			Vector2 RotationDelta = new Vector2();
 			RotationDelta.X = Mathf.DegToRad(-mouseEvent.Relative.X * MouseSensitivity);
@@ -83,7 +84,7 @@ public partial class DronPlayer : CharacterBody3D
 			}
 		}
 		
-		if(@event.IsActionPressed("player_computer"))
+		if(@event.IsActionPressed("player_computer") && !isControlsDisabled)
 		{
 			if (ComputerUi.Visible)
 			{
@@ -117,12 +118,12 @@ public partial class DronPlayer : CharacterBody3D
 		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraLeftProject);
 		// DebugDraw3D.DrawLine(middleCollisionPoint, middleCollisionPoint + cameraBackwardProject);
 
-		if (Input.IsActionPressed("camera_zoom_up"))
+		if (Input.IsActionPressed("camera_zoom_up") && !isControlsDisabled)
 		{
 			SpringArm3D.SpringLength = Mathf.Clamp(SpringArm3D.SpringLength + 0.1f, minArm, maxArm);
 		}
 
-		if (Input.IsActionPressed("camera_zoom_down"))
+		if (Input.IsActionPressed("camera_zoom_down") && !isControlsDisabled)
 		{
 			SpringArm3D.SpringLength = Mathf.Clamp(SpringArm3D.SpringLength - 0.1f, minArm, maxArm);
 		}
@@ -163,22 +164,22 @@ public partial class DronPlayer : CharacterBody3D
 		Velocity = Vector3.Zero;
 
 		Vector3 velocityInput = Vector3.Zero;
-		if (Input.IsActionPressed("player_forward"))
+		if (Input.IsActionPressed("player_forward") && !isControlsDisabled)
 		{
 			isMoving = true;
 			velocityInput += -cameraBackward.Normalized();
 		}
-		if (Input.IsActionPressed("player_backward"))
+		if (Input.IsActionPressed("player_backward") && !isControlsDisabled)
 		{
 			isMoving = true;
 			velocityInput += cameraBackward.Normalized();
 		}
-		if (Input.IsActionPressed("player_left"))
+		if (Input.IsActionPressed("player_left") && !isControlsDisabled)
 		{
 			isMoving = true;
 			velocityInput += cameraLeft.Normalized();
 		}
-		if (Input.IsActionPressed("player_right"))
+		if (Input.IsActionPressed("player_right") && !isControlsDisabled)
 		{
 			isMoving = true;
 			velocityInput += -cameraLeft.Normalized();
@@ -187,7 +188,7 @@ public partial class DronPlayer : CharacterBody3D
 		if (isMoving)
 		{
 			var speed = MoveSpeed;
-			if (Input.IsActionPressed("player_accelerate"))
+			if (Input.IsActionPressed("player_accelerate") && !isControlsDisabled)
 			{
 				speed = FastMoveSpeed;
 			}
@@ -254,4 +255,10 @@ public partial class DronPlayer : CharacterBody3D
 	{
 		AnimationPlayer.Play("idleFly");
 	}
+	
+	public void SetControlsDisabled(bool disabled)
+	{
+		isControlsDisabled = disabled;
+	}
+
 }

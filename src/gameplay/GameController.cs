@@ -47,6 +47,8 @@ public partial class GameController : Node
 	private Marker3D xLeftMarker;
 	private Marker3D xRightMarker;
 	
+	private bool isControlsDisabled = false;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -71,6 +73,7 @@ public partial class GameController : Node
 		yBottomMarker = GetParent().GetNode<Marker3D>("%yBottom");
 		xLeftMarker = GetParent().GetNode<Marker3D>("%xLeft");
 		xRightMarker = GetParent().GetNode<Marker3D>("%xRight");
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,6 +88,12 @@ public partial class GameController : Node
 	[Signal]
 	public delegate void OnGameEndEventHandler();
 
+	public void DisableControls(bool disable)
+	{
+		isControlsDisabled = disable;
+		DronPlayer.SetControlsDisabled(disable);
+	}
+	
 	public void StartFirstDialogue()
 	{
 		var dialogue = GD.Load<Resource>("res://assets/dialogues/firstDialogue.dialogue");

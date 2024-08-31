@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpg28v4onv4ov" path="res://models/spaceShipThrusters.glb" id="3_hjsqr"]
 [ext_resource type="Material" uid="uid://bkenjdktq0ied" path="res://models/blackHide.tres" id="4_7hla0"]
 [ext_resource type="PackedScene" uid="uid://cl4fm1x4swd3g" path="res://models/objects/hatch.tscn" id="6_nkwwx"]
-[ext_resource type="PackedScene" uid="uid://b3w3wvkntsluo" path="res://models/space_ship_windows.tscn" id="7_4v0hk"]
+[ext_resource type="PackedScene" path="res://models/space_ship_windows.tscn" id="7_4v0hk"]
 [ext_resource type="PackedScene" uid="uid://bcjgeog3ytb0q" path="res://models/objects/tank.tscn" id="7_yrkmf"]
 [ext_resource type="PackedScene" uid="uid://c1hn7f70q3x1w" path="res://models/objects/tank_fat.tscn" id="8_827mi"]
 [ext_resource type="PackedScene" uid="uid://b1cjq0ra0cfiy" path="res://models/objects/went_hatch_open.tscn" id="9_66phx"]
@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://s8qksq6tounx" path="res://models/spaceShipBut.glb" id="27_skvbn"]
 [ext_resource type="Shader" path="res://models/explosionStrain.gdshader" id="28_l0go8"]
 [ext_resource type="Texture2D" uid="uid://cafwsoe6va68u" path="res://models/random128.png" id="29_h272a"]
-[ext_resource type="PackedScene" uid="uid://hsq8lmihh30d" path="res://models/door.tscn" id="30_ipp3j"]
+[ext_resource type="PackedScene" path="res://models/door.tscn" id="30_ipp3j"]
 [ext_resource type="PackedScene" uid="uid://byu03qobr1m4b" path="res://models/spaceShipObjects2.glb" id="31_57nbd"]
 [ext_resource type="PackedScene" uid="uid://djmb3bcadcain" path="res://scenes/winterRadiador.glb" id="32_chdtw"]
 
